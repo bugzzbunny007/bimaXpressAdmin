@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> BimaXpress </title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static '/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{% static 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{% static '/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static '/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static '/plugins/jqvmap/jqvmap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static '/dist/css/adminlte.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static '/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static '/plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static '/plugins/summernote/summernote-bs4.min.css' %}">
+</head>
+<style>
+
+
+.border-md {
+    border-width: 2px;
+}
+
+.btn-facebook {
+    background: #405D9D;
+    border: none;
+}
+
+.btn-facebook:hover, .btn-facebook:focus {
+    background: #314879;
+}
+
+.btn-twitter {
+    background: #42AEEC;
+    border: none;
+}
+
+.btn-twitter:hover, .btn-twitter:focus {
+    background: #1799e4;
+}
+
+
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+
+body {
+    min-height: 100vh;
+}
+
+.form-control:not(select) {
+    padding: 1.5rem 0.5rem;
+}
+
+select.form-control {
+    height: 52px;
+    padding-left: 0.5rem;
+}
+
+.form-control::placeholder {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.form-control:focus {
+    box-shadow: none;
+}
+
+</style>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTELogo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="index3.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="{% static 'dist/img/user8-128x128.jpg' %}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="{% static 'dist/img/user3-128x128.jpg' %}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      
+      {% comment %}
+      
+          <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+              <i class="fas fa-th-large"></i>
+            </a>
+          </li>
+          
+      {% endcomment %}
+
+
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="mainpage" class="brand-link">
+    
+      <img src="data:image/png;base64,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" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">&nbsp;</span>
+          
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <button style="color:white;" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+          
+              {{role}}
+          
+          </button>
+        </div>
+      </div>
+
+    
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="mainpage" class="nav-link active">
+                  <i class="mr-3 fas fa-user-nurse"></i>
+                  <p>Dashboard v1</p>
+                </a>
+              </li>
+              {% if role == 'admin' %}
+              <li class="nav-item">
+                <a href="" class="nav-link active">
+                  <i class="mr-3 fas fa-user-do"></i>
+                  <p> Add Customer </p>
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  
+
+    <div class="content-wrapper">
+
+    {% if role == "admin" %}
+
+        <!-- Navbar-->
+    <div class="container">
+      <div class="row py-5 mt-4 align-items-center">
+          <!-- For Demo Purpose -->
+        <div class="col-md-5 ml-4 pr-lg-5 mb-5 mb-md-0">
+            <img src="https://image.freepik.com/free-vector/woman-is-having-video-call-with-man_10045-302.jpg" alt="" class="img-fluid mb-3 d-none d-md-block">
+            <h1>Create a Account</h1>
+            <p class="font-italic text-muted mb-0">Create a minimal registeration.</p>
+            <p class="font-italic text-muted"><a href="https://bootstrapious.com" class="text-muted">
+                <u></u></a>
+            </p>
+        </div>
+
+        <!-- Registeration Form -->
+        <div class="col-md-7 col-lg-6 ml-auto">
+            <form action="#">
+                <div class="row">
+
+                    <!-- First Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="firstName" type="text" name="firstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="lastName" type="text" name="lastname" placeholder="Last Name" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="email" type="email" name="email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-phone-square text-muted"></i>
+                            </span>
+                        </div>
+                        <select id="countryCode" name="countryCode" style="max-width: 80px" class="custom-select form-control bg-white border-left-0 border-md h-100 font-weight-bold text-muted">
+                            <option value="">+91</option>
+                            <option value="">+1</option>
+                            <option value="">+99</option>
+                            <option value="">+01</option>
+                        </select>
+                        <input id="phoneNumber" type="tel" name="phone" placeholder="Phone Number" class="form-control bg-white border-md border-left-0 pl-3">
+                    </div>
+              <!-- Job --> 
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                
+                                <i class="fa fa-black-tie text-muted"></i>
+                            
+                            </span>
+                        </div>
+
+                        <select id="job" name="jobtitle" class="form-control custom-select bg-white border-left-0 border-md">
+                            
+                            <option value=""> Choose your job  </option>
+
+                            <option value=""> Claim_Analyst </option>
+                            
+                            <option value=""> Claim_Manager</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Password -->
+                    <div class="input-group col-lg-6 mb-4">
+                        
+                        <div class="input-group-prepend">
+                            
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            
+                                <i class="fa fa-lock text-muted"></i>
+                            
+                            </span>
+                    
+                        </div>
+                       
+                        <input id="password" type="password" name="password" placeholder="Password" class="form-control bg-white border-left-0 border-md">
+                    
+                    </div>
+                    
+
+                    <!-- Password Confirmation -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-lock text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="passwordConfirmation" type="text" name="passwordConfirmation" placeholder="Confirm Password" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <a href="#" class="btn btn-primary btn-block py-2">
+                            <span class="font-weight-bold">Create your account</span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    {% endif %} 
+  </div>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    
+
+    
+    <!-- /.content-header -->
+
+    <!-- /.content -->
+
+      {{role}}
+      <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Profile</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                
+                  {{role}}
+                
+                </div>
+                <div class="modal-footer">
+                  <form action="/logout" method="POST">
+                                    {% csrf_token %}
+                                    <i class="ni ni-single-02 text-red"></i>
+                                    <span class="nav-link-text"><input class="ml-3"
+                                            style="border: none; background: transparent" type="submit"
+                                            value="Logout" /></span>
+                  </form>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+  </div>
+
+  <!-- /.content-wrapper -->
+ 
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+
+<script>
+// For Demo Purpose [Changing input group text on focus]
+$(function () {
+    $('input, select').on('focus', function () {
+        $(this).parent().find('.input-group-text').css('border-color', '#80bdff');
+    });
+    $('input, select').on('blur', function () {
+        $(this).parent().find('.input-group-text').css('border-color', '#ced4da');
+    });
+});
+</script>
+
+<script src="{% static '/plugins/jquery/jquery.min.js' %}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{% static '/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{% static '/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- ChartJS -->
+<script src="{% static '/plugins/chart.js/Chart.min.js' %}"></script>
+<!-- Sparkline -->
+<script src="{% static '/plugins/sparklines/sparkline.js' %}"></script>
+<!-- JQVMap -->
+<script src="{% static '/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+<script src="{% static '/plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{% static '/plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+<!-- daterangepicker -->
+<script src="{% static '/plugins/moment/moment.min.js' %}"></script>
+<script src="{% static '/plugins/daterangepicker/daterangepicker.js' %}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{% static '/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<!-- Summernote -->
+<script src="{% static '/plugins/summernote/summernote-bs4.min.js' %}"></script>
+<!-- overlayScrollbars -->
+<script src="{% static '/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static '/dist/js/adminlte.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static '/dist/js/demo.js' %}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{% static '/dist/js/pages/dashboard.js' %}"></script>
+</body>
+</html>

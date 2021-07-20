@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static '/dist/css/pageAccordian.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BimaXpress</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static '/plugins/fontawesome-free/css/all.min.css' %}" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{% static 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}" />
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet"
+    href="{% static '/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}" />
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static '/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}" />
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static '/plugins/jqvmap/jqvmap.min.css' %}" />
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static '/dist/css/pageAccordian.css' %}" />
+  <link rel="stylesheet" href="{% static '/dist/css/adminlte.min.css' %}" />
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static '/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}" />
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static '/plugins/daterangepicker/daterangepicker.css' %}" />
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static '/plugins/summernote/summernote-bs4.min.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      width: 30%;
+      position: relative;
+      transition: all 5s ease-in-out;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .popup .close:hover {
+      color: #06D85F;
+    }
+
+    .popup .content {
+      max-height: 30%;
+      overflow: auto;
+    }
+
+    @media screen and (max-width: 700px) {
+      .box {
+        width: 70%;
+      }
+
+      .popup {
+        width: 70%;
+      }
+    }
+  </style>
+
+
+</head>
+
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+      <img class="animation__shake" src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTELogo" height="60"
+        width="60" />
+    </div>
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item ml-2 mr-2 d-none d-sm-inline-block">
+          <img src="https://www.bimaxpress.com/assets/img/Asset%201.png" height="40em" alt="" srcset="">
+        </li>
+
+      </ul>
+      <input class="search__input" type="text" placeholder="Search"
+        style="width: 20em; margin-top: 8px; margin-left: 8px;" />
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+
+      </ul>
+
+      <form action="/logout">
+        <button type="submit" class="btn btn-danger">Log Out</button>
+      </form>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4"
+      style="margin-top: 5em; max-height: 80%; background-color: #f4f6f9; color: black; border-top-right-radius: 20px;border-bottom-right-radius: 20px;">
+      <!-- Brand Logo -->
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+            <li class="nav-item menu-open" style="margin-left: -50px !important;">
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="mainpage" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    <p>Home</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="bunny" class="nav-link active">
+                    <i class="fas fa-envelope"></i>
+                    <p>Email</p>
+                  </a>
+                </li>
+
+                {% if role == 'admin' %}
+                <li class="nav-item">
+                  <a href="/hospital" class="nav-link active">
+                    <i class="fas fa-cog"></i>
+                    <p>Setup and Details</p>
+                  </a>
+                </li>
+
+
+                {% endif %}
+                {% if role == 'admin' %}
+                <li class="nav-item">
+                  <a href="adduser" class="nav-link active">
+                    <i class="fas fa-user-plus"></i>
+                    <p>Add Customer</p>
+                  </a>
+                </li>
+                {% endif %}
+                {% comment %}
+                <li class="nav-item">
+                  <a class="nav-link active" style="background-color: rgb(255, 166, 0); color:black;">
+
+                    <form action="/claimpage1" method="get" id="systemform">
+                      {% csrf_token %}
+                      <i style="color:black;" class="fas fa-plus"></i>
+                      <p> <button style="color: black; border: none; background-color:transparent;" type="submit"
+                          name="system" value="{{hospital_email}}+{{backcase}}" form="systemform">New
+                          Case
+                        </button></p>
+                    </form>
+                  </a>
+                </li> {% endcomment %}
+
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper"
+      style="padding-left: 5em !important; padding-right: 5em !important; background-color: white !important;">
+
+      <div class="main" onmouseover="mainHover()" style="width: 100%;">
+        <!-- {{data}} -->
+        <form accept-charset="UTF-8" action="saveData/" enctype="multipart/form-data" id="msform" method="POST"
+          novalidate="">
+          {% csrf_token %}
+          <div class="accordianHeader" style="width: 100%;">
+            <div class="container-fluid" style="width: 100%;">
+              <div class="row" style="margin-top: 5em;">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                          aria-expanded="true" aria-controls="collapseOne">
+                          Details of TPA / Insurance Company
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                      aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <label for="cars">Insurance Company / TPA</label>
+                        <select class="form-control" name="insurance_company" id="cars" required>
+
+                          {% for i in insurance_company.keys %}
+                          {% if i == data.patient_details.Insurance_Company %}
+                          <option class="options" selected value="{{data.patient_details.Insurance_Company}}">
+                            {{data.patient_details.Insurance_Company}}</option>
+                          {% else %}
+                          <option value="{{i}}">{{i}}</option>
+                          {% endif %}
+                          {% endfor %}
+
+                        </select>
+                        <button name="save" value="{{system}}"
+                          onclick="alert(`form saved successfully`);$(`#msform`).submit(); activeMybtn()"
+                          class="btn btn-primary btn-lg"> save </button>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                      <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                          href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Patient Details
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="column">
+                            <label for="exampleInputEmail1">Patient Name <span style="color: red;">*</span> </label>
+                            <input type="text" class="form-control" name="patient_details_name" required
+                              value={{data.patient_details.Name}}>
+
+
+                            <label for="cars">Gender : <span style="color: red;">*</span> </label>
+                            <select class="form-control" id="cars1" name="patient_details_gender" required>
+                              <option value="male">Male</option>
+                              <option type="" value="female">Female</option>
+                              <option type="" value="Transgender">
+                                Transgender
+                              </option>
+                            </select>
+
+
+
+                            <label for="exampleInputEmail1">Age : Year <span style="color: red;">*</span> </label>
+                            <input class="form-control" name="patient_details_ageYear"
+                              value="{{data.patient_details.Age}}" type="number" required>
+
+                            <label for="exampleInputEmail1">Age : Month <span style="color: red;">*</span> </label>
+                            <input class="form-control" name="patient_details_ageMonth" type="number" required
+                              value="{{data.patient_details.AgeMonth}}">
+
+                            <label for="exampleInputEmail1">Date of birth <span style="color: red;">*</span> </label>
+                            <input class="form-control" name="patient_details_date" type="text"
+                              value="{{data.patient_details.DOB}}" required>
+
+                            <label for="exampleInputEmail1">Patient Contact Number <span style="color: red;">*</span>
+                            </label>
+                            <input type="number" class="form-control" required name="patient_details_contact_number"
+                              value={{data.patient_details.Number}}>
+
+                            <label for="exampleInputEmail1">Contact Number of Attending Relative</label>
+                            <input class="form-control" name="patient_details_numberOfAttendingRelative" type="text"
+                              value={{data.patient_details.Attending_Relative_Number}}>
+
+                          </div>
+                          <div class="column">
+                            <label for="exampleInputEmail1">Insured Member ID Card No </label>
+                            <input class="form-control" name="patient_details_insuredMemberIdCardNo" type="text"
+                              value="{{data.patient_details.InsuredIdCardNumber}}">
+                            <label for="exampleInputEmail1">Policy Number / Corporate Name </label>
+                            <input class="form-control" name="patient_details_policyNumberorCorporateName" type="text"
+                              value="{{data.patient_details.Policy_Id}}">
+
+                            <label for="exampleInputEmail1">Employee ID</label>
+                            <input class="form-control" name="patient_details_EmployeeId" type="text"
+                              value="{{data.patient_details.EmployeeId}}">
+
+
+                            <label for="exampleInputEmail1">Curruntly Do You Have Any Health Insurance</label> <br>
+
+                            <input type="radio" name="patient_details_HealthInsurance" value="Yes" id="nanana"
+                              onclick="handler()">
+                            Yes
+                            <input type="radio" name="patient_details_HealthInsurance" value="No" id="nanana2"
+                              onclick="yeshandler"> No
+                            <!-- hidden -->
+                            <input id="bunny_patient_details_HealthInsurance" style="visibility: hidden;"
+                              value="{{data.addition_details.patient_details_HealthInsurance}}" />
+
+                            <!-- hidden -->
+                            <script>
+                              var rdf = document.getElementById('bunny_patient_details_HealthInsurance').value;
+                              if (rdf.toString() == "Yes") {
+                                document.getElementById('nanana').checked = true;
+                              }
+                              else {
+                                document.getElementById('nanana2').checked = true;
+
+                              }
+                            </script>
+
+                            <div class="onclickYes" id="onclickYes">
+
+                            </div>
+                            <label for="exampleInputEmail1">Do You Have a Family Physician</label> <br>
+                            <input type="radio" name="patient_details_familyPhysician" value="Yes" id="physicianYes">
+                            Yes
+                            <input type="radio" name="patient_details_familyPhysician" value="No" id="physicianNo"> No
+                            <input id="bunny_patient_details_familyPhysician" style="visibility: hidden;"
+                              value="{{data.addition_details.patient_details_familyPhysician}}" />
+
+                            <!-- hidden -->
+                            <script>
+                              var rdf = document.getElementById('bunny_patient_details_familyPhysician').value;
+                              if (rdf.toString() == "Yes") {
+                                document.getElementById('physicianYes').checked = true;
+                              }
+                              else {
+                                document.getElementById('physicianNo').checked = true;
+
+                              }
+                            </script>
+                            <div class="onclickYes" id="onclickYesPhysician">
+
+                            </div>
+                            <label for="exampleInputEmail1">Current Address </label>
+                            <input class="form-control" name="patient_details_currentAddress" type="text"
+                              value="{{data.patient_details.Address}}">
+
+                            <label for="exampleInputEmail1">Occupation</label>
+                            <input class="form-control" name="patient_details_occupation"
+                              value="{{data.patient_details.Occupation}}" type="text">
+
+                            <label for="exampleInputEmail1">View Patient Document</label>
+                            <br>
+
+
+                            <button name="save" value="{{system}}"
+                              onclick="alert(`form saved successfully`);$(`#msform`).submit();"
+                              class="btn btn-primary btn-lg"> save </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                      <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                          href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Doctor and Diagnosis Details
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                      aria-labelledby="headingThree">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="column">
+                            <label for="exampleInputEmail1">Name of The Treating Doctor <span
+                                style="color: red;">*</span> </label>
+                            <input class="form-control" name="Treating_Doctor" required type="text"
+                              value="{{data.hospital_details.Treating_Doctor}}">
+
+                            <label for="exampleInputEmail1">Contact Number</label>
+                            <input class="form-control" name="doctor_contactNumber" type="text"
+                              value="{{data.patient_details.Doctor_ContactNumber}}">
+
+                            <label for="exampleInputEmail1">Nature of illness / Disease With Presenting
+                              complaints</label>
+                            <input class="form-control" name="doctor_natureOfLiness" type="text"
+                              value="{{data.addition_details.Nature_Of_Illness}}">
+
+                            <label for="exampleInputEmail1">Relevant Clinic Findings</label>
+                            <input class="form-control" name="doctor_releventClinicFindings" type="text"
+                              value="{{data.addition_details.doctor_releventClinicFindings}}">
+
+                            <label for="exampleInputEmail1">Duration of Present Aliment</label>
+                            <input class="form-control" name="doctor_durationOfPresentAliment" type="text"
+                              value="{{data.addition_details.Duration_Of_Present_Ailments}}">
+
+                            <label for="exampleInputEmail1">Date Of First Consultation</label>
+                            <input class="form-control" name="doctor_dateOfFirstConsultation" type="date"
+                              value="{{data.addition_details.NatureOfLiness}}">
+
+                            <label for="exampleInputEmail1">Past History Of Present Aliment , If Any</label>
+                            <input class="form-control" name="doctor_PastHistoryOfPresentAlignment" type="text"
+                              value="{{data.addition_details.Past_History_Of_Present_Ailments}}">
+
+                            <label for="exampleInputEmail1">Provisional Diagnosis</label>
+                            <input class="form-control" name="doctor_provisionalDiagnosis" type="text"
+                              value="{{data.addition_details.Provision_Diagnosis}}">
+
+                            <label for="exampleInputEmail1">ICD Code </label>
+                            <input class="form-control" name="doctor_icdCode" type="tel"
+                              value="{{data.addition_details.ICD_Code}}">
+
+                            <label for="exampleInputEmail1">Proposed Line Of Treatment <span
+                                style="color: red;">*</span> </label> <br>
+                            <input name="doctor_proposedLineOfTreatment_Medical_Managment" required value="Yes"
+                              id="madical_managment" type="radio">
+                            Medical Managment &nbsp;&nbsp;&nbsp;
+                            <input name="doctor_proposedLineOfTreatment_Surgical_Managment" value="Yes" id="surgical"
+                              type="radio"> Surgical
+                            Managment <br>
+                            <input name="doctor_proposedLineOfTreatment_Intensive_Care" value="Yes" id='intensiveCare'
+                              type="radio">
+                            Intensive Care &nbsp;&nbsp;&nbsp;
+                            <input name="doctor_proposedLineOfTreatment_Investigation" value="Yes" id="investigation"
+                              type="radio">
+                            Investigation <br>
+                            <input name="doctor_proposedLineOfTreatment_Allopathic_Treatment" value="Yes"
+                              id='nonAllopathic' type="radio"> Non
+                            Allopathic Treatment <br>
+
+                            <input id="bunny_addition_details_madical_managment" style="visibility: hidden;"
+                              value="{{data.addition_details.doctor_proposedLineOfTreatment_Medical_Managment}}" />
+
+                            <input id="bunny_addition_details_surgical" style="visibility: hidden;"
+                              value="{{data.addition_details.doctor_proposedLineOfTreatment_Surgical_Managment}}" />
+
+                            <input id="bunny_addition_details_intensiveCare" style="visibility: hidden;"
+                              value="{{data.addition_details.doctor_proposedLineOfTreatment_Intensive_Care}}" />
+
+                            <input id="bunny_addition_details_investigation" style="visibility: hidden;"
+                              value="{{data.addition_details.doctor_proposedLineOfTreatment_Investigation}}" />
+
+                            <input id="bunny_addition_details_nonAllopathic" style="visibility: hidden;"
+                              value="{{data.addition_details.doctor_proposedLineOfTreatment_Allopathic_Treatment}}" />
+
+
+                            <!-- hidden -->
+                            <script>
+                              var rdf = document.getElementById('bunny_addition_details_madical_managment').value;
+                              if (rdf.toString() == "Yes") {
+                                document.getElementById('madical_managment').checked = true;
+                              }
+
+                              var rdf1 = document.getElementById('bunny_addition_details_surgical').value;
+                              if (rdf1.toString() == "Yes") {
+                                document.getElementById('surgical').checked = true;
+                              }
+
+                              var rdf2 = document.getElementById('bunny_addition_details_intensiveCare').value;
+                              if (rdf2.toString() == "Yes") {
+                                document.getElementById('intensiveCare').checked = true;
+                              }
+
+                              var rdf3 = document.getElementById('bunny_addition_details_investigation').value;
+                              if (rdf3.toString() == "Yes") {
+                                document.getElementById('investigation').checked = true;
+                              }
+
+                              var rdf4 = document.getElementById('bunny_addition_details_nonAllopathic').value;
+                              if (rdf4.toString() == "Yes") {
+                                document.getElementById('nonAllopathic').checked = true;
+                              }
+                            </script>
+                            <div id="forLineOfTreatment">
+                              <!-- for surgical -->
+                            </div>
+                          </div>
+                          <div class="column">
+                            <label for="exampleInputEmail1">If Other Tratment Provide Details</label>
+                            <input class="form-control" name="doctor_ifOtherTratmentProvideDetails"
+                              value="{{data.addition_details.If_Other_Treatment_Provide_Details}}" type="text">
+
+                            <label for="exampleInputEmail1">How Did Injury Occure</label>
+                            <input class="form-control" value="{{data.addition_details.How_Did_Injury_Occur}}"
+                              name="doctor_howDidInjuryOccure" type="text">
+
+                            <label for="exampleInputEmail1">In Case Of Accident ,Is It RTA</label> <br>
+                            <input type="radio" value="Yes" name="doctor_inCaseOfAccident"
+                              id="doctor_inCaseOfAccidentYes"> Yes
+                            <input type="radio" value="No" name="doctor_inCaseOfAccident"
+                              id="doctor_inCaseOfAccidentNo"> No <br>
+
+                            <input id="bunny_doctor_inCaseOfAccident" style="visibility: hidden;"
+                              value="{{data.addition_details.In_Case_Of_Accident}}" /> <br>
+
+                            <!-- hidden -->
+                            <script>
+                              var rdf = document.getElementById('bunny_doctor_inCaseOfAccident').value;
+                              if (rdf.toString() == "Yes") {
+                                document.getElementById('doctor_inCaseOfAccidentYes').checked = true;
+                              }
+                              else {
+                                document.getElementById('doctor_inCaseOfAccidentNo').checked = true;
+                              }
+                            </script>
+
+                            <label for="exampleInputEmail1">Date Of Injury</label>
+                            <input class="form-control" name="doctor_dateOfInjury" type="text"
+                              value="{{data.addition_details.Date_Of_Injury}}"> <br>
+
+                            <label for="exampleInputEmail1">Reported To Police</label> <br>
+                            <input type="radio" value="Yes" name="doctor_reportedToPolice" id='policeReportYes'> Yes
+                            <input type="radio" value="No" name="doctor_reportedToPolice" id='policeReportNo'> No <br>
+
+                            <input id="bunny_policeReportYes" style="visibility: hidden;"
+                              value="{{data.addition_details.Reported_To_Police}}" />
+
+                            <!-- hidden -->
+                            <script>
+                              var rdf = document.getElementById('bunny_policeReportYes').value;
+                              if (rdf.toString() == "Yes") {
+                                document.getElementById('policeReportYes').checked = true;
+                              }
+                              else {
+                                document.getElementById('policeReportNo').checked = true;
+
+                              }
+                            </script>
+
+                            <div id="forFirNum">
+                              <!-- for fir -->
+                            </div>
+                            <label for="exampleInputEmail1">Injury/Disease Caused Due To Substance Abuse / Alcohol
+                              Consumption</label> <br>
+                            <input type="radio" name="doctor_injuryorDiseaseCausedDueToSubstance" value="Yes"
+                              id="InjuryYes">
+                            Yes
+                            <input type="radio" name="doctor_injuryorDiseaseCausedDueToSubstance" value="No"
+                              id="InjuryNo">
+                            No <br>
+
+                            <input id="bunny_patient_details_InjuryYes" style="visibility: hidden;"
+                              value="{{data.addition_details.Injury_Disease_Caused_Due_To_Substance_Abuse_Alcohol_Consumption_}}" />
+
+                            <!-- hidden -->
+                            <script>
+                              var rdf = document.getElementById('bunny_patient_details_InjuryYes').value;
+                              if (rdf.toString() == "Yes") {
+                                document.getElementById('InjuryYes').checked = true;
+                              }
+                              else {
+                                document.getElementById('InjuryNo').checked = true;
+
+                              }
+                            </script>
+                            <label for="exampleInputEmail1">Test Alcohol To Establish This</label> <br>
+                            <input type="radio" name="doctor_testAlcohol" value="Yes" id="testAlcoholYes"
+                              onclick="testAlcohol()">
+                            Yes
+                            <input type="radio" name="doctor_testAlcohol" value="No" id="testAlcoholNo"
+                              onclick="testAlcoholNo()"> No <br>
+
+                            <input id="bunny_patient_details_testAlcoholYes" style="visibility: hidden;"
+                              value="{{data.addition_details.doctor_testAlcohol}}">
+
+                            <!-- hidden -->
+                            <script>
+                              var rdfAlcohol = document.getElementById('bunny_patient_details_testAlcoholYes').value;
+                              if (rdfAlcohol.toString() == "Yes") {
+                                document.getElementById('testAlcoholYes').checked = true;
+                              }
+                              else {
+                                document.getElementById('testAlcoholNo').checked = true;
+
+                              }
+                            </script>
+
+                            <div id="testAlcohol">
+
+                            </div>
+                            <label for="exampleInputEmail1">In Case Maternity</label> <br>
+                            <input type="radio" name="doctor_inCaseMaternityG" value="Yes" id="G"> G
+                            <input type="radio" name="doctor_inCaseMaternityP" value="Yes" id="P"> P
+                            <input type="radio" name="doctor_inCaseMaternityL" value="Yes" id="L"> L
+                            <input type="radio" name="doctor_inCaseMaternityA" value="Yes" id="A"> A <br>
+
+                            <input id="bunny_patient_details_G" style="visibility: hidden;"
+                              value="{{data.addition_details.G}}" />
+
+                            <input id="bunny_patient_details_P" style="visibility: hidden;"
+                              value="{{data.addition_details.P}}" />
+
+                            <input id="bunny_patient_details_L" style="visibility: hidden;"
+                              value="{{data.addition_details.L}}" />
+
+                            <input id="bunny_patient_details_A" style="visibility: hidden;"
+                              value="{{data.addition_details.A}}" />
+
+                            <!-- hidden -->
+                            <script>
+                              var rdfG = document.getElementById('bunny_patient_details_G').value;
+                              if (rdfG.toString() == "Yes") {
+                                document.getElementById('G').checked = true;
+                              }
+                              var rdfP = document.getElementById('bunny_patient_details_P').value;
+                              if (rdfP.toString() == "Yes") {
+                                document.getElementById('P').checked = true;
+                              }
+                              var rdfL = document.getElementById('bunny_patient_details_L').value;
+                              if (rdfL.toString() == "Yes") {
+                                document.getElementById('L').checked = true;
+                              }
+                              var rdfA = document.getElementById('bunny_patient_details_A').value;
+                              if (rdfA.toString() == "Yes") {
+                                document.getElementById('A').checked = true;
+                              }
+                            </script>
+                            <script>
+                              // function myCheckboxFunG() {
+                              //   if (document.getElementById("G").checked == true) {
+
+                              //   }
+                              // }
+                              // function myCheckboxFunP() {
+                              //   if (document.getElementById("P").checked == true) {
+                              //     alert("P checked")
+                              //   }
+                              // }
+                              // function myCheckboxFunL() {
+                              //   if (document.getElementById("L").checked == true) {
+                              //     alert("L checked")
+                              //   }
+                              // }
+                              // function myCheckboxFunA() {
+                              //   if (document.getElementById("A").checked == true) {
+                              //     alert("A checked")
+                              //   }
+                              // }
+                            </script>
+                            <label for="exampleInputEmail1">Expected Date Of Delivery</label>
+                            <input class="form-control" name="doctor_expectedDateOfDelivery"
+                              value="{{data.hospital_details.ExpectedDateOfDelivery}}" type="date">
+
+                            <button name="save" value="{{system}}"
+                              onclick="alert(`form saved successfully`);$(`#msform`).submit();"
+                              class="btn btn-primary btn-lg"> Save </button>
+                            <input style="visibility: hidden;" type="text" id="hiddendata" value={{system}} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                      <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                          href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                          Admission Details
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                      aria-labelledby="headingThree">
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="column">
+                            <label for="exampleInputEmail1">Date Of Admission <span style="color: red;">*</span>
+                            </label>
+
+                            <input class="form-control" name="admission_date" required
+                              value="{{data.hospital_details.Date_of_Admission}}" type="text">
+                            <label for="exampleInputEmail1">Is This a Emergency/Planned Hospitalization Event ? <span
+                                style="color: red;">*</span> </label>
+                            <br>
+                            <input type="radio" name="admission_isThisAEmergencyPlannedHospitalization"
+                              value="Emergency" id="Emergency" required> &nbsp;&nbsp;&nbsp; Emergency &nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="admission_isThisAEmergencyPlannedHospitalization" value="Planned"
+                              id="Planned" required> &nbsp;&nbsp;&nbsp; Planned <br>
+
+                            <input id="bunny420" style="visibility: hidden;"
+                              value="{{data.addition_details.isThisAEmergencyPlannedHospitalization}}" />
+
+                            <!-- hidden -->
+                            <script>
+                              var rdf = document.getElementById('bunny420').value;
+                              if (rdf.toString() == "Planned") {
+                                document.getElementById('Planned').checked = true;
+                              }
+                              else {
+                                document.getElementById('Emergency').checked = true;
+
+                              }
+                            </script>
+
+                            <label for="exampleInputEmail1">Expected No. Of Days Stay In Hospital <span
+                                style="color: red;">*</span> </label>
+                            <input class="form-control" value="{{data.hospital_details.Days_In_Hospital}}"
+                              name="admission_expectedNoOfDays" type="number">
+
+                            <label for="exampleInputEmail1">Days In ICU</label>
+                            <input class="form-control" value="{{data.hospital_details.Days_In_ICU}}"
+                              name="admission_daysInICU" type="number">
+
+                            <label for="exampleInputEmail1">Room Type</label>
+                            <input class="form-control" value="{{data.hospital_details.Room_Type}}"
+                              name="admission_roomType" type="text">
+
+                            <label for="exampleInputEmail1">Per Day Room Rent + Nursing & Services Charge + Patient
+                              Diet</label>
+                            <input class="form-control" name="admission_perDayRoomRent" type="number"
+                              value="{{data.hospital_charges.Per_Day_Room_Rent}}" placeholder="">
+
+                            <label for="exampleInputEmail1">Expected Cost For Investigation + Diagnostics</label>
+                            <input class="form-control" name="admission_expectedCostForInvestigation" type="number"
+                              value="{{data.hospital_charges.Cost_Of_Investigation}}" placeholder="">
+
+                            <label for="exampleInputEmail1">ICU Charge</label>
+                            <input class="form-control" name="admission_icuCharge" type="number"
+                              value="{{data.hospital_charges.ICU_Charges}}" placeholder="">
+
+                            <label for="exampleInputEmail1">OT Charge</label>
+                            <input class="form-control" name="admission_otCharge" type="number"
+                              value="{{data.hospital_charges.OT_Charges}}" placeholder="">
+
+                            <label for="exampleInputEmail1">Professional Fees Surgeon + Anesthetist Fees + Consultation
+                              Charge</label>
+                            <input class="form-control" name="admission_professionalFeesSurgeon" type="number"
+                              value="{{data.hospital_charges.ProfessionalFeesSurgeon}}" placeholder="">
+
+                            <label for="exampleInputEmail1">Medicine + Consumables + Cost of Implants (If Applicable
+                              Please
+                              Specify)</label>
+                            <input class="form-control" name="admission_madicineConsumablesCostOfImplats" type="number"
+                              value="{{data.hospital_charges.cost_Of_Implant}}" placeholder="">
+
+                            <label for="exampleInputEmail1">Other Hospital If Any</label>
+                            <input class="form-control" name="admission_otherHospitalIfAny" type="text"
+                              value="{{data.hospital_charges.OtherHospitalIfAny}}" placeholder="">
+
+                            <label for="exampleInputEmail1">All Include Package Charges If Any Applicable</label>
+                            <input class="form-control" name="admission_allIncludePackageCharge" type="number"
+                              value="{{data.hospital_charges.All_Including_Package}}" placeholder="">
+
+                            <!-- do calculation -->
+
+                            <label for="exampleInputEmail1">Sum Total Expected Cost Of Hospitalization <span
+                                style="color: red;">*</span> </label>
+                            <input class="form-control" name="admission_sumTotalExpected" type="number"
+                              value="{{data.hospital_charges.total}}" placeholder="" required>
+                          </div>
+                          <div class="column">
+                            <label for="exampleInputEmail1">Mandatory Past History Of Any Chronic Illness If Yes, Since
+                              (month / year)</label>
+                            <p>i) Diabetes</p>
+                            <div style="display: flex; justify-content: space-evenly;">
+                              <input type="number" value="{{data.addition_details.MandatoryPastHistoryMonth}}"
+                                name="admission_mandatoryPastHistoryMonth" class="form-control" placeholder="Month">
+                              <input class="form-control" value="{{data.addition_details.MandatoryPastHistoryYear}}"
+                                type="number" placeholder="Year" name="admission_mandatoryPastHistoryYear">
+                            </div>
+                            <p>ii) Heart Disease</p>
+                            <div style="display: flex; justify-content: space-evenly;">
+                              <input type="number" value="{{data.addition_details.HeartDiseaseMonth}}"
+                                name="admission_heartDiseaseMonth" class="form-control" placeholder="Month">
+                              <input class="form-control" value="{{data.addition_details.HeartDiseaseYear}}"
+                                type="number" placeholder="Year" name="admission_heartDiseaseYear">
+                            </div>
+                            <p>iii) Hypertension</p>
+                            <div style="display: flex; justify-content: space-evenly;">
+                              <input type="number" value="{{data.addition_details.HypertensionMonth}}"
+                                class="form-control" name="admission_hypertensionMonth" placeholder="Month">
+                              <input class="form-control" value="{{data.addition_details.HypertensionYear}}"
+                                type="number" placeholder="Year" name="admission_hypertensionYear">
+                            </div>
+                            <p>iv) Hyperlipidemias</p>
+                            <div style="display: flex; justify-content: space-evenly;">
+                              <input type="number" value="{{data.addition_details.HyperlipidemiasMonth}}"
+                                class="form-control" name="admission_HyperlipidemiasMonth" placeholder="Month">
+                              <input class="form-control" value="{{data.addition_details.HyperlipidemiasYear}}"
+                                type="number" placeholder="Year" name="admission_HyperlipidemiasYear">
+                            </div>
+                            <p>v) Osteoarthritis</p>
+                            <div style="display: flex; justify-content: space-evenly;">
+                              <input type="number" value="{{data.addition_details.OsteoarthritisMonth}}"
+                                class="form-control" name="admission_osteoarthritisMonth" placeholder="Month">
+                              <input class="form-control" value="{{data.addition_details.OsteoarthritisYear}}"
+                                type="number" placeholder="Year" name="admission_osteoarthritisYear">
+                            </div>
+                            <p>vi) Asthma / COPD / Bronchitis</p>
+                            <div style="display: flex; justify-content: space-evenly;">
+                              <input type="number" value="{{data.addition_details.AsthmaOrCOPDOrBronchitisMonth}}"
+                                class="form-control" name="admission_asthmaOrCOPDOrBronchitisMonth" placeholder="Month">
+                              <input class="form-control" value="{{data.addition_details.AsthmaOrCOPDOrBronchitisYear}}"
+                                type="number" placeholder="Year" name="admission_asthmaOrCOPDOrBronchitisYear">
+                            </div>
+                            <p>vii) Cancer</p>
+                            <div style="display: flex; justify-content: space-evenly;">
+                              <input type="number" value="{{data.addition_details.CancerMonth}}" class="form-control"
+                                name="admission_cancerMonth" placeholder="Month">
+                              <input class="form-control" value="{{data.addition_details.CancerYear}}" type="number"
+                                placeholder="Year" name="admission_cancerYear">
+                            </div>
+                            <p>viii) Alcohol or Drug Abuse</p>
+                            <div style="display: flex; justify-content: space-evenly;">
+                              <input type="number" value="{{data.addition_details.AlcoholOrDrugAbuseMonth}}"
+                                class="form-control" name="admission_alcoholOrDrugAbuseMonth" placeholder="Month">
+                              <input class="form-control" value="{{data.addition_details.AlcoholOrDrugAbuseYear}}"
+                                type="number" placeholder="Year" name="admission_alcoholOrDrugAbuseYear">
+                            </div>
+                            <p for="exampleInputEmail1">ix) Any HIV or STD / Related Aliments</p>
+                            <div style="display: flex; justify-content: space-evenly;">
+                              <input type="number" value="{{data.addition_details.RelatedAlimentsMonth}}"
+                                class="form-control" name="admission_anyHIVOrSTDOrRelatedAlimentsMonth"
+                                placeholder="Month">
+                              <input class="form-control" value="{{data.addition_details.RelatedAlimentsYear}}"
+                                type="number" placeholder="Year" name="admission_anyHIVOrSTDOrRelatedAlimentsYear">
+                            </div>
+                            <p>Any Other Aliments Give Details</p>
+                            <input class="form-control" name="admission_anyOtherAliments" type="text"
+                              value="{{data.addition_details.OtherAliments}}" placeholder="">
+
+                            <!-- <button name="save" value="{{system}}"
+                              onclick="alert(`form saved successfully`);$(`#msform`).submit();"
+                              class="btn btn-primary btn-lg"> Generate PDF Form </button> -->
+
+                            <br><br>
+
+                            <button name="save" value="{{system}}"
+                              onclick="alert(`form saved successfully`);$(`#msform`).submit();"
+                              class="btn btn-primary btn-lg"> Save </button>
+                            <!-- onclick="location.href = '/'" -->
+                            <!-- Modal start-->
+
+                            <!-- <input class="action-button btn btn-warning" style="color: white;" name="Query"
+                              type="button" onclick="queryFunction(`{{akey}}`,`{{email}}`);" value="Query" /> -->
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="container" style="margin-left: 20%; align-self: center;">
+        <div style="display: flex; flex-direction: row; margin: 5px;">
+          <div>
+            <form action="/generateform" method="POST">
+              {% csrf_token %}
+              <button
+                style=" background-color: rgb(255, 166, 0); width: 200px; border-radius: 20px; color: white; margin: 5px; height: 40px;"
+                name="finalvalue" value="{{system}}" onclick="alert(`form saved successfully`);$(`#msform`).submit();"
+                class="btn btn-warning">Generate Pre Auth Form </button>
+            </form>
+          </div>
+          <div>
+            <button type="button" class="btn btn-warning" data-toggle="modal"
+              onclick="uploadAndViewDocuments();window.location.href='#popup2'"
+              style=" background-color: rgb(255, 166, 0); width: 200px; border-radius: 20px; color: white; margin: 5px; height: 40px;"
+              data-target="#exampleModal" id="viewDocuments">
+              View Documents
+            </button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-warning" data-toggle="modal"
+              onclick="uploadAndViewDocuments();window.location.href='#popup3'"
+              style=" background-color: rgb(255, 166, 0); width: 200px; border-radius: 20px; color: white; margin: 5px; height: 40px;"
+              data-target="#exampleModal" id="viewDocuments">
+              Send Mail
+            </button>
+
+          </div>
+
+
+        </div>
+        <div id="popup2" class="overlay" style="z-index: 100;">
+
+          <div class="popup" onload="myShowData()" style="width: 60%; height: 70%; overflow-y: auto;">
+            <a class="close" style="color: red; font-weight: bolder;" href="#">&times;</a>
+            <div style="display: flex;flex-wrap: wrap;">
+
+              <div class="row">
+                <div class="column">
+                  <img src="{{UrlotherDocuments}}" onclick="window.location.href='{{UrlotherDocuments}}'"
+                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrlotherDocuments">
+
+                  <img src="{{UrluploadConsultation}}" onclick="window.location.href='{{UrluploadConsultation}}'"
+                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrluploadConsultation">
+                </div>
+                <div class="column">
+                  <img src="{{UrluploadPatients}}" onclick="window.location.href='{{UrluploadPatients}}'"
+                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrluploadPatients">
+                  <img src="{{UrluploadSigned}}" onclick="window.location.href='{{UrluploadSigned}}'"
+                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrluploadSigned">
+                </div>
+                <div class="column">
+                  <img class="img-fluid" alt="Responsive image" id="uploadSigned">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="popup3" class="overlay" style="z-index: 100;">
+
+          <div class="popup" style="width: 60%; height: 70%; overflow-y: auto; text-align: left;">
+            <h2>Email To Insurance Company</h2>
+            <a class="close" href="#">&times;</a>
+            <div style="display: flex;flex-wrap: wrap;">
+              <form method="POST" action="/sendmail">
+                {% csrf_token %}
+                <span style="font-size: smaller;" class="smallText">Email Title</span>
+                <input name="email_title" type="text" style="width: 500px; height: 30px; border-radius: 15px;"
+                  class="form-control"> <br>
+
+                <span style="font-size: smaller;" class="smallText">Email Content</span>
+                <input name="email_content" type="text" style="width: 500px; height: 100px; border-radius: 15px;"
+                  class="form-control">
+
+
+
+                <div class="row">
+                  <div class="column">
+                    <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Signed Off Pre
+                      Auth Form</label>
+                    <input type="file" name="uploadSinged" id="uploadSinged">
+
+                    <br> <br>
+                    <script>
+                      hiddendata = document.getElementById('hiddendata').value;
+                      // console.log("mera id data",hiddendata)
+                      myArr = hiddendata.split("+");
+                      myid = myArr[0]
+
+                      mycase = myArr[1]
+                      console.log(myid, "or ", mycase)
+                      doc_ref = db.collection("hospitals").doc(email)
+                      function uploadSigned() {
+                        const ref = firebase.storage().ref()
+                        const file = document.getElementById('uploadSinged').files[0]
+                        const name = file.name
+                        const metadata = {
+                          contentType: file.type
+                        }
+                        const task = ref.child(`${myid}/${mycase}/uploadSigned/uploadSigned`).put(file, metadata)
+                        task
+                          .then(snapshot => snapshot.ref.getDownloadURL())
+                          .then(url => {
+                            console.log(url)
+                            console.log(myid)
+                            console.log(mycase)
+                            db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
+                              .then((docSnapshot) => {
+                                if (docSnapshot.exists) {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').update({
+                                    'UrluploadSigned': url,
+                                  })
+                                }
+                                else {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                    'UrluploadSigned': url,
+                                  })
+                                }
+                              });
+                            alert('image Uploaded Successfully')
+                          })
+                        uploadPatients()
+                      }
+                    </script>
+                    <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Patients Health
+                      Id Card</label>
+                    <input type="file" name="uploadPatientsHealth" id="uploadPatientsHealth">
+
+                    <script>
+                      function uploadPatients() {
+                        const ref = firebase.storage().ref()
+                        const file = document.getElementById('uploadPatientsHealth').files[0]
+                        const name = file.name
+                        const metadata = {
+                          contentType: file.type
+                        }
+                        const task = ref.child(`${myid}/${mycase}/uploadPatients/uploadPatients`).put(file, metadata)
+                        task
+                          .then(snapshot => snapshot.ref.getDownloadURL())
+                          .then(url => {
+                            console.log(url)
+                            urlTwo = url
+                            db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
+                              .then((docSnapshot) => {
+                                if (docSnapshot.exists) {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').update({
+                                    'UrluploadPatients': url,
+                                  })
+                                }
+                                else {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                    'UrluploadPatients': url,
+                                  })
+                                }
+                              });
+                            alert('image Uploaded Successfully')
+                          })
+                        uploadConsultation()
+                      }
+                    </script>
+                  </div>
+                  <div class="column">
+                    <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Consultation
+                      Papers</label>
+                    <input type="file" name="uploadConsultaion" id="uploadConsultaion">
+
+                    <script>
+                      function uploadConsultation() {
+                        const ref = firebase.storage().ref()
+                        const file = document.getElementById('uploadConsultaion').files[0]
+                        const name = file.name
+                        const metadata = {
+                          contentType: file.type
+                        }
+                        const task = ref.child(`${myid}/${mycase}/uploadConsultation/uploadConsultation`).put(file, metadata)
+                        task
+                          .then(snapshot => snapshot.ref.getDownloadURL())
+                          .then(url => {
+                            console.log(url)
+                            urlThree = url
+                            db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
+                              .then((docSnapshot) => {
+                                if (docSnapshot.exists) {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').update({
+                                    'UrluploadConsultation': url,
+                                  })
+                                }
+                                else {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                    'UrluploadConsultation': url,
+                                  })
+                                }
+                              });
+                            alert('image Uploaded Successfully')
+                          })
+                        otherDocuments()
+                      }
+                    </script>
+                    <br> <br>
+
+
+                    <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Other
+                      Documents</label>
+                    <input type="file" name="otherDocuments" id="otherDocuments">
+
+                    <script>
+                      function otherDocuments() {
+                        const ref = firebase.storage().ref()
+                        const file = document.getElementById('otherDocuments').files[0]
+                        const name = file.name
+                        const metadata = {
+                          contentType: file.type
+                        }
+                        const task = ref.child(`${myid}/${mycase}/otherDocuments/otherDocuments`).put(file, metadata)
+                        task
+                          .then(snapshot => snapshot.ref.getDownloadURL())
+                          .then(url => {
+                            console.log(url)
+                            urlThree = url
+                            db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
+                              .then((docSnapshot) => {
+                                if (docSnapshot.exists) {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').update({
+                                    'UrlotherDocuments': url,
+                                  })
+                                }
+                                else {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                    'UrlotherDocuments': url,
+                                  })
+                                }
+                              });
+                            alert('image Uploaded Successfully')
+                          })
+                      }
+                    </script>
+
+                  </div>
+                  <div class="row">
+                    <div class="column">
+                      <input type="button"
+                        style=" background-color: rgb(255, 166, 0); width: 200px; border-radius: 20px; margin-top: 50px;float: right;height: 40px; margin-right: 20px; "
+                        class="btn btn-warning" onclick="uploadSigned()" value="Attach Files">
+                    </div>
+                    <div class="column" style="width: 200px !important;">
+                      <button name="sendbtn"
+                        style=" background-color: rgb(255, 166, 0); width: 200px; border-radius: 20px; margin-top: 50px;height: 40px;"
+                        class="btn btn-warning" value="{{data.patient_details.Insurance_Company}}+{{system}}"> Send Mail
+                      </button>
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">{{role}}</div>
+            <div class="modal-footer">
+              <form action="/logout" method="post">
+                {% csrf_token %}
+                <i class="ni ni-single-02 text-red"></i>
+                <span class="nav-link-text"><input class="ml-3" style="border: none; background: transparent"
+                    type="submit" value="Logout" /></span>
+              </form>
+
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+
+  <!-- jQuery -->
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+  <script>
+    // For Demo Purpose [Changing input group text on focus]
+    $(function () {
+      $("input, select").on("focus", function () {
+        $(this)
+          .parent()
+          .find(".input-group-text")
+          .css("border-color", "#80bdff");
+      });
+      $("input, select").on("blur", function () {
+        $(this)
+          .parent()
+          .find(".input-group-text")
+          .css("border-color", "#ced4da");
+      });
+    });
+  </script>
+
+  <script>
+    // function queryFunction(key, email) {
+    //   console.log(key, email);
+    //   var txt;
+    //   var query = prompt("Enter a Query :");
+    //   if (query == null || query == "") {
+    //     txt = "User cancelled the prompt.";
+    //   } else {
+    //     txt = "Query raised or updated sucessfully";
+    //     $.get(`addQuery/${query}&${key}+${email}`);
+    //     alert(txt)
+    //     $('#msform').submit()
+    //   }
+    //   alert(txt)
+
+    // }
+  </script>
+
+  <script>
+
+    function uploadAndViewDocuments() {
+      alert('Make Sure You Fill The Form First')
+    }
+    // TODO: Replace the following with your app's Firebase project configuration
+    // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+
+    var firebaseConfig = {
+      apiKey: "AIzaSyDlZMu8lypZDEhRpMVKlD3JcTuvItFaG2A",
+      authDomain: "bimaxpress-cashless.firebaseapp.com",
+      projectId: "bimaxpress-cashless",
+      storageBucket: "bimaxpress-cashless.appspot.com",
+      messagingSenderId: "577257002368",
+      appId: "1:577257002368:web:489252768c47b398465d65",
+      measurementId: "G-Y8B68GW5YX"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    console.log("Ye Mera Firebase Hai", firebase)
+
+
+    var db = firebase.firestore();
+
+
+  </script>
+
+
+  <script src="{% static '/plugins/jquery/jquery.min.js' %}"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="{% static '/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge("uibutton", $.ui.button);
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="{% static '/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- ChartJS -->
+  <script src="{% static '/plugins/chart.js/Chart.min.js' %}"></script>
+  <!-- Sparkline -->
+  <script src="{% static '/plugins/sparklines/sparkline.js' %}"></script>
+  <!-- JQVMap -->
+  <script src="{% static '/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+  <script src="{% static '/plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="{% static '/plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+  <!-- daterangepicker -->
+  <script src="{% static '/plugins/moment/moment.min.js' %}"></script>
+  <script src="{% static '/plugins/daterangepicker/daterangepicker.js' %}"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="{% static '/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+  <!-- Summernote -->
+  <script src="{% static '/plugins/summernote/summernote-bs4.min.js' %}"></script>
+  <!-- overlayScrollbars -->
+  <script src="{% static '/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static '/dist/js/adminlte.js' %}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{% static '/dist/js/demo.js' %}"></script>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <script src="{% static '/dist/js/pages/dashboard.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+{% load static %}
+<script src="{% static '/dist/js/pageAccordian.js' %}"></script>
+
+</html>

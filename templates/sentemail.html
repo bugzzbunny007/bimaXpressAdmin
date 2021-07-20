@@ -1,0 +1,348 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" href="{%static '/dist/css/style.css'%}">
+
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  {% if title %}
+  <title> django blog - {{title}}</title>
+  {% else %}
+  <title>django blog</title>
+  {%endif%}
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+
+</head>
+<script src="{% static '/dist/js/script_body.js' %}"></script>
+<body>
+
+  <!-- <div class="__header"> -->
+  <div class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+      <div class="header__left">
+        <img src="https://www.bimaxpress.com/assets/img/Asset%201.png" alt="" width="243" height="60" />
+      </div>
+
+      <div class="wrapper">
+        <div class="container">
+          <!-- <div class="navbar-nav mr-auto"> -->
+          <div class="search_wrap s3">
+            <div class="search_box">
+              <input type="text" class="input" placeholder="search...">
+              <div class="btn btn_common" src="C:\Users\anish\Downloads\Email app assets\Email app assets\loupe.png">
+
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </nav>
+
+  </div>
+  
+  <!-- </div> -->
+
+  <div class="main__body">
+    <div class="sidebar">
+      <div class="sidebar__compose" role="button" onclick="click_handler()">Compose</div>
+
+      <div class="active__tabs">
+        <div class="tab__1 tab__1active">
+          <div class="Inbox">
+            <div class="inbox_img"></div>
+            <a href="{%url 'bunny'%}" class="fnt"> Inbox </a>
+            
+          </div>
+        </div>
+
+        <div class="tab__1 tab__1active">
+          <div class="Inbox">
+            <div class="inbox_img"></div>
+            <span class="inbox_msg">
+              <a href="{%url 'sentmail'%}" class="fnt">Sent</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="tab__1 tab__1active">
+          <div class="Inbox">
+            <div class="inbox_img"></div>
+            <span class="inbox_msg">
+              <a href="{%url 'trashmail'%}" class="fnt">Trash</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="tab__1 tab__1active">
+          <div class="Inbox">
+            <div class="inbox_img"></div>
+            <span class="inbox_msg">
+              <a href="{%url 'draftmail'%}" class="fnt">Draft</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="tab__1 tab__1active">
+          <div class="Inbox">
+            <div class="inbox_img"></div>
+            <span class="inbox_msg">
+              <a href="{%url 'starredmail'%}" class="fnt">Starred</a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="email__body">
+      <!-- sort by started -->
+
+      <div class="sort__boy">
+        <button onclick="myFunction()" class="dropbtn">Sort By</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#date">Date</a>
+          <a href="#name">Name</a>
+
+        </div>
+      </div>
+
+      <!-- sort by ended -->
+      <hr />
+
+      <!-- email list started -->
+
+      <div id='email__list' class='__emaillist'>
+        
+        {% for i in data %}
+          <div class="single__email" id="singleemail_{{i.id}}">
+            <div class="name__date">
+              <div class="__name" id="name1">
+                {{i.name}}
+              </div>
+              <div class="__datetime">
+                <div class="__date" id="date1">
+                  {{i.date}}
+                </div>
+
+                <div class="__time" id="time1">
+
+                </div>
+              </div>
+            </div>
+
+          <div class="__subject" id="sub1">
+            {{i.subject}}
+          </div>
+
+          <div class="__message" id="msg1">
+            {{i.message|safe}}
+          </div>
+          <div class="__sender" id="sender1" style="display: none;">{{i.from}}</div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+
+    <!-- email list ended -->
+
+  
+
+  <div class="email__msgbody">
+    <div class="email__header">
+      <div class="email__details">
+        <div class="sender__details">
+          <div class="sender__name" id="sname">
+            <!-- Anish Shende -->
+          </div>
+
+          <div class="sender__email" id="mname">
+                <!-- anishshende001@gmail.com{{send}} -->
+          </div>
+        </div>
+
+        <span class="reciever__details" id="rname">
+          <!-- anish@bimaxpress.com -->
+        </span>
+      </div>
+
+      <div class="espace" style="width: 100px"></div>
+      <div class="__functionalities">
+        <div class="__delete"> del</div>
+        <button class="__reply" onclick="replyFunction()"> rep</button>
+        <button class="__forward" onclick="fwdFunction()"> fwd</button>
+        <div class="__favourite">fav</div>
+        <div class="time__date">time</div>
+      </div>
+      
+    </div>
+
+    <hr />
+
+    <div class="email__subject" id="sendersubject">
+
+    </div>
+
+    <div class="email__emailbody" id="sendermessage">
+
+    </div>
+
+    <div class="__attachments">
+
+    </div>
+
+    <!-- compose new mail box -->
+    <div class="compose__box" id="__composebox" action="/bunny" style="display:none">
+      
+      <div class="compose__header">
+        <div class="__composeFunctions">
+          <span class="__composeClose" role="button" id="close__compose" onclick = "compclosefunction()">x</span>
+          <!-- <span class="__composeMin" role="button" id="minimize__compose" onclick = "minfunction()">-</span> -->
+         
+        </div>
+        <div class="messagetext">New Message</div>
+        
+      </div>
+      <form method='POST' id="compose-post-form">
+        {% csrf_token %}
+
+        <div class="form-input to">
+          <!-- <label>To: </label> -->
+          <input type="text" id="recvname" name="recv" placeholder="send mail to"/>
+        </div>
+        
+        <div class="form-input bcc">
+          <!-- <label>Bcc: </label> -->
+          <input type="text" id="recvnameBcc" name="recvBcc" placeholder="bcc"/>
+        </div>
+
+        <div class="form-input cc">
+          <!-- <label>Cc: </label> -->
+          <input type="text" id="recvnameCc" name="recvCc" placeholder="cc" />
+        </div>
+
+        <div class="form-input sub">
+          <!-- <label>subject: </label> -->
+          <input type="text" id="send_subject" name="ssub" placeholder="subject of mail"/>
+        </div>
+
+        <div class="form-input mssg">
+          <!-- <label>message: </label> -->
+          <input type="text" id="send_msg" name="smsg" class="textarea" placeholder="mail message" />
+        </div>
+
+        <div class="sendattach">
+          <input type="file" id="myFile" name="filenameupload" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+        </div>
+
+        <div class="footer-bar">
+          <div class="sendmailbtn">
+            <input type="submit" value="Send Mail"/>
+          </div>
+        </div>
+        
+  
+      </form>
+    </div>
+    
+    <!-- reply new mail box -->
+    <div class="compose__box" id="__replybox" action="/replymail" style="display:none">
+      
+      <div class="compose__header">
+        <div class="__composeFunctions">
+          <span class="__composeClose" role="button" id="reply__compose" onclick = "repclosefunction()">x</span>
+          <!-- <span class="__composeMin" role="button" id="minimize__compose" onclick = "minfunction()">-</span> -->
+         
+        </div>
+        <div class="messagetext" id="replytextheader">Reply Message</div>
+        
+      </div>
+      <form method='POST' action = "/replymail" id="reply-post-form">
+        {% csrf_token %}
+
+        <div class="form-input to" style="display: none;">
+          <!-- <label>To: </label> -->
+          <input type="text" id="rep_id" name="rep_id"/>
+        </div>
+
+        <div class="form-input to">
+          <!-- <label>To: </label> -->
+          <input type="text" id="rep_recvname" name="rep_recv" value="user_email_address"/>
+        </div>
+        
+        <div class="form-input bcc">
+          <!-- <label>Bcc: </label> -->
+          <input type="text" id="rep_recvnameBcc" name="rep_recvBcc" placeholder="bcc"/>
+        </div>
+
+        <div class="form-input cc">
+          <!-- <label>Cc: </label> -->
+          <input type="text" id="rep_recvnameCc" name="rep_recvCc" placeholder="cc" />
+        </div>
+
+        <div class="form-input sub">
+          <!-- <label>subject: </label> -->
+          <input type="text" id="rep_send_subject" name="rep_ssub" placeholder="subject of mail"/>
+        </div>
+
+        <div class="form-input mssg">
+          <!-- <label>message: </label> -->
+          <input type="text" id="rep_send_msg" name="rep_smsg" class="textarea" placeholder="mail message" />
+        </div>
+
+        <div class="sendattach">
+          <input type="file" id="rep_myFile" name="rep_filenameupload" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+        </div>
+
+        <div class="footer-bar">
+          <div class="sendmailbtn">
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <input type="submit" value="Send Mail" onclick="printfunction()"/>
+          </div>
+        </div>
+        
+  
+      </form>
+    </div>
+
+  </div>
+
+  <!-- compose box -->
+  
+
+  </div>
+
+    
+
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

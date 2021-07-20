@@ -1,0 +1,1840 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HDFC ERGO</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Benne&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #7a7977;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        html {
+            margin: 20px 320px 20px 340px;
+        }
+
+        .invoice {
+            width: 760px
+        }
+
+        .form-container {
+            background-color: white;
+            padding-left: 50px;
+            padding-right: 45px;
+            height: 1040px;
+            max-width: 720px;
+        }
+
+        #commonContainer {
+            font-family: helvatica;
+            margin: auto;
+            padding: 0px 0px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .firstHeading {
+            font-size: 17.5px;
+            font-weight: 800;
+        }
+
+        .secondHeading {
+            font-size: 12.8px;
+            font-weight: 650;
+        }
+
+        .thirdHeading {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .fourthHeading {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .fiveHeading {
+            font-size: 11.5px;
+            font-weight: bolder;
+            color: grey;
+        }
+
+        .sixHeading {
+            font-size: 8px;
+            font-weight: 600;
+            color: black;
+        }
+
+        .subHeading {
+            font-size: 10px;
+            letter-spacing: 0px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .subHeading1 {
+            font-size: 9px;
+            letter-spacing: 0.5px;
+        }
+
+        .customPTag {
+            font-size: 8.6px;
+            font-weight: 600;
+            display: inline-block;
+            letter-spacing: -0.2px;
+        }
+
+        .spanBox {
+            font-size: 8px;
+            text-align: center;
+            display: inline-block;
+            border: 0.1px solid #Cdc9c9;
+            vertical-align: middle;
+            line-height: 12px;
+            width: 12px;
+            height: 12px;
+            margin-top: 0px;
+            margin-left: -4.15px;
+            overflow: hidden;
+        }
+
+        .spanBox1 {
+            font-size: 8px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #Cdc9c9;
+            vertical-align: middle;
+            line-height: 9px;
+            width: 12px;
+            height: 12px;
+            margin-top: 0;
+            margin-left: -4.35px;
+        }
+
+        .spanBox2 {
+            font-size: 8px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #444;
+            vertical-align: middle;
+            line-height: 10px;
+            width: 6px;
+            height: 6px;
+            margin-top: 0px;
+            margin-left: -4.35px;
+        }
+
+        .spanBox4 {
+            font-size: 8px;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #444;
+            width: 20px;
+            height: 16px;
+            margin-top: -17px;
+            margin-left: -4.35px;
+        }
+
+        .spanLine {
+            font-size: 9px;
+            text-align: center;
+            display: inline-block;
+            border-bottom: 1px solid #444;
+            line-height: 9px;
+            vertical-align: middle;
+            width: 10px;
+            height: 9px;
+            margin-top: 0px;
+            margin-left: -4.35px;
+
+        }
+
+        .customTextBox {
+            display: inline-block;
+            border: 1px solid #444;
+            vertical-align: 11px;
+            line-height: 20px;
+            height: 20px;
+            width: 170px;
+            font-size: 12px;
+        }
+
+        .signatureBox {
+            display: inline-block;
+            border: 1px solid #444;
+            height: 20px;
+            width: 170px;
+        }
+
+        .customMargnBottom4 {
+            margin-bottom: -5px;
+        }
+
+        .customMargnBottom8 {
+            margin-bottom: -9px;
+        }
+
+        .customMargnBottom10 {
+            margin-bottom: -5px;
+        }
+
+        .customMargnBottom15 {
+            margin-bottom: -16px;
+        }
+
+        .nameTextHints {
+            font-size: 11px;
+            color: #909090;
+        }
+
+        .claimDocumentSubmittedCheckList {
+            font-size: 8px;
+            font-weight: 600;
+            vertical-align: 30px;
+            margin-left: 495px;
+            margin-top: 6px;
+            /*float: right;*/
+        }
+
+        .unique {
+            margin-top: -5px;
+        }
+
+        .heading {
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+
+        .vl {
+            border-left: 12px solid green;
+            height: 300px;
+        }
+
+        .colorbox {
+            text-align: center;
+            background-color: #c62b27;
+            color: white;
+            padding-top: 2px;
+            padding-bottom: 10px;
+            border: 4px solid #9c9998;
+            font-size: 14px;
+            letter-spacing: 1.3px;
+        }
+
+    </style>
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+
+        }
+
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 0.2px;
+            font-family: Arial, sans-serif;
+            font-size: 8px;
+            overflow: hidden;
+            padding: 2px 1px;
+            word-break: normal;
+            border-collapse: collapse;
+            text-align: center;
+
+        }
+
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 0.2px;
+            font-family: Arial, sans-serif;
+            font-size: 8px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 1px 1px;
+            word-break: normal;
+            border-collapse: collapse;
+
+
+        }
+
+        .tg .tg-c3ow {
+            border-color: inherit;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .tg .tg-0pky {
+            border-color: inherit;
+            text-align: center;
+            vertical-align: top;
+        }
+
+
+        .float-child {
+            width: 49.7%;
+            float: left;
+            height: 23px;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+
+    </style>
+    <script>
+        window.onload = function() {
+            console.log("it is executing");
+        };
+
+    </script>
+
+</head>
+
+<body>
+    <button id="download"> Download Form</button>
+    
+
+    <div id="invoice">
+
+        <div class="form-container">
+            <h1 class="firstHeading" style="padding-top: 45px">HDFC ERGO General Insurance Company Limited</h1>
+            <img src="/static/dist/img/hdfc.jpeg" style="float: right;margin-top: -48px" width="90px">
+            <h2 class="secondHeading" style="margin-top: 35px">REQUEST FOR CASHLESS HOSPITALISATION FOR HEALTH INSURANCE<br>
+                POLICY PART - C</h2>
+            <h4 class="fourthHeading" style="margin-top: -5px">DETAILS OF THE THIRD PARTY ADMINISTRATOR/ INSURER/ HOSPITAL
+                (All fields are mandatory and fill in CAPITALS only)</h4>
+            <p class="customPTag" style="margin-top: -8px">a) Name of the TPA/ Insurance Company: <b>HDFC ERGO General
+                    Insurance Company Limited</b></p>
+            <div>
+                <p class="customPTag" style="margin-top: -6px">b) Customer service no: 022 - 6234 6234 / 0120 - 6234
+                    6234</p>
+            </div>
+            <div style="margin-top: -15px">
+                <p class="customPTag" style="margin-right: 5px">c) Name of Hospital:</p>
+                <span class="spanLine" style="width: 634px">{{hospitaldata.name|upper}}</span>
+            </div>
+            <div style="margin-top: -15px">
+                <p class="customPTag" style="margin-right: 5px;margin-left: 10px">i. &nbsp;&nbsp;Address</p>
+                    <span class="spanLine" style="width: 662px">{{hospitaldata.address|upper}}</span>
+            </div>
+            <div style="margin-top: -15px">
+                <p class="customPTag" style="margin-right: 5px;margin-left: 10px">ii. Rohini ID</p>
+                <span class="spanLine" style="width: 660px">{{hospitaldata.rohini|upper}}</span>
+            </div>
+            <div style="margin-top: -15px">
+                <p class="customPTag" style="margin-right: 5px;margin-left: 10px">iii. E-mail id</p>
+                <span class="spanLine" style="width: 660px">{{hospitaldata.email|upper}}</span>
+            </div>
+
+            <div style="background-color: #e41b23;text-align: center;margin-top: -6px">
+                <p class="subHeading">TO BE FILLED BY INSURED/ PATIENT</p>
+            </div>
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 40px">a) Name of the Patient:</p>
+                <span class="spanBox">{{data.patient_details.Name.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.1|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.2|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.3|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.4|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.5|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.6|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.7|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.8|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.9|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.10|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.11|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.12|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.13|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.14|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.15|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.16|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.17|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.18|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.19|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.20|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.21|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.22|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.23|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.24|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.25|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.26|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.27|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.28|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.29|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.30|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.31|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.32|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.33|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.34|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.35|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.36|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.37|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.38|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.39|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.40|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.41|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Name.42|upper}}</span>
+            </div>
+            
+            <div class="unique" style="margin-top: -18px">
+                <p class="sixHeading" style="display: inline-block;margin-left: 210px">(First Name)</p>
+                <p class="sixHeading" style="display: inline-block;margin-left: 155px">(Middle Name)</p>
+                <p class="sixHeading" style="display: inline-block;margin-left: 170px">(Surname)</p>
+            </div>
+
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 90px"> b) Gender:</p>
+                {% if data.patient_details.Gender == 'male' %}
+                    <span class="spanBox1"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 5px">Male</p>
+                <span class="spanBox1"></span>
+                <p class="customPTag" style="margin-right: 5px">Female</p>
+                <span class="spanBox1"></span>
+                <p class="customPTag" style="margin-right: 5px">Third Gender</p>
+                {% elif data.patient_details.Gender == 'female' %}
+                <span class="spanBox1"></span>
+                <p class="customPTag" style="margin-right: 10px">Male</p>
+                <span class="spanBox1"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 10px">Female</p>
+                <span class="spanBox1"></span>
+                <p class="customPTag" style="margin-right: 5px">Third Gender</p>
+                {% else %}
+                <span class="spanBox1"></span>
+                <p class="customPTag" style="margin-right: 2px">Male</p>
+                <span class="spanBox1"></span>
+                <p class="customPTag" style="margin-right: 10px">Female</p>
+                <span class="spanBox1"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 5px">Third Gender</p>
+                {% endif %}
+
+
+                <p class="customPTag" style="margin-right: 2px;margin-left: 25px">c) Age: </p>
+                <p class="customPTag" style="margin-right: 10px">Years</p>
+                <span class="spanBox">{{data.patient_details.AgeYear.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.AgeYear.1|upper}}</span>
+                <p class="customPTag" style="margin-right: 10px;margin-left: 10px">Months</p>
+                <span class="spanBox">{{data.patient_details.AgeMonth.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.AgeMonth.1|upper}}</span>
+
+                <p class="customPTag" style="margin-right: 5px;margin-left: 32px">d) Date of birth:</p>
+                {% if data.patient_details_date == '' %}
+                <span class="spanBox1" style="color: #c2c2c2">D</span>
+                <span class="spanBox1" style="color: #c2c2c2">D</span>
+                <span class="spanBox1" style="color: #c2c2c2">M</span>
+                <span class="spanBox1" style="color: #c2c2c2">M</span>
+                <span class="spanBox1" style="color: #c2c2c2">Y</span>
+                <span class="spanBox1" style="color: #c2c2c2">Y</span>
+                <span class="spanBox1" style="color: #c2c2c2">Y</span>
+                <span class="spanBox1" style="color: #c2c2c2">Y</span>
+
+                {% else %}
+                <span class="spanBox1">{{data.patient_details.DOB.0|upper}}</span>
+                <span class="spanBox1">{{data.patient_details.DOB.1|upper}}</span>
+                <span class="spanBox1">{{data.patient_details.DOB.3|upper}}</span>
+                <span class="spanBox1">{{data.patient_details.DOB.4|upper}}</span>
+                <span class="spanBox1">{{data.patient_details.DOB.6|upper}}</span>
+                <span class="spanBox1">{{data.patient_details.DOB.7|upper}}</span>
+                <span class="spanBox1">{{data.patient_details.DOB.8|upper}}</span>
+                <span class="spanBox1">{{data.patient_details.DOB.9|upper}}</span>
+
+                {% endif %}
+
+            </div>
+            <div class="unique" style="">
+                <p class="customPTag" style="margin-right: 53.5px">e) Contact Number:</p>
+                <span class="spanBox">{{data.patient_details.Number.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Number.1|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Number.2|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Number.3|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Number.4|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Number.5|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Number.6|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Number.7|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Number.8|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Number.9|upper}}</span>
+
+
+                <p class="customPTag" style="margin-right: 20px;margin-left: 132px">f) Contact number of attending
+                    relative:</p>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.1|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.2|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.3|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.4|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.5|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.6|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.7|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.8|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Attending_Relative_Number.9|upper}}</span>
+
+            </div>
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 9.5px">g) Insured Member ID card No:
+                </p>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.1|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.2|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.3|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.4|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.5|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.6|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.7|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.8|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.9|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.10|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.11|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.12|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.13|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.14|upper}}</span>
+                <span class="spanBox">{{data.patient_details.InsuredIdCardNumber.15|upper}}</span>
+
+
+                <p class="customPTag" style="margin-right: 20px;margin-left: 10px">h) Policy No./Name of Corporate:
+                </p>
+                <span class="spanBox">{{data.patient_details.Policy_Id.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.1|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.2|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.3|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.4|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.5|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.6|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.7|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.8|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.9|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.10|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.11|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.12|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.13|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Policy_Id.14|upper}}</span>
+            </div>
+
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 74px">I) Employee ID</p>
+                <span class="spanBox">{{data.patient_details.EmployeeId.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.EmployeeId.1|upper}}</span>
+                <span class="spanBox">{{data.patient_details.EmployeeId.2|upper}}</span>
+                <span class="spanBox">{{data.patient_details.EmployeeId.3|upper}}</span>
+                <span class="spanBox">{{data.patient_details.EmployeeId.4|upper}}</span>
+                <span class="spanBox">{{data.patient_details.EmployeeId.5|upper}}</span>
+                <span class="spanBox">{{data.patient_details.EmployeeId.6|upper}}</span>
+                <span class="spanBox">{{data.patient_details.EmployeeId.7|upper}}</span>
+                <span class="spanBox">{{data.patient_details.EmployeeId.8|upper}}</span>
+                <span class="spanBox">{{data.patient_details.EmployeeId.9|upper}}</span>
+
+            </div>
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 14px">j) Currently do you have any Medicliam/Health
+                    Insurance:</p>
+                {% if data.patient_details_HealthInsurance == 'Yes' %}
+                <span class="spanBox"><img height="10px" src="/static/dist/tick.png" width="10px"></span>
+                <p class="customPTag" style="margin-right: 30px">Yes</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 10px;vertical-align: 8px">No</p>
+                {% else %}
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 30px">Yes</p>
+                <span class="spanBox"><img height="10px" src="/static/dist/tick.png" width="10px"></span>
+                <p class="customPTag" style="margin-right: 10px">No</p>
+                {% endif %}
+            </div>
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 47.5px;margin-left: 10px">i) Company Name:</p>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.0|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.1|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.2|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.3|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.4|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.5|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.6|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.7|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.8|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.9|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.10|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.11|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.12|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.13|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.14|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.15|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.16|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.17|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.18|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.19|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.20|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.21|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.22|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.23|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.24|upper}}</span>
+                <span class="spanBox">{{data.addition_details.HealthInsuranceYesCompanyName.25|upper}}</span>
+
+            </div>
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 64px;margin-left: 10px">ii) Give details:</p>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.0|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.1|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.2|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.3|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.4|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.5|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.6|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.7|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.8|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.9|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.10|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.11|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.12|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.13|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.14|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.15|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.16|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.17|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.18|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.19|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.20|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.21|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.22|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.23|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.24|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.25|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.26|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.27|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.28|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.29|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.30|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.31|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.32|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.33|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.34|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.35|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.36|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.37|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.38|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.39|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.40|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.41|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Give_Company_details.42|upper}}</span>
+            </div>
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 14px">k) Do you have a family physician:</p>
+                {% if data.addition_details.patient_details_familyPhysician == 'Yes' %}
+                <span class="spanBox"><img height="10px" src="/static/dist/tick.png" width="10px"></span>
+                <p class="customPTag" style="margin-right: 10px">Yes</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 10px">No</p>
+                {% else %}
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 10px">Yes</p>
+                <span class="spanBox"><img height="10px" src="/static/dist/tick.png" width="10px"></span>
+                <p class="customPTag" style="margin-right: 10px">No</p>
+                {% endif %}
+
+
+                <p class="customPTag" style="margin-right: 13.5px;margin-left: 20px">l) Name of the family physician:</p>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.0|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.1|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.2|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.3|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.4|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.5|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.6|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.7|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.8|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.9|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.10|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.11|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.12|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.13|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.14|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.15|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.16|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.17|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.18|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.19|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.20|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.21|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.22|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianName.23|upper}}</span>
+            </div>
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 48px">m) Contact No, if any</p>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.0|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.1|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.2|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.3|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.4|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.5|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.6|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.7|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.8|upper}}</span>
+                <span class="spanBox">{{data.addition_details.PhysicianYesPhysicianContactNum.9|upper}}</span>
+            </div>
+            <div class="unique">
+                <p class="customPTag" style="margin-right: 47px;vertical-align: -6px">n) Current Address of<br> Insured
+                    Patient</p>
+                <span class="spanBox">{{data.patient_details.Address.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.1|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.2|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.3|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.4|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.5|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.6|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.7|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.8|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.9|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.10|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.11|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.12|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.13|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.14|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.15|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.16|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.17|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.18|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.19|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.20|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.21|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.22|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.23|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.24|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.25|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.26|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.27|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.28|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.29|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.30|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.31|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.32|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.33|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.34|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.35|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.36|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.37|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.38|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.39|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.40|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.41|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.42|upper}}</span>
+            </div>
+            <div style="margin-left: 135px;margin-top: -17px">
+                <span class="spanBox">{{data.patient_details.Address.43|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.44|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.45|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.46|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.47|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.48|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.49|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.50|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.51|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.52|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.53|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.54|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.55|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.56|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.57|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.58|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.59|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.60|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.61|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.62|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.63|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.64|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.65|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.66|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.67|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.68|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.69|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.70|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.71|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.72|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.73|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.74|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.75|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.76|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.77|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.78|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.79|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.80|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.81|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.82|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.83|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.84|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Address.85|upper}}</span>
+            </div>
+            <div class="unique" style="margin-top: -2px">
+                <p class="customPTag" style="margin-right: 5px">o)Occupation of Insured Patient</p>
+                <span class="spanBox">{{data.patient_details.Occupation.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.1|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.2|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.3|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.4|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.5|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.6|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.7|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.8|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.9|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.10|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.11|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Occupation.12|upper}}</span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+            </div>
+            <div style="background-color: #e41b23;text-align: center">
+                <p class="subHeading">TO BE FILLED BY TREATING DOCTOR/HOSPITAL</p>
+            </div>
+            <div class="unique" style="margin-top: -2px">
+                <p class="customPTag" style="margin-right: 10px">a) Name of the Treating Doctor:</p>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.0|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.1|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.2|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.3|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.4|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.5|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.6|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.7|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.8|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.9|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.10|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.11|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.12|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.13|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.14|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.15|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.16|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.17|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.18|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.19|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.20|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.21|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.22|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.23|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.24|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.25|upper}}</span>
+                <p class="customPTag" style="margin-right: 5px;margin-left: 6px">b) Contact Number:</p>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.0|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.1|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.2|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.3|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.4|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.5|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.6|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.7|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.8|upper}}</span>
+                <span class="spanBox">{{data.patient_details.Doctor_ContactNumber.9|upper}}</span>
+            </div>
+            <div class="unique" style="margin-top: -2px">
+                <p class="customPTag" style="margin-right: 5px;vertical-align: -8px">c) Nature of illness/ Disease with<br>&nbsp;&nbsp;&nbsp;
+                    presenting complaints</p>
+                {% if data.addition_details.Nature_Of_Illness|length >= 59 %}
+                    <span class="spanBox" style="width: 200px">{{data.addition_details.Nature_Of_Illness.0}}{{data.addition_details.Nature_Of_Illness.1}}{{data.addition_details.Nature_Of_Illness.2}}{{data.addition_details.Nature_Of_Illness.3}} {{data.addition_details.Nature_Of_Illness.4}} {{data.addition_details.Nature_Of_Illness.5}} {{data.addition_details.Nature_Of_Illness.6}} {{data.addition_details.Nature_Of_Illness.7}} {{data.addition_details.Nature_Of_Illness.8}} {{data.addition_details.Nature_Of_Illness.9}} {{data.addition_details.Nature_Of_Illness.10}} {{data.addition_details.Nature_Of_Illness.11}} {{data.addition_details.Nature_Of_Illness.12}} {{data.addition_details.Nature_Of_Illness.13}} {{data.addition_details.Nature_Of_Illness.14}} {{data.addition_details.Nature_Of_Illness.15}}{{data.addition_details.Nature_Of_Illness.16}}{{data.addition_details.Nature_Of_Illness.17}}{{data.addition_details.Nature_Of_Illness.18}}{{data.addition_details.Nature_Of_Illness.19}} {{data.addition_details.Nature_Of_Illness.20}}  </span>
+                    <div style="position: absolute;margin-top: -15.8px;margin-left: 137px">
+                    <span class="spanBox" style="width: 200px"> {{data.addition_details.Nature_Of_Illness.21}} {{data.addition_details.Nature_Of_Illness.22}} {{data.addition_details.Nature_Of_Illness.23}} {{data.addition_details.Nature_Of_Illness.24}} {{data.addition_details.Nature_Of_Illness.25}} {{data.addition_details.Nature_Of_Illness.26}} {{data.addition_details.Nature_Of_Illness.27}} {{data.addition_details.Nature_Of_Illness.28}} {{data.addition_details.Nature_Of_Illness.29}} {{data.addition_details.Nature_Of_Illness.30}} {{data.addition_details.Nature_Of_Illness.31}} {{data.addition_details.Nature_Of_Illness.32}} {{data.addition_details.Nature_Of_Illness.33}} {{data.addition_details.Nature_Of_Illness.34}} {{data.addition_details.Nature_Of_Illness.35}} {{data.addition_details.Nature_Of_Illness.36}} {{data.addition_details.Nature_Of_Illness.37}} {{data.addition_details.Nature_Of_Illness.38}} {{data.addition_details.Nature_Of_Illness.39}} {{data.addition_details.Nature_Of_Illness.40}} </span>
+                    </div>
+                    <div style="position: absolute;margin-top: -2.8px;margin-left: 137px">
+                        <span class="spanBox" style="width: 200px"></span>
+                    </div>
+                {% else %}
+                    <span class="spanBox" style="width: 200px">{{data.addition_details.Nature_Of_Illness.0}}{{data.addition_details.Nature_Of_Illness.1}}{{data.addition_details.Nature_Of_Illness.2}}{{data.addition_details.Nature_Of_Illness.3}} {{data.addition_details.Nature_Of_Illness.4}} {{data.addition_details.Nature_Of_Illness.5}} {{data.addition_details.Nature_Of_Illness.6}} {{data.addition_details.Nature_Of_Illness.7}} {{data.addition_details.Nature_Of_Illness.8}} {{data.addition_details.Nature_Of_Illness.9}} {{data.addition_details.Nature_Of_Illness.10}} {{data.addition_details.Nature_Of_Illness.11}} {{data.addition_details.Nature_Of_Illness.12}} {{data.addition_details.Nature_Of_Illness.13}} {{data.addition_details.Nature_Of_Illness.14}} {{data.addition_details.Nature_Of_Illness.15}}{{data.addition_details.Nature_Of_Illness.16}}{{data.addition_details.Nature_Of_Illness.17}}{{data.addition_details.Nature_Of_Illness.18}}{{data.addition_details.Nature_Of_Illness.19}} {{data.addition_details.Nature_Of_Illness.20}}  </span>
+                    <div style="position: absolute;margin-top: -15.8px;margin-left: 137px">
+                    <span class="spanBox" style="width: 200px"> {{data.addition_details.Nature_Of_Illness.21}} {{data.addition_details.Nature_Of_Illness.22}} {{data.addition_details.Nature_Of_Illness.23}} {{data.addition_details.Nature_Of_Illness.24}} {{data.addition_details.Nature_Of_Illness.25}} {{data.addition_details.Nature_Of_Illness.26}} {{data.addition_details.Nature_Of_Illness.27}} {{data.addition_details.Nature_Of_Illness.28}} {{data.addition_details.Nature_Of_Illness.29}} {{data.addition_details.Nature_Of_Illness.30}} {{data.addition_details.Nature_Of_Illness.31}} {{data.addition_details.Nature_Of_Illness.32}} {{data.addition_details.Nature_Of_Illness.33}} {{data.addition_details.Nature_Of_Illness.34}} {{data.addition_details.Nature_Of_Illness.35}} {{data.addition_details.Nature_Of_Illness.36}} {{data.addition_details.Nature_Of_Illness.37}} {{data.addition_details.Nature_Of_Illness.38}} {{data.addition_details.Nature_Of_Illness.39}} {{data.addition_details.Nature_Of_Illness.40}} </span>
+                    </div>
+                    <div style="position: absolute;margin-top: -2.8px;margin-left: 137px">
+                        <span class="spanBox" style="width: 200px"></span>
+                    </div>
+                {% endif %}
+                <div style="position: absolute;margin-top: -15.8px;margin-left: 137px">
+                    <span class="spanBox" style="width: 200px">  </span>
+                </div>
+                <div style="position: absolute;margin-top: -2.8px;margin-left: 137px">
+                    <span class="spanBox" style="width: 200px"></span>
+                </div>
+                <p class="customPTag" style="margin-right: 5px;margin-left: 50px">d) Relevant clinical findings</p>
+                <span class="spanBox" style="width: 215px">{{data.addition_details.doctor_releventClinicFindings.0}}{{data.addition_details.doctor_releventClinicFindings.0}}{{data.addition_details.doctor_releventClinicFindings.1}}{{data.addition_details.doctor_releventClinicFindings.2}}{{data.addition_details.doctor_releventClinicFindings.3}} {{data.addition_details.doctor_releventClinicFindings.4}} {{data.addition_details.doctor_releventClinicFindings.5}} {{data.addition_details.doctor_releventClinicFindings.6}} {{data.addition_details.doctor_releventClinicFindings.7}} {{data.addition_details.doctor_releventClinicFindings.8}} {{data.addition_details.doctor_releventClinicFindings.9}} {{data.addition_details.doctor_releventClinicFindings.10}} {{data.addition_details.doctor_releventClinicFindings.11}} {{data.addition_details.doctor_releventClinicFindings.12}} {{data.addition_details.doctor_releventClinicFindings.13}} {{data.addition_details.doctor_releventClinicFindings.14}} {{data.addition_details.doctor_releventClinicFindings.15}}{{data.addition_details.doctor_releventClinicFindings.16}}{{data.addition_details.doctor_releventClinicFindings.17}}{{data.addition_details.doctor_releventClinicFindings.18}}{{data.addition_details.doctor_releventClinicFindings.19}} {{data.addition_details.doctor_releventClinicFindings.20}} </span>
+                <div style="position: absolute;margin-top: -15.8px;margin-left: 505px">
+                    <span class="spanBox" style="width: 215px"> {{data.addition_details.doctor_releventClinicFindings.21}}{{data.addition_details.doctor_releventClinicFindings.22}}{{data.addition_details.doctor_releventClinicFindings.23}}{{data.addition_details.doctor_releventClinicFindings.24}}{{data.addition_details.doctor_releventClinicFindings.25}} {{data.addition_details.doctor_releventClinicFindings.26}} {{data.addition_details.doctor_releventClinicFindings.27}} {{data.addition_details.doctor_releventClinicFindings.28}} {{data.addition_details.doctor_releventClinicFindings.29}} {{data.addition_details.doctor_releventClinicFindings.30}} {{data.addition_details.doctor_releventClinicFindings.31}} {{data.addition_details.doctor_releventClinicFindings.32}} {{data.addition_details.doctor_releventClinicFindings.33}} {{data.addition_details.doctor_releventClinicFindings.34}} {{data.addition_details.doctor_releventClinicFindings.35}} {{data.addition_details.doctor_releventClinicFindings.55}} {{data.addition_details.doctor_releventClinicFindings.36}}{{data.addition_details.doctor_releventClinicFindings.37}}{{data.addition_details.doctor_releventClinicFindings.38}}{{data.addition_details.doctor_releventClinicFindings.39}}{{data.addition_details.doctor_releventClinicFindings.40}} {{data.addition_details.doctor_releventClinicFindings.41}} </span>
+                </div>
+                <div style="position: absolute;margin-top: -2.8px;margin-left: 505px">
+                    <span class="spanBox" style="width: 215px"></span>
+                </div>
+            </div>
+            <div class="unique" style="margin-top: 12px">
+                <p class="customPTag" style="margin-right: 10px">e) Duration of present ailment:</p>
+                <span class="spanBox">{{data.addition_details.Duration_Of_Present_Ailments.0|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Duration_Of_Present_Ailments.1|upper}}</span>
+                <span class="spanBox">{{data.addition_details.Duration_Of_Present_Ailments.2|upper}}</span>
+                <p class="customPTag" style="margin-right: 0px">Days</p>
+                <p class="customPTag" style="margin-right: 10px;margin-left: 16px">i) Date of first consultation:</p>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.addition_details.Date_Of_First_Consultation.0|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.addition_details.Date_Of_First_Consultation.1|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2;margin-left: 5px">{{data.addition_details.Date_Of_First_Consultation.3|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.addition_details.Date_Of_First_Consultation.4|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2;margin-left: 5px">{{data.addition_details.Date_Of_First_Consultation.6|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.addition_details.Date_Of_First_Consultation.7|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.addition_details.Date_Of_First_Consultation.8|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.addition_details.Date_Of_First_Consultation.9|upper}}</span>
+                <p class="customPTag" style="margin-right: 10px;margin-left: 12px;vertical-align: -8px">ii) Past history of
+                    present<br>&nbsp;&nbsp; ailment, if any</p>
+                <span class="spanBox" style="width: 128px">{{data.addition_details.Past_History_Of_Present_Ailments|upper}}</span>
+                <div style="position: absolute;margin-top: -16.2px;margin-left: 591px">
+                    <span class="spanBox" style="width: 128px"></span>
+                </div>
+            </div>
+            <div class="unique" style="margin-top: -6px">
+                <p class="customPTag" style="margin-right: 40px">f) Provisional Diagnosis</p>
+                <span class="spanBox" style="width: 200px">{{data.addition_details.Provision_Diagnosis|upper}}</span>
+                <div style="position: absolute;margin-top: -9px;margin-left: 136px">
+                    <span class="spanBox" style="width: 200px"></span>
+                </div>
+                <p class="customPTag" style="margin-right: 40px;margin-left: 76px">i) ICD Code:</p>
+                <span class="spanBox">{{data.addition_details.ICD_Code.0|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.1|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.2|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.3|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.4|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.5|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.6|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.7|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.8|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.9|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.10|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.11|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.12|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.13|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.14|upper}}</span>
+                <span class="spanBox">{{data.addition_details.ICD_Code.15|upper}}</span>
+
+            </div>
+            <div class="unique" style="margin-top: 6px">
+                {% if data.addition_details.doctor_proposedLineOfTreatment_Medical_Managment == 'Yes' %}
+                <p class="customPTag" style="margin-right: 15.5px">g) Proposed line of treatment</p>
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 16px">i) Medical Management</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">ii) Surgical Management</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">iii) Intensive Care</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">iv) Investigation</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 0px">v) Non allopathic treatment</p>
+                {% elif data.addition_details.doctor_proposedLineOfTreatment_Surgical_Managment == 'Yes'%}
+                <p class="customPTag" style="margin-right: 15.5px">g) Proposed line of treatment</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">i) Medical Management</p>
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 16px">ii) Surgical Management</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">iii) Intensive Care</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">iv) Investigation</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 0px">v) Non allopathic treatment</p>
+                {% elif data.addition_details.doctor_proposedLineOfTreatment_Intensive_Care == 'Yes'%}
+                <p class="customPTag" style="margin-right: 15.5px">g) Proposed line of treatment</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">i) Medical Management</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">ii) Surgical Management</p>
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 16px">iii) Intensive Care</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">iv) Investigation</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 0px">v) Non allopathic treatment</p>
+                {% elif data.addition_details.doctor_proposedLineOfTreatment == 'Yes'%}
+                <p class="customPTag" style="margin-right: 15.5px">g) Proposed line of treatment</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">i) Medical Management</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">ii) Surgical Management</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">iii) Intensive Care</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">iv) Investigation</p>
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 0px">v) Non allopathic treatment</p>
+                {% else %}
+                <p class="customPTag" style="margin-right: 15.5px">g) Proposed line of treatment</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">i) Medical Management</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">ii) Surgical Management</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">iii) Intensive Care</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 16px">iv) Investigation</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 0px">v) Non allopathic treatment</p>
+                {% endif %}
+
+            </div>
+            <div class="unique" style="margin-top: -2px">
+                <p class="customPTag" style="margin-right: 5px;vertical-align: -8px">h) If investigational &/or Medical<br>&nbsp;&nbsp;&nbsp;
+                    Management provide details</p>
+                <span class="spanBox" style="width: 200px">{{data.addition_details.If_Investigation_Or_Medical_Management_Provide_Details|upper}}</span>
+                <div style="position: absolute;margin-top: -16.5px;margin-left: 137px">
+                    <span class="spanBox" style="width: 200px"></span>
+                </div>
+                <p class="customPTag" style="margin-right: 5px;margin-left: 40px">i) Route of drug administration</p>
+                <span class="spanBox" style="width: 210px">{{data.addition_details.Route_Of_Drug_Administration|upper}}</span>
+                <div style="position: absolute;margin-top: -16.5px;margin-left: 509px">
+                    <span class="spanBox" style="width: 210.5px"></span>
+                </div>
+            </div>
+            <div class="unique" style="margin-top: 0px">
+                <p class="customPTag" style="margin-right: 21px">I) If surgical name of surgery</p>
+                <span class="spanBox" style="width: 200px">{{data.addition_details.If_Surgical_Name_of_Surgery|upper}}</span>
+                <div style="position: absolute;margin-top: -9px;margin-left: 137px">
+                    <span class="spanBox" style="width: 200px"></span>
+                </div>
+                <p class="customPTag" style="margin-right: 56px;margin-left: 41px">i) ICD 10 PCS code</p>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+                <span class="spanBox"></span>
+
+            </div>
+            <div class="unique" style="margin-top: 4px">
+                <p class="customPTag" style="margin-right: 22px;vertical-align: -8px">j) If other treatment provide<br>&nbsp;&nbsp;&nbsp;
+                    details</p>
+                <span class="spanBox" style="width: 200px">{{data.doctor_ifOtherTratmentProvideDetails|upper}}</span>
+                <div style="position: absolute;margin-top: -16.5px;margin-left: 137px">
+                    <span class="spanBox" style="width: 200px"></span>
+                </div>
+                <p class="customPTag" style="margin-right: 35.5px;margin-left: 40px">k) How did injury occur</p>
+                <span class="spanBox" style="width: 210px">{{data.addition_details.How_Did_Injury_Occur|upper}}</span>
+                <div style="position: absolute;margin-top: -16.5px;margin-left: 509px">
+                    <span class="spanBox" style="width: 210.5px"></span>
+                </div>
+            </div>
+            <div class="unique" style="margin-top: 0px">
+                <p class="customPTag" style="margin-right: 15.5px">l) In case of Accident:</p>
+                <p class="customPTag" style="margin-right: 4px;margin-left: 32px">i. Is it RTA</p>
+                {% if data.addition_details.In_Case_Of_Accident == 'Yes' %}
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 2px">Yes</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 5px">No</p>
+                {% elif data.addition_details.Is_It_RTA == 'No'%}
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 2px">Yes</p>
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 5px">No</p>
+                {% else %}
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 2px">Yes</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 5px">No</p>
+                {% endif %}
+                <p class="customPTag" style="margin-right: 6px">ii. date of injury:</p>
+                 <span class="spanBox1">{{data.hospital_details.DateofInjury.0|upper}}</span>
+                <span class="spanBox1">{{data.hospital_details.DateofInjury.9|upper}}</span>
+                <span class="spanBox1">{{data.hospital_details.DateofInjury.5|upper}}</span>
+                <span class="spanBox1">{{data.hospital_details.DateofInjury.6|upper}}</span>
+                <span class="spanBox1">{{data.hospital_details.DateofInjury.0|upper}}</span>
+                <span class="spanBox1">{{data.hospital_details.DateofInjury.1|upper}}</span>
+                <span class="spanBox1">{{data.hospital_details.DateofInjury.2|upper}}</span>
+                <span class="spanBox1">{{data.hospital_details.DateofInjury.3|upper}}</span>
+
+
+                <p class="customPTag" style="margin-right: 6px;margin-left: 6px">iii. Reported to police:</p>
+                {% if data.addition_details.Reported_To_Police == 'Yes' %}
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 2px">Yes</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 0px">No</p>
+                {% elif data.addition_details.Reported_To_Police == 'No' %}
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 2px">Yes</p>
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 0px">No</p>
+                {% endif %}
+
+
+                <p class="customPTag" style="margin-right: 6px;margin-left: 6px">iv. FIR No:</p>
+                <span class="spanBox">{{data.addition_details.doctor_firNo.0|upper}}</span>
+                <span class="spanBox">{{data.addition_details.doctor_firNo.1|upper}}</span>
+                <span class="spanBox">{{data.addition_details.doctor_firNo.2|upper}}</span>
+                <span class="spanBox">{{data.addition_details.doctor_firNo.3|upper}}</span>
+                <span class="spanBox">{{data.addition_details.doctor_firNo.4|upper}}</span>
+
+
+            </div>
+            <div class="unique" style="margin-top: -8px">
+                <p class="customPTag" style="margin-right: 5px">v) Injury/Disease caused due to substance abuse/alcohol
+                    consumption</p>
+                {% if data.doctor_injuryorDiseaseCausedDueToSubstance == 'Yes' %}
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 10px">Yes</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 5px">No</p>
+                {% elif data.doctor_injuryorDiseaseCausedDueToSubstance == 'No' %}
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 10px">Yes</p>
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 5px">No</p>
+                {% endif %}
+                <p class="customPTag" style="margin-right: 6px;margin-left: 23.5px">vi) Test conducted to establish
+                    this:</p>
+                {% if data.doctor_testAlcohol == 'Yes' %}
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 10px">Yes</p>
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 0px">No</p>
+                {% elif data.doctor_testAlcohol == 'No' %}
+                <span class="spanBox"></span>
+                <p class="customPTag" style="margin-right: 10px">Yes</p>
+                <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                <p class="customPTag" style="margin-right: 0px">No</p>
+                {% endif %}
+                <p class="customPTag" style="margin-right: 6px;margin-left: 6px">(If yes, attach report)</p>
+            </div>
+            <div class="unique" style="margin-top: -8px">
+                <p class="customPTag" style="margin-right: 25px">m) In case of Maternity</p>
+                {% if data.addition_details.G == 'Yes' %}
+                    <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                {% else %} 
+                     <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                {% endif %}
+
+                <p class="customPTag" style="margin-right: 15px">G</p>
+                 {% if data.addition_details.P == 'Yes' %}
+                    <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                {% else %} 
+                     <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                {% endif %}
+                <p class="customPTag" style="margin-right: 15px">P</p>
+                 {% if data.addition_details.L == 'Yes' %}
+                    <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                {% else %} 
+                     <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                {% endif %}
+                <p class="customPTag" style="margin-right: 15px">L</p>
+                 {% if data.addition_details.A == 'Yes' %}
+                    <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                {% else %} 
+                     <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                {% endif %}
+                <p class="customPTag" style="margin-right: 15px">A</p>
+            </div>
+
+            <div class="unique" style="margin-top: -12px">
+                <p class="customPTag" style="margin-right: 25px;margin-left: 10px">i) Expected date of Delivery</p>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.ExpectedDateOfDelivery.0|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.ExpectedDateOfDelivery.1|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2;margin-left: 5px">{{data.hospital_details.ExpectedDateOfDelivery.3|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.ExpectedDateOfDelivery.4|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2;margin-left: 5px">{{data.hospital_details.ExpectedDateOfDelivery.7|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.ExpectedDateOfDelivery.7|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.ExpectedDateOfDelivery.8|upper}}</span>
+                <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.ExpectedDateOfDelivery.9|upper}}</span>
+            </div>
+        </div>
+        {% comment %} firstpart end {% endcomment %}
+        
+        <div class="form-container" style="margin-top: 10px">
+            <div>
+                <p class="customPTag" style="margin-right: 25px;padding-top: 20px"><b>Details of patient admitted</b></p>
+            </div>
+            <div class="float-child" style="width: 65%">
+                <div>
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">a) Date of admission:</p>
+                    <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.Date_of_Admission.0|upper}}</span>
+                    <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.Date_of_Admission.1|upper}}</span>
+                    <span class="spanBox1" style="color: #c2c2c2;margin-left: 5px">{{data.hospital_details.Date_of_Admission.2|upper}}</span>
+                    <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.Date_of_Admission.3|upper}}</span>
+                    <span class="spanBox1" style="color: #c2c2c2;margin-left: 5px">{{data.hospital_details.Date_of_Admission.4|upper}}</span>
+                    <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.Date_of_Admission.5|upper}}</span>
+                    <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.Date_of_Admission.6|upper}}</span>
+                    <span class="spanBox1" style="color: #c2c2c2">{{data.hospital_details.Date_of_Admission.7|upper}}</span>
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 42px">b) Date of Time:</p>
+                    <span class="spanBox1" style="color: #c2c2c2">H</span>
+                    <span class="spanBox1" style="color: #c2c2c2">H</span>
+                    <span class="spanBox1" style="color: #c2c2c2;margin-left: 5px">M</span>
+                    <span class="spanBox1" style="color: #c2c2c2">M</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">c) Is this a emergency/a planned
+                        hospitalisation event?:</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 0px">Emergency</p>
+                        {% if data.addition_details.isThisAEmergencyPlannedHospitalization == "Emergency" %}
+                            <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                        {% else %}
+                            <span class="spanBox1" style="color: #c2c2c2"></span>
+                        {% endif %}    
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 10px">Planned</p>
+                        {% if data.addition_details.isThisAEmergencyPlannedHospitalization == "Planned" %}
+                            <span class="spanBox"><img height="9px" src="/static/dist/tick.png" width="9px"></span>
+                        {% else %}
+                            <span class="spanBox1" style="color: #c2c2c2"></span>
+                        {% endif %}   
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">e) Expected No. of days stay in
+                        hospital:</p>
+                    <span class="spanBox1">{{data.hospital_details.Days_In_Hospital.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_details.Days_In_Hospital.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_details.Days_In_Hospital.2|upper}}</span>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 0px">Days</p>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">f) Days in ICU:</p>
+                    <span class="spanBox1">{{data.hospital_details.Days_In_ICU.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_details.Days_In_ICU.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_details.Days_In_ICU.2|upper}}</span>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 0px">Days</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 140px">g) Room Type</p>
+                    <span class="spanBox1" style="width: 110px">{{data.hospital_details.Room_Type|upper}}</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">h) Per Day Room Rent + Nursing &
+                        Service Charges + Patient's Diet</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 51px">Rs.</p>
+                    <span class="spanBox1">{{data.hospital_charges.Per_Day_Room_Rent.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Per_Day_Room_Rent.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Per_Day_Room_Rent.2|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Per_Day_Room_Rent.3|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Per_Day_Room_Rent.4|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Per_Day_Room_Rent.5|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Per_Day_Room_Rent.6|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Per_Day_Room_Rent.7|upper}}</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">I) Expected cost for investigation +
+                        diagnostics</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 130px">Rs.</p>
+                    <span class="spanBox1">{{data.hospital_charges.Cost_Of_Investigation.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Cost_Of_Investigation.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Cost_Of_Investigation.2|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Cost_Of_Investigation.3|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Cost_Of_Investigation.4|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Cost_Of_Investigation.5|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Cost_Of_Investigation.6|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Cost_Of_Investigation.7|upper}}</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">j) ICU Charges</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 256.5px">Rs.</p>
+                    <span class="spanBox1">{{data.hospital_charges.ICU_Charges.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.ICU_Charges.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.ICU_Charges.2|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.ICU_Charges.3|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.ICU_Charges.4|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.ICU_Charges.5|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.ICU_Charges.6|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.ICU_Charges.7|upper}}</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">k) OT Charges</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 256.5px">Rs.</p>
+                    <span class="spanBox1">{{data.hospital_charges.OT_Charges.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.OT_Charges.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.OT_Charges.2|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.OT_Charges.3|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.OT_Charges.4|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.OT_Charges.5|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.OT_Charges.6|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.OT_Charges.7|upper}}</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">l) Professional fees Surgeon +
+                        Anesthetist Fees + consultation Charges</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 36px">Rs.</p>
+                    {% comment %} data.hospital_charges.Surgeon_Fees+Anesthetist_fees+Consultation_Charges {% endcomment %}
+                    <span class="spanBox1">{{a|upper}}</span>
+                    <span class="spanBox1">{{a|upper}}</span>
+                    <span class="spanBox1">{{a|upper}}</span>
+                    <span class="spanBox1">{{a|upper}}</span>
+                    <span class="spanBox1">{{a|upper}}</span>
+                    <span class="spanBox1">{{a|upper}}</span>
+                    <span class="spanBox1">{{a|upper}}</span>
+                    <span class="spanBox1">{{a|upper}}</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">m) Medicines + Consumables + Cost of
+                        Implants (if applicable please specify).</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 9px">Rs.</p>
+                    <span class="spanBox1">{{data.hospital_charges.Medicines.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Medicines.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Medicines.2|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Medicines.3|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Medicines.4|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Medicines.5|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Medicines.6|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Medicines.7|upper}}</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">n) Other hospital expenses if any</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 181.5px">Rs.</p>
+                    <span class="spanBox1">{{data.hospital_charges.Other_Hospital_Expenses.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Other_Hospital_Expenses.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Other_Hospital_Expenses.2|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Other_Hospital_Expenses.3|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Other_Hospital_Expenses.4|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Other_Hospital_Expenses.5|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Other_Hospital_Expenses.6|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.Other_Hospital_Expenses.7|upper}}</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">o) All inclusive package charges if any
+                        applicable</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 122px">Rs.</p>
+                    <span class="spanBox1">{{data.hospital_charges.All_Including_Package.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.All_Including_Package.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.All_Including_Package.2|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.All_Including_Package.3|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.All_Including_Package.4|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.All_Including_Package.5|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.All_Including_Package.6|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.All_Including_Package.7|upper}}</span>
+                </div>
+                <div class="unique" style="margin-top: -12px">
+                    <p class="customPTag" style="margin-right: 5px;margin-left: 0px">p) Sum Total expected cost of
+                        hospitalization</p>
+                    <p class="customPTag" style="margin-right: 10px;margin-left: 135px">Rs.</p>
+                    <span class="spanBox1">{{data.hospital_charges.total.0|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.total.1|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.total.2|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.total.3|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.total.4|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.total.5|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.total.6|upper}}</span>
+                    <span class="spanBox1">{{data.hospital_charges.total.7|upper}}</span>
+                </div>
+            </div>
+            <div class="float-child" style="width: 35%">
+                <p class="customPTag" style="margin-right: 5px;margin-left: 0px">d) Mandatory Past history of any chronic
+                    illness<br>
+                    If yes, since (month/year)</p>
+                <div style="margin-top: -14px">
+                    <span class="spanBox" style="margin-left: 2px"></span>
+                    <p class="customPTag" style="margin-right: 105px;margin-left: 0px">i) Diabetes</p>
+                    <span class="spanBox">D</span>
+                    <span class="spanBox">D</span>
+                    <span class="spanBox" style="margin-left: 5px">M</span>
+                    <span class="spanBox">M</span>
+                </div>
+                <div style="margin-top: -13px">
+                    <span class="spanBox" style="margin-left: 2px"></span>
+                    <p class="customPTag" style="margin-right: 83px;margin-left: 0px">ii) Heart Disease</p>
+                    <span class="spanBox">{{data.addition_details.HeartDiseaseMonth.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.HeartDiseaseMonth.1|upper}}</span>
+                    <span class="spanBox" style="margin-left: 5px">{{data.addition_details.HeartDiseaseYear.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.HeartDiseaseYear.1|upper}}</span>
+                </div>
+                <div style="margin-top: -13px">
+                    <span class="spanBox" style="margin-left: 2px"></span>
+                    <p class="customPTag" style="margin-right: 82px;margin-left: 0px">iii) Hypertension</p>
+                    <span class="spanBox">{{data.addition_details.HypertensionMonth.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.HypertensionMonth.1|upper}}</span>
+                    <span class="spanBox" style="margin-left: 5px">{{data.addition_details.HypertensionYear.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.HypertensionYear.1|upper}}</span>
+                </div>
+                <div style="margin-top: -13px">
+                    <span class="spanBox" style="margin-left: 2px"></span>
+                    <p class="customPTag" style="margin-right: 71px;margin-left: 0px">iv) Hyperlipidemias</p>
+                    <span class="spanBox">{{data.addition_details.HyperlipidemiasMonth.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.HyperlipidemiasMonth.1|upper}}</span>
+                    <span class="spanBox" style="margin-left: 5px">{{data.addition_details.HyperlipidemiasYear.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.HypertensionYear.1|upper}}</span>
+                </div>
+                <div style="margin-top: -13px">
+                    <span class="spanBox" style="margin-left: 2px"></span>
+                    <p class="customPTag" style="margin-right: 83px;margin-left: 0px">v) Osteoarthritis</p>
+                    <span class="spanBox">{{data.addition_details.OsteoarthritisMonth.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.OsteoarthritisMonth.1|upper}}</span>
+                    <span class="spanBox" style="margin-left: 5px">{{data.addition_details.OsteoarthritisYear.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.OsteoarthritisYear.1|upper}}</span>
+                </div>
+                <div style="margin-top: -13px">
+                    <span class="spanBox" style="margin-left: 2px"></span>
+                    <p class="customPTag" style="margin-right: 32px;margin-left: 0px">vi) Asthma/ COPD/ Bronchitis</p>
+                    <span class="spanBox">{{data.addition_details.AsthmaOrCOPDOrBronchitisMonth.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.AsthmaOrCOPDOrBronchitisMonth.1|upper}}</span>
+                    <span class="spanBox" style="margin-left: 5px">{{data.addition_details.AsthmaOrCOPDOrBronchitisYear.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.AsthmaOrCOPDOrBronchitisYear.1|upper}}</span>
+                </div>
+                <div style="margin-top: -13px">
+                    <span class="spanBox" style="margin-left: 2px"></span>
+                    <p class="customPTag" style="margin-right: 107px;margin-left: 0px">vii) Cancer</p>
+                    <span class="spanBox">{{data.addition_details.CancerMonth.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.CancerMonth.1|upper}}</span>
+                    <span class="spanBox" style="margin-left: 5px">{{data.addition_details.CancerYear.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.CancerYear.1|upper}}</span>
+                </div>
+                <div style="margin-top: -13px">
+                    <span class="spanBox" style="margin-left: 2px"></span>
+                    <p class="customPTag" style="margin-right: 46px;margin-left: 0px">viii) Alcohol or drug abuse</p>
+                    <span class="spanBox">{{data.addition_details.AlcoholOrDrugAbuseMonth.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.AlcoholOrDrugAbuseMonth.1|upper}}</span>
+                    <span class="spanBox" style="margin-left: 5px">{{data.addition_details.AlcoholOrDrugAbuseYear.0|upper}}</span>
+                    <span class="spanBox">{{data.addition_details.AlcoholOrDrugAbuseYear.1|upper}}</span>
+                </div>
+                <div style="margin-top: -13px">
+                    <span class="spanBox" style="margin-left: 2px"></span>
+                    <p class="customPTag" style="margin-right: 4px;margin-left: 0px">ix) Any HIV or STD / Related
+                        ailments</p>
+                    <span class="spanBox"></span>
+                    <span class="spanBox"></span>
+                    <span class="spanBox" style="margin-left: 5px"></span>
+                    <span class="spanBox"></span>
+                </div>
+                <div style="margin-top: -13px">
+                    <p class="customPTag" style="margin-right: 83px;margin-left: 20px">x) Any other Ailment give
+                        details:</p>
+                </div>
+                <div style="margin-top: -7px">
+                    <span class="spanBox1" style="width: 200px;margin-left: 20px"></span>
+                </div>
+                <div style="margin-top: 0.5px">
+                    <span class="spanBox1" style="width: 200px;margin-left: 20px"></span>
+                </div>
+
+            </div>
+
+            <div style="background-color: #e41b23;text-align: center;margin-top: 240px">
+                <p class="subHeading">DECLARATION (Please read carefully)</p>
+            </div>
+            <p class="customPTag" style="margin-right: 25px;margin-left: 0px">We confirm having read understood and agreed
+                to the declarations of this form</p>
+            <div class="unique" style="margin-top: -2px">
+                <p class="customPTag" style="margin-right: 8px">a) Name of the treating doctor :</p>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.0|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.1|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.2|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.3|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.4|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.5|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.6|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.7|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.8|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.9|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.10|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.11|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.12|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.13|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.14|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.15|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.16|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.17|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.18|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.19|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.20|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.21|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.22|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.23|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.24|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.25|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.26|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.27|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.28|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.29|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.30|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.31|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.32|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.33|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.34|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.35|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.36|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.37|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.38|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.39|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.40|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.41|upper}}</span>
+                <span class="spanBox">{{data.hospital_details.Treating_Doctor.42|upper}}</span>
+            </div>
+            <div class="unique" style="margin-top: -8px">
+                <p class="customPTag" style="margin-right: 68px">b) Qualification :</p>
+                <span class="spanBox">{{data.doctor_qualification.0|upper}}</span>
+                <span class="spanBox">{{data.doctor_qualification.1|upper}}</span>
+                <span class="spanBox">{{data.doctor_qualification.2|upper}}</span>
+                <span class="spanBox">{{data.doctor_qualification.3|upper}}</span>
+                <span class="spanBox">{{data.doctor_qualification.4|upper}}</span>
+                <span class="spanBox">{{data.doctor_qualification.5|upper}}</span>
+                <span class="spanBox">{{data.doctor_qualification.6|upper}}</span>
+                <p class="customPTag" style="margin-right: 28px;margin-left: 45px">c) Registration No. with state code:</p>
+                <span class="spanBox">{{data.doctor_registration_number.0|upper}}</span>
+                <span class="spanBox">{{data.doctor_registration_number.1|upper}}</span>
+                <span class="spanBox">{{data.doctor_registration_number.2|upper}}</span>
+                <span class="spanBox">{{data.doctor_registration_number.3|upper}}</span>
+                <span class="spanBox">{{data.doctor_registration_number.4|upper}}</span>
+                <span class="spanBox">{{data.doctor_registration_number.5|upper}}</span>
+                <span class="spanBox">{{data.doctor_registration_number.6|upper}}</span>
+                <span class="spanBox">{{data.doctor_registration_number.6|upper}}</span>
+                <span class="spanBox">{{data.doctor_registration_number.6|upper}}</span>
+            </div>
+            <div>
+                <span class="spanBox" style="width: 200;height: 40px"></span>
+                <span class="spanBox" style="width: 200;height: 40px;margin-left: 314px">{{data.patient_details.Name|upper}}</span>
+            </div>
+            <div>
+                <p class="customPTag" style="margin-right: 25px;margin-left: 0px">Hospital Seal (Must include Hospital
+                    ID)</p>
+                <p class="customPTag" style="width: 200;height: 40px;margin-left: 334px">Patient/ Insured Name &
+                    Signature</p>
+            </div>
+            <div style="background-color: #e41b23;text-align: center;margin-top: -25px">
+                <p class="subHeading">DECLARATION BY THE PATIENT / REPRESENTATIVE</p>
+            </div>
+            <div>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -8px">a. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I agree
+                    to allow the hospital to submit all original documents pertaining to hospitalization to the
+                    Insurer/T.P.Aafter the discharge. I agree to sign on the Final Bill &<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the Discharge Summary, before my discharge.
+                </p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">b. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Payment
+                    to hospital is governed by the terms and conditions of the policy. In case the Insurer /TPAis not liable
+                    to settle the hospital bill, I undertake to settle the bill<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;as per the terms and conditions of the
+                    policy</p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">c. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All
+                    non-medical expenses and expenses not relevant to current hospitalization and the amounts over & above
+                    the limit authorized by the Insurer/T.P.A not<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;governed by the terms and conditions of the
+                    policy will be paid by me</p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">d. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I hereby
+                    declare to abide by the terms and conditions of the policy and if at any time the facts disclosed by me
+                    are found to be false or incorrect I forfeit my claim and<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;agree to indemnify the Insurer / T.P.A</p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">e. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I agree
+                    and understand that T.P.Ais in no way warranting the service of the hospital & that the Insurer /TPAis
+                    in no way guaranteeing that the services provided by<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the hospital will be of a particular quality
+                    or standard</p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">f. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I hereby
+                    warrant the truth of the forgoing particulars in every respect and I agree that if I have made or shall
+                    make any false or untrue statement, suppression or<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;concealment with respect to the claim, my
+                    right to claim reimbursement of the said expenses shall be absolutely forfeited.</p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">g. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I agree
+                    to indemnify the hospital against all expenses incurred on my behalf, which are not reimbursed by the
+                    Insurer / TPA<br></p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">h. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"I/We
+                    authorize Insurance Company/TPAto contact me/us through mobile/email for any update on this claim"<br>
+                </p>
+            </div>
+            <div>
+                <p class="customPTag" style="margin-right: 10px">Patient's/ Insured's Name:</p>
+                <span class="spanLine">{{data.patient_details.Name.0|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.1|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.2|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.3|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.4|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.5|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.6|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.7|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.8|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.9|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.10|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.11|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.12|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.13|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.14|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.15|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.16|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.17|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.18|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.19|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.20|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.21|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.22|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.23|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.24|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.25|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.26|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.27|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.28|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.29|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.30|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.31|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.32|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.33|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.34|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.35|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.36|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.37|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.38|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.39|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.40|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.41|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Name.42|upper}}</span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+            </div>
+            <div>
+                <p class="customPTag" style="margin-right: 10px">Contact No:</p>
+                <span class="spanLine">{{data.patient_details.Number.0|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Number.1|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Number.2|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Number.3|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Number.4|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Number.5|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Number.6|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Number.7|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Number.8|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Number.9|upper}}</span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <p class="customPTag" style="margin-right: 10px;margin-left: 85px">E-mail Id (optional):</p>
+                <span class="spanLine">{{data.patient_details.Email.0|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.1|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.2|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.3|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.4|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.5|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.6|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.7|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.8|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.9|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.10|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.11|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.12|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.13|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.14|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.15|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.16|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.17|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.18|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.19|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.20|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.21|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.22|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.23|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.24|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.25|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.26|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.27|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.28|upper}}</span>
+                <span class="spanLine">{{data.patient_details.Email.29|upper}}/span>
+            </div>
+            <div>
+                <p class="customPTag" style="margin-right: 10px">Patient's/ Insured's Signature:</p>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+            </div>
+            <div>
+                <p class="customPTag" style="margin-right: 10px">Date:</p>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <p class="customPTag" style="margin-right: 10px;margin-left: 40px">Time:</p>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+
+            </div>
+            <div style="background-color: #e41b23;text-align: center;margin-top: -12px">
+                <p class="subHeading">HOSPITAL DECLARATION</p>
+            </div>
+            <div>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -8px">a. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We have
+                    no objection to any authorized TPA/ Insurance Company official verifying documents pertaining to
+                    hospitalization<br></p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">b. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All valid
+                    original documents duly countersigned by the insured/patient as per the checklist below will be sent to
+                    TPA / Insurance Company within 7 days of the <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;patient's discharge.</p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">c. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We agree
+                    that TPA/Insurance Company will not be liable to make the payment in the between the facts in this form
+                    and discharge summary or other documents<br></p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">d. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The
+                    patient declaration has been signed by the patient or by his representative in our presence<br></p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">e. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We agree
+                    to provide clarifications for the queries raised regarding this hospitalization and we take the sole
+                    responsibility for any delay in offering clarifications <br></p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">f. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We will
+                    abide by the terms and conditions agreed in the MOU.<br></p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">g. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We
+                    confirm that no additional amount would be collected from the insured in excess of Agreed Package Rates
+                    except costs towards non-admissible amounts<br>
+                    (including additional charges due to opting higher room rent than eligibility/choosing separate line of
+                    treatment which is not envisaged/considered in package).</p>
+                <p class="customPTag" style="margin-right: 18px;margin-top: -9px">h. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"I/We
+                    authorize Insurance Company/TPAto contact me/us through mobile/email for any update on this claim"<br>
+                </p>
+            </div>
+            <div>
+                <span class="spanBox" style="width: 200;height: 40px"></span>
+                <span class="spanBox" style="width: 200;height: 40px;margin-left: 314px"></span>
+            </div>
+            <div>
+                <p class="customPTag" style="margin-right: 0px;margin-left: 70px">Hospital Seal</p>
+                <p class="customPTag" style="margin-left: 460px">Doctor's Signature</p>
+            </div>
+            <div style="margin-top: -4px">
+                <p class="customPTag" style="margin-right: 10px;margin-left: 0px">Date:</p>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <p class="customPTag" style="margin-left: 40px;margin-right: 10px">Time: </p>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+                <span class="spanLine"></span>
+            </div>
+
+        </div>
+        <!---------------------------------End of Second Page-------------------------->
+
+        <!---------------------------------End of third PAge--------------------------->
+
+        <!---------------------------------End of forth PAge--------------------------->
+
+        <!---------------------------------End of fifth PAge--------------------------->
+
+        <!---------------------------------End of sixth Page--------------------------->
+
+        <!---------------------------------End of seventh Page------------------------->
+
+
+    </div>
+    <!-------invoice------>
+
+    <script>
+        window.onload = function() {
+            document.getElementById("download")
+                .addEventListener("click", () => {
+                    const invoice = this.document.getElementById("invoice");
+                    console.log(invoice);
+                    console.log(window);
+                    var opt = {
+                        margin: 0,
+                        filename: 'myfile.pdf',
+                        image: {
+                            type: 'jpeg',
+                            quality: 0.98
+                        },
+                        html2canvas: {
+                            scale: 4
+                        },
+                        jsPDF: {
+                            unit: 'in',
+                            format: 'letter',
+                            orientation: 'portrait'
+                        }
+                    };
+                    html2pdf().from(invoice).set(opt).save();
+                })
+        }
+
+    </script>
+</body>
+
+</html>

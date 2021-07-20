@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <title>BimaXpress</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static '/plugins/fontawesome-free/css/all.min.css' %}" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{% static 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}" />
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+        href="{% static '/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}" />
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{% static '/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}" />
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{% static '/plugins/jqvmap/jqvmap.min.css' %}" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static '/dist/css/pageAccordian.css' %}" />
+    <link rel="stylesheet" href="{% static '/dist/css/adminlte.min.css' %}" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{% static '/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}" />
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{% static '/plugins/daterangepicker/daterangepicker.css' %}" />
+    <!-- summernote -->
+    <link rel="stylesheet" href="{% static '/plugins/summernote/summernote-bs4.min.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-transform: capitalize;
+            background-color: white !important;
+            background: white !important;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .bigUpperCard {
+            box-shadow: 0 4px 8px 0 rgb(85, 85, 85);
+            padding: 1em 2em;
+            border-radius: 20px;
+        }
+
+        .bigUpperCard:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .normalText {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .smallText {
+            font-size: x-small !important;
+        }
+
+        .button:hover {
+            background: #06D85F;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup {
+            margin: 70px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 30%;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: #333;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .popup .close:hover {
+            color: #06D85F;
+        }
+
+        .popup .content {
+            max-height: 30%;
+            overflow: auto;
+        }
+
+        @media screen and (max-width: 700px) {
+            .box {
+                width: 70%;
+            }
+
+            .popup {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item ml-2 mr-2 d-none d-sm-inline-block">
+                    <img src="https://www.bimaxpress.com/assets/img/Asset%201.png" height="40em" alt="" srcset="">
+                </li>
+
+            </ul>
+            <input class="search__input" type="text" placeholder="Search"
+                style="width: 20em; margin-top: 8px; margin-left: 8px;" />
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+
+
+
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-comments"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="User Avatar"
+                                    class="img-size-50 mr-3 img-circle" />
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Brad Diesel
+                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">Call me whenever you can...</p>
+                                    <p class="text-sm text-muted">
+                                        <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="{% static 'dist/img/user8-128x128.jpg' %}" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3" />
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        John Pierce
+                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">I got your message bro</p>
+                                    <p class="text-sm text-muted">
+                                        <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="{% static 'dist/img/user3-128x128.jpg' %}" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3" />
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Nora Silvester
+                                        <span class="float-right text-sm text-warning"><i
+                                                class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">The subject goes here</p>
+                                    <p class="text-sm text-muted">
+                                        <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                    </div>
+                </li>
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge">15</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-danger">Log Out</button>
+
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4"
+            style="margin-top: 5em; max-height: 80%; background-color: #f4f6f9; color: black; border-top-right-radius: 20px;border-bottom-right-radius: 20px;">
+            <!-- Brand Logo -->
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="true">
+                        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                        <li class="nav-item menu-open" style="margin-left: -50px !important;">
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="mainpage" class="nav-link active">
+                                        <i class="fas fa-home"></i>
+                                        <p>Home</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/plandetails" class="nav-link active">
+                                        <i class="fas fa-clipboard-check"></i>
+                                        <p>Plan Details</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/hospital" class="nav-link active"
+                                        style="background-color: rgb(255, 166, 0);">
+                                        <i class="fas fa-hospital-alt"></i>
+                                        <p>Hospital</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/analist" class="nav-link active">
+                                        <i class="fas fa-user-circle"></i>
+                                        <p>Analyst</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/doctor" class="nav-link active">
+                                        <i class="fas fa-user-nurse"></i>
+                                        <p>Doctor</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/rateList" class="nav-link active">
+                                        <i class="fas fa-clipboard-list"></i>
+                                        <p>Rate List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/empanelledCompanies" class="nav-link active">
+                                        <i class="fas fa-calendar-check"></i>
+                                        <p>Empanelled Companies</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper"
+            style="padding-left: 5em !important;padding-bottom:0px; padding-right: 5em !important; background-color: white !important;">
+            <div class="bigUpperCard">
+                <button style=" background-color: rgb(255, 166, 0); width: 120px; border-radius: 20px;"
+                    class="btn btn-warning"> New Action</button> <br><br>
+                <span style="font-size: smaller;" class="smallText">Action Summary</span>
+                <input type="text" style="width: 500px; height: 100px; border-radius: 15px;" class="form-control"> <br>
+                <form id="myForm" method="post" enctype="multipart/form-data">
+                    <span style="font-size: smaller;" class="smallText">Upload Documents</span>
+
+                    <input type="file" id="files" name="files" multiple><br />
+
+                    <div id="selectedFiles"></div>
+
+                    <input type="submit" style=" background-color: rgb(255, 166, 0); width: 120px; border-radius: 20px;"
+                        class="btn btn-warning" value="Upload">
+                </form>
+                <a href="#popup1">
+                    <button
+                        style=" background-color: rgb(255, 166, 0); width: 120px; border-radius: 20px; float: right;"
+                        class="btn btn-warning">Send Mail</button> <br><br>
+                </a>
+
+                <div id="popup1" class="overlay">
+                    <div class="popup"
+                        style="width: 60%; height: 35em; border: 4px solid orange; border-radius: 20px; ">
+
+                        <p style=" text-decoration: underline; text-decoration-color: orange; font-size: 2em;">Update
+                            Status</p>
+                        <span style="margin-top: -100px;">(Current status is selected)</span> <br><br>
+                        <a class="close" href="#">&times;</a>
+                        <input type="radio" name='status' value="Unprocessed" onclick="caseSettledClickNoClick()"> Unprocessed <br>
+                        <input type="radio" name='status' value="Query" onclick="caseSettledClickNoClick()"> Query <br>
+                        <input type="radio" name='status' value="Approved" onclick="caseSettledClickNoClick()"> Approved <br>
+                        <input type="radio" name='status' value="Rejected" onclick="caseSettledClickNoClick()"> Rejected <br>
+                        <input type="radio" name='status' value="Discharge" onclick="caseSettledClickNoClick()"> Discharge <br>
+                        <input type="radio" name='status' value="Discharge Approved" onclick="caseSettledClickNoClick()"> Discharge Approved <br>
+                        <input type="radio" name='status' value="Case Settled" onclick="caseSettledClick()"> Case
+                        Settled <br>
+                        <div id='caseSettledClick'>
+                            
+                        </div>
+                        <a href="#">
+                            <button
+                                style=" background-color: rgb(255, 166, 0); width: 120px; border-radius: 20px; float: right;"
+                                class="btn btn-warning"> Submit </button> <br><br>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <br>
+
+        <script>
+            var selDiv = "";
+
+            document.addEventListener("DOMContentLoaded", init, false);
+
+            function init() {
+                document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+                selDiv = document.querySelector("#selectedFiles");
+            }
+
+            function handleFileSelect(e) {
+
+                if (!e.target.files) return;
+
+                selDiv.innerHTML = "";
+
+                var files = e.target.files;
+                for (var i = 0; i < files.length; i++) {
+                    var f = files[i];
+
+                    selDiv.innerHTML += f.name + "<br/>";
+
+                }
+
+            }
+            function caseSettledClick(){
+                document.getElementById('caseSettledClick').innerHTML=`
+                <div class="row">
+                                <div class="column" style="padding: 10px;"> 
+                                    <span style="font-size: smaller;" class="smallText">Settlement
+                                        Date</span><br>
+                                    <input type="date" class="form-control"> <br>
+                                </div>
+                                <div class="column" style="padding: 10px;"> 
+                                    <span style="font-size: smaller;" class="smallText">Settled
+                                        Amount</span> <br>
+                                    <input type="number" class="form-control"> <br>
+                                </div>
+                            </div>
+
+                `;
+            }
+            function caseSettledClickNoClick(){
+                document.getElementById('caseSettledClick').innerHTML=`
+
+                `;
+            }
+        </script>
+
+        <script src="{% static '/plugins/jquery/jquery.min.js' %}"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="{% static '/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+            $.widget.bridge("uibutton", $.ui.button);
+        </script>
+        <!-- Bootstrap 4 -->
+        <script src="{% static '/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <!-- ChartJS -->
+        <script src="{% static '/plugins/chart.js/Chart.min.js' %}"></script>
+        <!-- Sparkline -->
+        <script src="{% static '/plugins/sparklines/sparkline.js' %}"></script>
+        <!-- JQVMap -->
+        <script src="{% static '/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+        <script src="{% static '/plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="{% static '/plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+        <!-- daterangepicker -->
+        <script src="{% static '/plugins/moment/moment.min.js' %}"></script>
+        <script src="{% static '/plugins/daterangepicker/daterangepicker.js' %}"></script>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script src="{% static '/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+        <!-- Summernote -->
+        <script src="{% static '/plugins/summernote/summernote-bs4.min.js' %}"></script>
+        <!-- overlayScrollbars -->
+        <script src="{% static '/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+        <!-- AdminLTE App -->
+        <script src="{% static '/dist/js/adminlte.js' %}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="{% static '/dist/js/demo.js' %}"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+</body>
+
+</html>

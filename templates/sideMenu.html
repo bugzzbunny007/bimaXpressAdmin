@@ -1,0 +1,64 @@
+<aside
+  class="main-sidebar sidebar-dark-primary elevation-4"
+  style="background-color: #f4f6f9; color: black"
+>
+  <!-- Brand Logo -->
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img
+          src="{% static 'dist/img/user2-160x160.jpg' %}"
+          class="img-circle elevation-2"
+          alt="User Image"
+        />
+      </div>
+      <div class="info">
+        <button
+          style="color: white"
+          type="button"
+          class="btn"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+        >
+          <p style="color: black !important">{{role}}</p>
+        </button>
+      </div>
+    </div>
+    
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul
+        class="nav nav-pills nav-sidebar flex-column"
+        data-widget="treeview"
+        role="menu"
+        data-accordion="false"
+      >
+        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+        <li class="nav-item menu-open">
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/mainpage" class="nav-link active">
+                <i class="fas fa-chart-pie"></i>
+                <p>Dashboard v1</p>
+              </a>
+            </li>
+            {% if role == 'admin' %}
+            <li class="nav-item">
+              <a href="adduser" class="nav-link active">
+                <i class="fas fa-user-plus"></i>
+                <p>Add Customer</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
