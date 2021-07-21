@@ -948,19 +948,17 @@
 
         <div id="popup3" class="overlay" style="z-index: 100;">
 
-          <div class="popup" style="width: 60%; height: 70%; overflow-y: auto; text-align: left;">
-            <h2>Email To Insurance Company</h2>
+          <div class="popup" style="width: 60%; height: 90%; overflow-y: auto; text-align: left;">
+            <p>Email To Insurance Company</p>
             <a class="close" href="#">&times;</a>
             <div style="display: flex;flex-wrap: wrap;">
               <form method="POST" action="/sendmail">
                 {% csrf_token %}
-                <span style="font-size: smaller;" class="smallText">Email Title</span>
-                <input name="email_title" type="text" style="width: 500px; height: 30px; border-radius: 15px;"
-                  class="form-control"> <br>
+                <input name="email_title" placeholder="Email Title" type="text"
+                  style="width: 500px; height: 30px; border-radius: 15px;" class="form-control"> <br>
 
-                <span style="font-size: smaller;" class="smallText">Email Content</span>
-                <input name="email_content" type="text" style="width: 500px; height: 100px; border-radius: 15px;"
-                  class="form-control">
+                <input name="email_content" placeholder="Email Content" type="text"
+                  style="width: 500px; height: 100px; border-radius: 15px;" class="form-control">
 
 
 
@@ -968,7 +966,7 @@
                   <div class="column">
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Signed Off Pre
                       Auth Form</label>
-                    <input type="file" name="uploadSinged" id="uploadSinged">
+                    <input type="file" name="uploadSinged" id="uploadSinged" multiple>
 
                     <br> <br>
                     <script>
@@ -980,71 +978,84 @@
                       mycase = myArr[1]
                       console.log(myid, "or ", mycase)
                       doc_ref = db.collection("hospitals").doc(email)
+                      
                       function uploadSigned() {
                         const ref = firebase.storage().ref()
-                        const file = document.getElementById('uploadSinged').files[0]
-                        const name = file.name
-                        const metadata = {
-                          contentType: file.type
+                        for (let i = 0; i < uploadSinged.files.length; i++) {
+                          const file = document.getElementById('uploadSinged').files[i]
+                          const name = file.name
+                          const metadata = {
+                            contentType: file.type
+                          }
+                          const task = ref.child(`${myid}/${mycase}/UrluploadSignedPreAuth/UrluploadSignedPreAuth${i}`).put(file, metadata)
+                          task
+                            .then(snapshot => snapshot.ref.getDownloadURL())
+                            .then(url => {
+                              db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
+                                .then((docSnapshot) => {
+                                  if (docSnapshot.exists) {
+                                    db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                      'UrluploadSignedPreAuth': {
+                                        [`UrluploadSignedPreAuth${i}`]: url
+                                      },
+                                    }, { merge: true })
+                                  }
+                                  else {
+                                    db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                      'UrluploadSignedPreAuth': {
+                                        [`UrluploadSignedPreAuth${i}`]: url
+                                      },
+                                    }, { merge: true })
+                                  }
+                                });
+                              alert('image Uploaded Successfully')
+                            })
+
                         }
-                        const task = ref.child(`${myid}/${mycase}/uploadSigned/uploadSigned`).put(file, metadata)
-                        task
-                          .then(snapshot => snapshot.ref.getDownloadURL())
-                          .then(url => {
-                            console.log(url)
-                            console.log(myid)
-                            console.log(mycase)
-                            db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
-                              .then((docSnapshot) => {
-                                if (docSnapshot.exists) {
-                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').update({
-                                    'UrluploadSigned': url,
-                                  })
-                                }
-                                else {
-                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
-                                    'UrluploadSigned': url,
-                                  })
-                                }
-                              });
-                            alert('image Uploaded Successfully')
-                          })
                         uploadPatients()
                       }
                     </script>
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Patients Health
                       Id Card</label>
-                    <input type="file" name="uploadPatientsHealth" id="uploadPatientsHealth">
+                    <input type="file" name="uploadPatientsHealth" id="uploadPatientsHealth" multiple>
 
                     <script>
                       function uploadPatients() {
-                        const ref = firebase.storage().ref()
-                        const file = document.getElementById('uploadPatientsHealth').files[0]
-                        const name = file.name
-                        const metadata = {
-                          contentType: file.type
+                        for (let i = 0; i < uploadPatientsHealth.files.length; i++) {
+                          const ref = firebase.storage().ref()
+                          const file = document.getElementById('uploadPatientsHealth').files[i]
+                          const name = file.name
+                          const metadata = {
+                            contentType: file.type
+                          }
+                          const task = ref.child(`${myid}/${mycase}/UrluploadPatientsHealthIDCard/UrluploadPatientsHealthIDCard${i}`).put(file, metadata)
+                          task
+                            .then(snapshot => snapshot.ref.getDownloadURL())
+                            .then(url => {
+                              console.log(url)
+                              urlTwo = url
+                              db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
+                                .then((docSnapshot) => {
+                                  if (docSnapshot.exists) {
+                                    db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                      'UrluploadPatientsHealthIDCard': {
+                                        [`UrluploadPatientsHealthIDCard${i}`]: url,
+                                      }
+                                    }, { merge: true })
+                                  }
+                                  else {
+                                    db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                      'UrluploadPatientsHealthIDCard': {
+                                        [`UrluploadPatientsHealthIDCard${i}`]: url,
+                                      }
+                                    }, { merge: true })
+                                  }
+                                });
+                              alert('image Uploaded Successfully')
+                            })
+
                         }
-                        const task = ref.child(`${myid}/${mycase}/uploadPatients/uploadPatients`).put(file, metadata)
-                        task
-                          .then(snapshot => snapshot.ref.getDownloadURL())
-                          .then(url => {
-                            console.log(url)
-                            urlTwo = url
-                            db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
-                              .then((docSnapshot) => {
-                                if (docSnapshot.exists) {
-                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').update({
-                                    'UrluploadPatients': url,
-                                  })
-                                }
-                                else {
-                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
-                                    'UrluploadPatients': url,
-                                  })
-                                }
-                              });
-                            alert('image Uploaded Successfully')
-                          })
+
                         uploadConsultation()
                       }
                     </script>
@@ -1052,80 +1063,137 @@
                   <div class="column">
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Consultation
                       Papers</label>
-                    <input type="file" name="uploadConsultaion" id="uploadConsultaion">
+                    <input type="file" name="uploadConsultaion" id="uploadConsultaion" multiple>
 
                     <script>
                       function uploadConsultation() {
-                        const ref = firebase.storage().ref()
-                        const file = document.getElementById('uploadConsultaion').files[0]
-                        const name = file.name
-                        const metadata = {
-                          contentType: file.type
+                        for (let i = 0; i < uploadConsultaion.files.length; i++) {
+                          const ref = firebase.storage().ref()
+                          const file = document.getElementById('uploadConsultaion').files[i]
+                          const name = file.name
+                          const metadata = {
+                            contentType: file.type
+                          }
+                          const task = ref.child(`${myid}/${mycase}/uploadConsultation/uploadConsultation${i}`).put(file, metadata)
+                          task
+                            .then(snapshot => snapshot.ref.getDownloadURL())
+                            .then(url => {
+                              db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
+                                .then((docSnapshot) => {
+                                  if (docSnapshot.exists) {
+                                    db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                      'UrluploadConsultation': {
+                                        [`UrluploadConsultation${i}`]: url
+                                      },
+                                    }, { merge: true })
+                                  }
+                                  else {
+                                    db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                      'UrluploadConsultation': {
+                                        [`UrluploadConsultation${i}`]: url
+                                      },
+                                    }, { merge: true })
+                                  }
+                                });
+                              alert('image Uploaded Successfully')
+                            })
+
                         }
-                        const task = ref.child(`${myid}/${mycase}/uploadConsultation/uploadConsultation`).put(file, metadata)
-                        task
-                          .then(snapshot => snapshot.ref.getDownloadURL())
-                          .then(url => {
-                            console.log(url)
-                            urlThree = url
-                            db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
-                              .then((docSnapshot) => {
-                                if (docSnapshot.exists) {
-                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').update({
-                                    'UrluploadConsultation': url,
-                                  })
-                                }
-                                else {
-                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
-                                    'UrluploadConsultation': url,
-                                  })
-                                }
-                              });
-                            alert('image Uploaded Successfully')
-                          })
-                        otherDocuments()
+
+                        idproof()
                       }
                     </script>
                     <br> <br>
 
 
-                    <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Other
-                      Documents</label>
-                    <input type="file" name="otherDocuments" id="otherDocuments">
+                    <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">ID Proof
+                    </label>
+                    <input type="file" name="idproofid" id="idproofid" multiple>
 
                     <script>
-                      function otherDocuments() {
-                        const ref = firebase.storage().ref()
-                        const file = document.getElementById('otherDocuments').files[0]
-                        const name = file.name
-                        const metadata = {
-                          contentType: file.type
+                      function idproof() {
+                        for (let i = 0; i < idproofid.files.length; i++) {
+                          console.log("loop chala")
+                          const ref = firebase.storage().ref()
+                          const file = document.getElementById('idproofid').files[i]
+                          const name = file.name
+                          const metadata = {
+                            contentType: file.type
+                          }
+                          const task = ref.child(`${myid}/${mycase}/idproof/idproof${i}`).put(file, metadata)
+                          task
+                            .then(snapshot => snapshot.ref.getDownloadURL())
+                            .then(url => {
+                              console.log(url)
+                              urlThree = url
+                              db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
+                                .then((docSnapshot) => {
+                                  if (docSnapshot.exists) {
+                                    db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                      'Urlidproof': {
+                                        [`Urlidproof${i}`]: url
+                                      },
+                                    }, { merge: true })
+                                  }
+                                  else {
+                                    db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                      'Urlidproof': {
+                                        [`Urlidproof${i}`]: url
+                                      }
+                                    }, { merge: true })
+                                  }
+                                });
+                              alert('image Uploaded Successfully')
+                            })
+
                         }
-                        const task = ref.child(`${myid}/${mycase}/otherDocuments/otherDocuments`).put(file, metadata)
-                        task
-                          .then(snapshot => snapshot.ref.getDownloadURL())
-                          .then(url => {
-                            console.log(url)
-                            urlThree = url
-                            db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
-                              .then((docSnapshot) => {
-                                if (docSnapshot.exists) {
-                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').update({
-                                    'UrlotherDocuments': url,
-                                  })
-                                }
-                                else {
-                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
-                                    'UrlotherDocuments': url,
-                                  })
-                                }
-                              });
-                            alert('image Uploaded Successfully')
-                          })
+
+                        otherDocuments()
                       }
                     </script>
 
                   </div>
+                  <label for="exampleInputEmail1" style="font-size: smaller; margin-top: 50px;" class="smallText">Other
+                    Documents</label>
+                  <input type="file" name="otherDocumentsg" id="otherDocumentsg" multiple>
+
+                  <script>
+                    function otherDocuments() {
+                      for (let i = 0; i < otherDocumentsg.files.length; i++) {
+
+                        const ref = firebase.storage().ref()
+                        const file = document.getElementById('otherDocumentsg').files[i]
+                        const name = file.name
+                        const metadata = {
+                          contentType: file.type
+                        }
+                        const task = ref.child(`${myid}/${mycase}/otherDocuments/otherDocuments${i}`).put(file, metadata)
+                        task
+                          .then(snapshot => snapshot.ref.getDownloadURL())
+                          .then(url => {
+                            db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
+                              .then((docSnapshot) => {
+                                if (docSnapshot.exists) {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                    'UrlotherDocuments': {
+                                        [`UrlotherDocuments${i}`]: url
+                                      },
+                                    }, { merge: true })
+                                  }
+                                else {
+                                  db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
+                                    'UrlotherDocuments': {
+                                        [`UrlotherDocuments${i}`]: url
+                                      }
+                                    }, { merge: true })
+                                  }
+                              });
+                            alert('image Uploaded Successfully')
+                          })
+                      }
+
+                    }
+                  </script>
                   <div class="row">
                     <div class="column">
                       <input type="button"

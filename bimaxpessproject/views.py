@@ -1611,7 +1611,6 @@ def caseDetails(request):
         context['insurance_company'] = a['Insurance_Company']
         context['patient_name'] = a['Name']
         context['caseid'] = casenumber
-        # context['city'] = a['City']
         context['contact_Number'] = a['Number']
         context['doctor_natureOfLiness'] = a['Nature_Of_Illness']
     else:
