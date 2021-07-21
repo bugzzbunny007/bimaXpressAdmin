@@ -304,21 +304,25 @@
     <div id="invoice">
 
         <div class="form-container">
-            <h1 class="firstHeading" style="padding-top: 45px">HDFC ERGO General Insurance Company Limited</h1>
-            <img src="/static/dist/img/hdfc.jpeg" style="float: right;margin-top: -48px" width="90px">
+            
+            <div style="display: flex;">
+                <img class="img-fluid" src="../static/img/insuranceCompanyLogo/Star_Health_Insurance.png" width="25%">
+                <div style="width: 75%;">
+                    <h1 class="firstHeading" style="padding-top: 45px">STAR HEALT AND ALLIED INSURANCE COMPANY LIMITED</h1>
+                    <h4 class="fourthHeading" style="margin-top: -5px">Regd. & Corporate </h4>
+                </div>
+            </div>
             <h2 class="secondHeading" style="margin-top: 35px">REQUEST FOR CASHLESS HOSPITALISATION FOR HEALTH INSURANCE<br>
                 POLICY PART - C</h2>
-            <h4 class="fourthHeading" style="margin-top: -5px">DETAILS OF THE THIRD PARTY ADMINISTRATOR/ INSURER/ HOSPITAL
-                (All fields are mandatory and fill in CAPITALS only)</h4>
-            <p class="customPTag" style="margin-top: -8px">a) Name of the TPA/ Insurance Company: <b>HDFC ERGO General
-                    Insurance Company Limited</b></p>
+
+            <p class="customPTag" style="margin-top: -8px">a) Name of the TPA/ Insurance Company: <b>Star Health Insurance Company Limited</b></p>
             <div>
                 <p class="customPTag" style="margin-top: -6px">b) Customer service no: 022 - 6234 6234 / 0120 - 6234
                     6234</p>
             </div>
             <div style="margin-top: -15px">
                 <p class="customPTag" style="margin-right: 5px">c) Name of Hospital:</p>
-                <span class="spanLine" style="width: 634px">{{hospitaldata.name|upper}}</span>
+                <span class="spanLine" style="width: 634px">{{.name|upper}}</span>
             </div>
             <div style="margin-top: -15px">
                 <p class="customPTag" style="margin-right: 5px;margin-left: 10px">i. &nbsp;&nbsp;Address</p>

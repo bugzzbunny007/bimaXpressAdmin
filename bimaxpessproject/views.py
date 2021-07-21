@@ -98,7 +98,7 @@ def postsignIn(request):
             return render(request, "login.html", {"message": message})
 
         docs = db.collection(u'backend_users').where(
-            u'Email', u'==', user['email']).stream()
+            u'email', u'==', user['email']).stream()
         for doc in docs:
             Role = doc.to_dict()
             request.session['role'] = Role['Role']
