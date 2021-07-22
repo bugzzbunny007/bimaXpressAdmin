@@ -81,33 +81,6 @@
           </div>
         </div>
 
-        <div class="tab__1 tab__1active">
-          <div class="Inbox">
-            <div class="inbox_img"></div>
-            <span class="inbox_msg">
-              <a href="{%url 'trashmail'%}" class="fnt">Trash</a>
-            </span>
-          </div>
-        </div>
-
-        <div class="tab__1 tab__1active">
-          <div class="Inbox">
-            <div class="inbox_img"></div>
-            <span class="inbox_msg">
-              <a href="{%url 'draftmail'%}" class="fnt">Draft</a>
-            </span>
-          </div>
-        </div>
-
-        <div class="tab__1 tab__1active">
-          <div class="Inbox">
-            <div class="inbox_img"></div>
-            <span class="inbox_msg">
-              <a href="{%url 'starredmail'%}" class="fnt">Starred</a>
-            </span>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -220,7 +193,7 @@
         <div class="messagetext">New Message</div>
         
       </div>
-      <form method='POST' id="compose-post-form">
+      <form method='POST' id="compose-post-form" enctype='multipart/form-data'>
         {% csrf_token %}
 
         <div class="form-input to">
@@ -274,7 +247,7 @@
         <div class="messagetext" id="replytextheader">Reply Message</div>
         
       </div>
-      <form method='POST' action = "/replymail" id="reply-post-form">
+      <form method='POST' action = "/replymail" id="reply-post-form" enctype="multipart/form-data">
         {% csrf_token %}
 
         <div class="form-input to" style="display: none;">

@@ -46,7 +46,7 @@ urlpatterns = [
     #<-----Anis_code------>
     path('bunny',views.bunny , name="bunny"),
     path('sent',views.sentmail , name="sentmail"),
-    path('trash',views.trashmail , name="trashmail"),
+    # path('trash',views.trashmail , name="trashmail"),
     path('starred',views.starredemail , name="starredmail"),
     path('drafts',views.draftmail , name="draftmail"),
     path('replymail',views.replymail , name="replymail"),

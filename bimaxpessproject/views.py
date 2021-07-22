@@ -1097,21 +1097,24 @@ def sendmail(request):
     emailId = request.session['hospital_email']
     data = db.collection(u'hospitals').document(emailId).get()
     user = data.to_dict()['Emailer']
+    emailId = user['email']
+    # emailId = 'anishshende001@gmail.com'
     smtpVal = user['smtp']
     imapVal = user['imap']
     password = user['password']
+    
 
     if request.method == 'POST':
-        
-        sub = request.POST.get('emailSubject')
-        body = request.POST.get('emailBody')
+        sub = request.POST.get('email_title')
+        body = request.POST.get('email_content')
 
-        consultPapers = request.FILES.getlist('uploadConsultaion')
+        consultPapers = request.FILES.getlist('uploadConsultation')
         healthCard = request.FILES.getlist("uploadPatientsHealth")
-        aadharCard  = request.FILES.getlist("uploadIdentityCard")
+        aadharCard  = request.FILES.getlist("idproofid")
+        preauth = request.FILES.getlist("uploadSigned")
         print('*****')
         
-        files = healthCard+consultPapers+aadharCard
+        files = healthCard+consultPapers+aadharCard+preauth
 
         print(sub)
         print(body)
@@ -1133,6 +1136,7 @@ def sendmail(request):
         companyName = companyName.replace(" ","_")
         companyDetails = db.collection(u'InsuranceCompany_or_TPA').document(companyName).get().to_dict()
         to = companyDetails['email']
+        # to = 'cse180001006@iiti.ac.in'
        
         sendemail(emailId,to,sub,body,Bcc,Cc,files,smtpVal,imapVal,password)
 
@@ -1183,7 +1187,7 @@ def savestatus(request):
     files = request.FILES.getlist('files')
     sub = data['email_title']
     msg = data['email_content']
-    toEmail = db.collection(u'InsuranceCompany_or_TPA').document(insuranceCompany)['email']
+    toEmail = db.collection(u'InsuranceCompany_or_TPA').document(insuranceCompany).get().to_dict()['email']
 
     print('********************')
 
@@ -1207,7 +1211,8 @@ def savestatus(request):
 
     fromEmail = request.session['hospital_email']
     
-    details = db.collection(u'hospitals').document(fromEmail).get().to_dict()
+    details = db.collection(u'hospitals').document(fromEmail).get().to_dict()['Emailer']	
+    fromEmail = details['email']
     smtpVal = details['smtp']
     imapVal = details['imap']
     password = details['password']
@@ -1955,31 +1960,24 @@ def replymail(request):
 
 
 
-def create(request):
-    if request.method == 'POST':
-        to = request.POST['to']
-        subject = request.POST['subject']
-        message = request.POST['message']
-        new_email = Email(to=to, subject=subject, message=message)
-        new_email.save()
-        # print(new_email)
-        success = 'Mail sent' + to + 'successfully'
-        return HttpResponse(success)
 
-    # print("EMAIL SENT")
 
 def sentmail(request):
     context = {}
+
+    sender = request.session['hospital_email']
+    data = db.collection(u'hospitals').document(sender).get()
+    user = data.to_dict()['Emailer']
+    imapVal = user['imap']
+    smtpVal = user['smtp']
+    emailID = user['email']
+    password = user['password']
+
+    # emailID = sender = 'anishshende001@gmail.com'
+    # password = 'Anish@123'
+
     if request.method == "POST":
         file = request.FILES.getlist("filenameupload")
-
-        sender = request.session['hospital_email']
-        data = db.collection(u'hospitals').document(sender).get()
-        user = data.to_dict()['Emailer']
-        imapVal = user['imap']
-        smtpVal = user['smtp']
-        emailID = user['email']
-        password = user['password']
         # file = request.FILES['filenameupload']
         sender_msg = request.POST.get('smsg')
         reciever = request.POST.get('recv')
@@ -1994,10 +1992,18 @@ def sentmail(request):
 
     imap_server = imaplib.IMAP4_SSL(host=imapVal)
     imap_server.login(emailID, password)
-    imap_server.select('INBOX.Sent')  # sent folder selected
+    print(imap_server.list())
+
+    # sent folder selected
+    # if imapVal == 'imap.gmail.com':
+    #     imap_server.select('"[Gmail]/Sent Mail"')
+        
+    # else:
+    imap_server.select('INBOX.Sent')
+
     count = 0
     # Find all emails in inbox
-    _, message_numbers_raw = imap_server.search(None, 'ALL')
+    _, message_numbers_raw = imap_server.search('',None, 'ALL')
 
     message = []
     count = 0
@@ -2083,106 +2089,107 @@ def sentmail(request):
 
     return render(request, "sentemail.html", context)
 
+
 # TRASH Folder
 
 
 
-def trashmail(request):
-    context = {}
-    if request.method == "POST":
-        file = request.FILES.getlist("filenameupload")
-        sender = request.session['hospital_email']
-        data = db.collection(u'hospitals').document(sender).get()
-        user = data.to_dict()['Emailer']
-        imapVal = user['imap']
-        smtpVal = user['smtp']
-        emailID = user['email']
-        password = user['password']
-        # file = request.FILES['filenameupload']
-        sender_msg = request.POST.get('smsg')
-        reciever = request.POST.get('recv')
-        Bcc = request.POST.get('recvBcc')
-        Cc = request.POST.get('recvCc')
-        sub = request.POST.get('ssub')
-        # att = request.POST.get('filenameupload')
-        # sender = "anish@bimaxpress.com"
-        # print(len(file))
-        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,smtpVal,imapVal,password)
-    # print(data)
+# def trashmail(request):
+#     context = {}
+#     if request.method == "POST":
+#         file = request.FILES.getlist("filenameupload")
+#         sender = request.session['hospital_email']
+#         data = db.collection(u'hospitals').document(sender).get()
+#         user = data.to_dict()['Emailer']
+#         imapVal = user['imap']
+#         smtpVal = user['smtp']
+#         emailID = user['email']
+#         password = user['password']
+#         # file = request.FILES['filenameupload']
+#         sender_msg = request.POST.get('smsg')
+#         reciever = request.POST.get('recv')
+#         Bcc = request.POST.get('recvBcc')
+#         Cc = request.POST.get('recvCc')
+#         sub = request.POST.get('ssub')
+#         # att = request.POST.get('filenameupload')
+#         # sender = "anish@bimaxpress.com"
+#         # print(len(file))
+#         sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,smtpVal,imapVal,password)
+#     # print(data)
 
-    imap_server = imaplib.IMAP4_SSL(host=imapVal)
-    imap_server.login(emailID, password)
-    imap_server.select('INBOX.Trash')  # Default is `INBOX`
-    count = 0
-    # Find all emails in inbox
-    _, message_numbers_raw = imap_server.search(None, 'ALL')
+#     imap_server = imaplib.IMAP4_SSL(host=imapVal)
+#     imap_server.login(emailID, password)
+#     imap_server.select('INBOX.Trash')  # Default is `INBOX`
+#     count = 0
+#     # Find all emails in inbox
+#     _, message_numbers_raw = imap_server.search(None, 'ALL')
 
-    message = []
-    count = 0
-    for message_number in message_numbers_raw[0].split():
-        _, msg = imap_server.fetch(message_number, '(RFC822)')
+#     message = []
+#     count = 0
+#     for message_number in message_numbers_raw[0].split():
+#         _, msg = imap_server.fetch(message_number, '(RFC822)')
 
-        # Parse the raw email message in to a convenient object
-        x = email.message_from_bytes(msg[0][1])
-        nameid, emailid = spliteremail(x['from'])
-        time = spliterdate(x['date'])
+#         # Parse the raw email message in to a convenient object
+#         x = email.message_from_bytes(msg[0][1])
+#         nameid, emailid = spliteremail(x['from'])
+#         time = spliterdate(x['date'])
 
-        newtext = ""
-        for part in x.walk():
-            if (part.get('Content-Disposition') and part.get('Content-Disposition').startswith("attachment")):
+#         newtext = ""
+#         for part in x.walk():
+#             if (part.get('Content-Disposition') and part.get('Content-Disposition').startswith("attachment")):
 
-                part.set_type("text/plain")
-                part.set_payload('Attachment removed: %s (%s, %d bytes)'
-                                 % (part.get_filename(),
-                                    part.get_content_type(),
-                                    len(part.get_payload(decode=True))))
-                del part["Content-Disposition"]
-                del part["Content-Transfer-Encoding"]
+#                 part.set_type("text/plain")
+#                 part.set_payload('Attachment removed: %s (%s, %d bytes)'
+#                                  % (part.get_filename(),
+#                                     part.get_content_type(),
+#                                     len(part.get_payload(decode=True))))
+#                 del part["Content-Disposition"]
+#                 del part["Content-Transfer-Encoding"]
 
-            if part.get_content_type().startswith("text/plain"):
-                newtext += "\n"
-                newtext += part.get_payload(decode=False)
+#             if part.get_content_type().startswith("text/plain"):
+#                 newtext += "\n"
+#                 newtext += part.get_payload(decode=False)
 
-        msg_json = {
-            "from": emailid,
-            "name": nameid,
-            "to": x['to'],
-            "subject": x['subject'],
-            "date": time,
-            "id": count,
-            "message": newtext,
-        }
-        count += 1
-        message.append(msg_json)
+#         msg_json = {
+#             "from": emailid,
+#             "name": nameid,
+#             "to": x['to'],
+#             "subject": x['subject'],
+#             "date": time,
+#             "id": count,
+#             "message": newtext,
+#         }
+#         count += 1
+#         message.append(msg_json)
 
-    email_message = json.dumps(message)
-    # print(email_message)s
-    a = eval(email_message)
-    from_list = []
-    to_list = []
-    sub_list = []
-    date_list = []
-    l = []
-    time_list = []
+#     email_message = json.dumps(message)
+#     # print(email_message)s
+#     a = eval(email_message)
+#     from_list = []
+#     to_list = []
+#     sub_list = []
+#     date_list = []
+#     l = []
+#     time_list = []
 
-    for i in reversed(range(len(a))):
-        # print(a[i]['from'])
-        l.append(a[i])
-        from_list.append(a[i]['from'])
-        to_list.append(a[i]['to'])
-        sub_list.append(a[i]['subject'])
-        date_list.append(a[i]['date'])
+#     for i in reversed(range(len(a))):
+#         # print(a[i]['from'])
+#         l.append(a[i])
+#         from_list.append(a[i]['from'])
+#         to_list.append(a[i]['to'])
+#         sub_list.append(a[i]['subject'])
+#         date_list.append(a[i]['date'])
 
-    # print(l)
-    context['data_from'] = from_list
-    context['data_to'] = to_list
-    context['data_sub'] = sub_list
-    context['data_date'] = date_list
-    context['data'] = l
+#     # print(l)
+#     context['data_from'] = from_list
+#     context['data_to'] = to_list
+#     context['data_sub'] = sub_list
+#     context['data_date'] = date_list
+#     context['data'] = l
 
-    return render(request, "trash.html", context)
+#     return render(request, "trash.html", context)
 
-# DRAFTS Folder
+# # DRAFTS Folder
 
 
 
