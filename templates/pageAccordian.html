@@ -926,20 +926,18 @@
 
               <div class="row">
                 <div class="column">
-                  <img src="{{UrlotherDocuments}}" onclick="window.location.href='{{UrlotherDocuments}}'"
+                  <img src="{{Aadhar_card_Front}}" onclick="window.location.href='{{UrlotherDocuments}}'"
                     style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrlotherDocuments">
 
-                  <img src="{{UrluploadConsultation}}" onclick="window.location.href='{{UrluploadConsultation}}'"
+                  <img src="{{Aadhar_Card_Back}}" onclick="window.location.href='{{UrluploadConsultation}}'"
                     style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrluploadConsultation">
                 </div>
                 <div class="column">
-                  <img src="{{UrluploadPatients}}" onclick="window.location.href='{{UrluploadPatients}}'"
+                  <img src="{{Health_card}}" onclick="window.location.href='{{UrluploadPatients}}'"
                     style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrluploadPatients">
-                  <img src="{{UrluploadSigned}}" onclick="window.location.href='{{UrluploadSigned}}'"
-                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrluploadSigned">
+                 
                 </div>
                 <div class="column">
-                  <img class="img-fluid" alt="Responsive image" id="uploadSigned">
                 </div>
               </div>
             </div>
@@ -948,18 +946,18 @@
 
         <div id="popup3" class="overlay" style="z-index: 100;">
 
-          <div class="popup" style="width: 60%; height: 90%; overflow-y: auto; text-align: left;">
-            <p>Email To Insurance Company</p>
+          <div class="popup" style="width: 60%; height: 70%; overflow-y: auto; text-align: left;">
+            <h2>Email To Insurance Company</h2>
             <a class="close" href="#">&times;</a>
             <div style="display: flex;flex-wrap: wrap;">
-              <form method="POST" action="/sendmail">
+              <form method="POST" action="/sendmail" enctype="multipart/form-data" >
                 {% csrf_token %}
-                <input name="email_title" placeholder="Email Title" type="text"
-                  style="width: 500px; height: 30px; border-radius: 15px;" class="form-control"> <br>
-
-                <input name="email_content" placeholder="Email Content" type="text"
-                  style="width: 500px; height: 100px; border-radius: 15px;" class="form-control">
-
+                <span style="font-size: smaller;" class="smallText">Email Title</span>
+                <input name="email_title" type="text" style="width: 500px; height: 30px; border-radius: 15px;"
+                  class="form-control"> <br>
+                <span style="font-size: smaller;" class="smallText">Email Content</span>
+                <input name="email_content" type="text" style="width: 500px; height: 100px; border-radius: 15px;"
+                  class="form-control">
 
 
                 <div class="row">
@@ -1017,7 +1015,8 @@
                     </script>
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Patients Health
                       Id Card</label>
-                    <input type="file" name="uploadPatientsHealth" id="uploadPatientsHealth" multiple>
+                    <input type="file" name="uploadPatientsHealth" id="uploadPatientsHealth"
+                    accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
 
                     <script>
                       function uploadPatients() {
@@ -1063,7 +1062,8 @@
                   <div class="column">
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Consultation
                       Papers</label>
-                    <input type="file" name="uploadConsultaion" id="uploadConsultaion" multiple>
+                    <input type="file" name="uploadConsultaion" id="uploadConsultaion" 
+                    accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"  multiple>
 
                     <script>
                       function uploadConsultation() {
@@ -1108,7 +1108,8 @@
 
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">ID Proof
                     </label>
-                    <input type="file" name="idproofid" id="idproofid" multiple>
+                    <input type="file" name="idproofid" id="idproofid"
+                    accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
 
                     <script>
                       function idproof() {

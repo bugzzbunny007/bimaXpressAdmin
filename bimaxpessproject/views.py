@@ -901,23 +901,22 @@ def claimpage1(request):
                     return True	
                 else:	
                     return False	
-            if checkKey(data, "UrlotherDocuments"):	
-                context['UrlotherDocuments'] = data['UrlotherDocuments']	
-            else:	
-                 context['UrlotherDocuments'] = "https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483296.jpg"	
-            if checkKey(data, "UrluploadConsultation"):	
-                context['UrluploadConsultation'] = data['UrluploadConsultation']	
-            else:	
-                context['UrluploadConsultation'] = "https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483296.jpg"	
-            if checkKey(data, "UrluploadPatients"):	
-                context['UrluploadPatients'] = data['UrluploadPatients']	
-            else:	
-                context['UrluploadPatients'] = "https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483296.jpg"	
-            if checkKey(data, "UrluploadSigned"):	
-                context['UrluploadSigned'] = data['UrluploadSigned']	
-            else:	
-                context['UrluploadSigned'] = "https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483296.jpg"
-        
+            if checkKey(data, "Aadhar_Card_Back"):	
+                context['Aadhar_Card_Back'] = data['Aadhar_Card_Back']	
+            else:
+                context['Aadhar_Card_Back'] = "https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483296.jpg"
+
+            if checkKey(data, "Aadhar_card_Front"):	
+                context['Aadhar_card_Front'] = data['Aadhar_card_Front']	
+            else:
+                context['Aadhar_card_Front'] = "https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483296.jpg"
+
+            if checkKey(data, "Health_card"):	
+                context['Health_card'] = data['Health_card']	
+            else:
+                context['Health_card'] = "https://thumbs.dreamstime.com/z/no-image-available-icon-photo-camera-flat-vector-illustration-132483296.jpg"
+
+
         return render(request, 'pageAccordian.html', context)
     else:
         return redirect('login')
@@ -1085,10 +1084,23 @@ def login(request):
 
 def sendmail(request):
     emailId = request.session['hospital_email']
+    data = db.collection(u'hospitals').document(emailId).get()
+    user = data.to_dict()['Emailer']
+    smtpVal = user['smtp']
+    imapVal = user['imap']
+    password = user['password']
+
     if request.method == 'POST':
         
         sub = request.POST.get('emailSubject')
         body = request.POST.get('emailBody')
+
+        consultPapers = request.FILES.getlist('uploadConsultaion')
+        healthCard = request.FILES.getlist("uploadPatientsHealth")
+        aadharCard  = request.FILES.getlist("uploadIdentityCard")
+        print('*****')
+        
+        files = healthCard+consultPapers+aadharCard
 
         print(sub)
         print(body)
@@ -1110,54 +1122,12 @@ def sendmail(request):
         companyName = companyName.replace(" ","_")
         companyDetails = db.collection(u'InsuranceCompany_or_TPA').document(companyName).get().to_dict()
         to = companyDetails['email']
-
-        datadir = 'c:/'
-        directory = case
-        path = os.path.join(datadir,directory)
-        os.mkdir(path)
-        storage = firebase.storage()
-
-        #consultation forms
-        # emailId = 'lbs@gmail.com'
-        # case = 'case2'
-        patient_details = db.collection(u'hospitals').document(emailId).collection(u'cases').document(case).collection(u'patient_details').document(u'patient_details').get()
-        consultArray = patient_details.to_dict()
-
-        x=0
-        for urls in consultArray['Consultation_Paper']:
-            r =requests.get(urls, allow_redirects=True)
-            k = str(x+1)
-            x = x+1
-            open(path +'/consultation'+k+'.jpg', 'wb').write(r.content)
-
-        # emailId = 'anish@bimaxpress.com'
-        # to='anishshende001@gmail.com'
-
-        #aadhar card
-        AadharCardFrontUrl = consultArray['Aadhar_Card_Front']
-        r =requests.get(AadharCardFrontUrl, allow_redirects=True)
-        open(path +'/AadharCardFront.jpg', 'wb').write(r.content)
-
-        AadharCardBackUrl = consultArray['Aadhar_Card_Back']
-        r =requests.get(AadharCardBackUrl, allow_redirects=True)
-        open(path +'/AadharCardBack.jpg', 'wb').write(r.content)
-
-        #health card 
-        healthCardUrl = consultArray['Health_card']
-        r =requests.get(healthCardUrl, allow_redirects=True)
-        open(path +'/healthCard.jpg', 'wb').write(r.content)
-
-        filesDown = os.listdir(path+'/')
-        files = []
-        for f in filesDown:
-            filePath = path+'/'+f
-            files.append(filePath)
-
-        print(files)
-
-        sendemail(emailId,to,sub,body,Bcc,Cc,files)
+       
+        sendemail(emailId,to,sub,body,Bcc,Cc,files,smtpVal,imapVal,password)
 
         return redirect('mainpage')
+
+    
 
     
 
@@ -1194,27 +1164,15 @@ def savestatus(request):
     
     print('********************')
 
-    statusVal = data['status'].upper()
-    print(statusVal)
-    statusArray = city_ref.get().to_dict()['statusimage']['Settled']
-
-    datadir = 'C://'
-    directory = data['save']
-    # print(directory)
-    path = os.path.join(datadir,directory)
-    os.mkdir(path)
-
-    for f in statusArray:
-        r =requests.get(f, allow_redirects=True)
-        k = str(x+1)
-        x = x+1
-        open(path +'/'+statusVal+k+'.jpg', 'wb').write(r.content)
-
-    filesDown = os.listdir(path+'/')
-    files = []
-    for f in filesDown:
-        filePath = path+'/'+f
-        files.append(filePath)
+    list = data['save'].split(',')
+    caseNumber = list[0]
+    data['save'] = caseNumber
+    insuranceCompany = list[1]
+    print(city_ref)
+    files = request.FILES.getlist('files')
+    sub = data['email_title']
+    msg = data['email_content']
+    toEmail = db.collection(u'InsuranceCompany_or_TPA').document(insuranceCompany)['email']
 
     print('********************')
 
@@ -1238,7 +1196,14 @@ def savestatus(request):
 
     fromEmail = request.session['hospital_email']
     
-    # sendemail(fromEmail, toEmail, sub, msg, bcc, cc, files)
+    details = db.collection(u'hospitals').document(fromEmail).get().to_dict()
+    smtpVal = details['smtp']
+    imapVal = details['imap']
+    password = details['password']
+    Bcc = ""
+    Cc=""
+    
+    sendemail(fromEmail,toEmail,sub,msg,Bcc,Cc,files,smtpVal,imapVal,password)
         
     return redirect("mainpage")
 
@@ -1471,7 +1436,7 @@ def saveData(request):
                         case).collection(u'hospital_details').document(u'hospital_charges').update(hospital_charges)
 
                     db.collection(u'hospitals').document(f'{email}').collection(u'cases').document(
-                        case).update({"audit_trail": firestore.ArrayUnion([data.get('status', "None")+'+'+datetime.today().strftime('%Y-%m-%d')+'+'+data.get('email_title', "None")])})
+                        case).update({"audit_trail": firestore.ArrayUnion([data.get('status', "FormCreation")+'+'+datetime.today().strftime('%Y-%m-%d')+'+'+data.get('email_title', "FormCreation")])}),
 
                 except:
                 #     return HttpResponse("Exception")
@@ -1486,6 +1451,10 @@ def saveData(request):
 
                     db.collection(u'hospitals').document(f'{email}').collection(u'cases').document(
                         case).collection(u'hospital_details').document(u'hospital_charges').set(hospital_charges)
+                    
+                    db.collection(u'hospitals').document(f'{email}').collection(u'cases').document(
+                        case).set({"audit_trail": firestore.ArrayUnion([data.get('status', "ForceFormCreation")+'+'+datetime.today().strftime('%Y-%m-%d')+'+'+data.get('email_title', "ForceFormCreation")])})
+
 
                 
                     db.collection(u'hospitals').document(f'{email}').collection(u'cases').document(case).set({
@@ -1500,6 +1469,11 @@ def saveData(request):
             db.collection(u'hospitals').document(f'{email}').collection(u'cases').document(case).update({
                 'formstatus': u'draft',
             })
+
+            
+            # aadharCard = request.FILES.getlist('uploadAadharCard')
+
+
 
             # storage= firebase.storage()
             # datadir = '/home/anishshende/bmxp'
@@ -1775,20 +1749,28 @@ def spliterdate(s):
 
 def bunny(request):
     context = {}
-    sender = "anish@bimaxpress.com"
+    # sender = "anish@bimaxpress.com"
 
-    # sender = request.session['hospital_email']
+    sender = request.session['hospital_email']
+    # sender = "harshyadav24@yahoo.com"
+    print(sender)
         # sender = 'newuser@gmail.com'
 
     data = db.collection(u'hospitals').document(sender).get()
         
     user = data.to_dict()['Emailer']
 
-    domain = user['domain']
-
+    imapVal = user['imap']
+    smtpVal = user['smtp']
     emailID = user['email']
-
     password = user['password']
+    print(emailID)
+    print(password)
+
+    # imapVal = 'imap.gmail.com'
+    # smtpVal = 'smtp.gmail.com'
+    # emailID = 'harshyadav94250@gmail.com'
+    # password = 'rfd1ckpa.'
 
     # domain = 'mail.bimaxpress.com'
     # emailID = 'anish@bimaxpress.com'
@@ -1798,12 +1780,7 @@ def bunny(request):
     if request.method == "POST":
         
         file = request.FILES.getlist("filenameupload")
-        # fs = FileSystemStorage()
-        # print(file)
-        # for f in file:
-        #     # filename = fs.save('/home/anishshende/bmxp/' + file.name, file)
-        #     print(f)
-        
+       
         sender_msg = request.POST.get('smsg')
         reciever = request.POST.get('recv')
         Bcc = request.POST.get('recvBcc')
@@ -1816,13 +1793,22 @@ def bunny(request):
         print('_'*50)
         # print(len(file))
 
-        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,domain,password)
+        sendemail(emailID, reciever, sub, sender_msg, Bcc, Cc,file,smtpVal,imapVal,password)
+        
 
     # print(data)
 
-    imap_server = imaplib.IMAP4_SSL(host=domain)
-    imap_server.login(emailID, password)
+    imap_server = imaplib.IMAP4_SSL(host=imapVal)
+    print("this is imap",imap_server)
+    
+    print(imap_server.login(emailID, password))
+    
     imap_server.select()  # Default is `INBOX`
+
+    # status, resp = imap_server.status('INBOX')
+    # print(status)
+    # print(resp)
+
     count = 0
     # Find all emails in inbox
     _, message_numbers_raw = imap_server.search(None, 'ALL')
@@ -1836,6 +1822,9 @@ def bunny(request):
         x = email.message_from_bytes(msg[0][1])
         nameid, emailid = spliteremail(x['from'])
         time = spliterdate(x['date'])
+
+        # nameid = emailID = time = ""
+
         # print("========email start===========")
         # print(x)
         # print("========email end===========")
@@ -1856,19 +1845,13 @@ def bunny(request):
                 newtext += "\n"
                 newtext += part.get_payload(decode=False)
 
-        # newtext.replace('"',"\'" )
-        # newtext.replace("'","\'")
-        # newtext = escape(newtext)
-        # print(newtext)
         msg_json = {
             # "from" : x['from'],
             "from": escape(emailid),
             "name": escape(optimiser(nameid)),
             "to": escape(x['to']),
             "subject": escape(x['subject']),
-            # "name": x['name'],
-            # "name": spliter1(x['from']),
-            # "emailaddr": spliter2(x['from']),
+            
             "message": escape(newtext),
             "date": escape(time),
             "id": count,
@@ -1915,7 +1898,7 @@ def replymail(request):
         sender = request.session['hospital_email']
         data = db.collection(u'hospitals').document(sender).get()
         user = data.to_dict()['Emailer']
-        domain = user['domain']
+        imapVal = user['imap']
         emailID = user['email']
         password = user['password']
 
@@ -1931,7 +1914,7 @@ def replymail(request):
         # att = request.POST.get('filenameupload')
         # sender = "anish@bimaxpress.com"
 
-        imap_server = imaplib.IMAP4_SSL(host=domain)
+        imap_server = imaplib.IMAP4_SSL(host=imapVal)
         imap_server.login(emailID, password)
         imap_server.select()
 
@@ -1960,6 +1943,7 @@ def replymail(request):
     # return render(request,"baseemail.html",context)
 
 
+
 def create(request):
     if request.method == 'POST':
         to = request.POST['to']
@@ -1973,7 +1957,6 @@ def create(request):
 
     # print("EMAIL SENT")
 
-
 def sentmail(request):
     context = {}
     if request.method == "POST":
@@ -1982,7 +1965,8 @@ def sentmail(request):
         sender = request.session['hospital_email']
         data = db.collection(u'hospitals').document(sender).get()
         user = data.to_dict()['Emailer']
-        domain = user['domain']
+        imapVal = user['imap']
+        smtpVal = user['smtp']
         emailID = user['email']
         password = user['password']
         # file = request.FILES['filenameupload']
@@ -1994,10 +1978,10 @@ def sentmail(request):
         # att = request.POST.get('filenameupload')
         # sender = "anish@bimaxpress.com"
         # print(len(file))
-        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,domain,password)
+        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,smtpVal,imapVal,password)
     # print(data)
 
-    imap_server = imaplib.IMAP4_SSL(host=domain)
+    imap_server = imaplib.IMAP4_SSL(host=imapVal)
     imap_server.login(emailID, password)
     imap_server.select('INBOX.Sent')  # sent folder selected
     count = 0
@@ -2091,6 +2075,7 @@ def sentmail(request):
 # TRASH Folder
 
 
+
 def trashmail(request):
     context = {}
     if request.method == "POST":
@@ -2098,7 +2083,8 @@ def trashmail(request):
         sender = request.session['hospital_email']
         data = db.collection(u'hospitals').document(sender).get()
         user = data.to_dict()['Emailer']
-        domain = user['domain']
+        imapVal = user['imap']
+        smtpVal = user['smtp']
         emailID = user['email']
         password = user['password']
         # file = request.FILES['filenameupload']
@@ -2110,10 +2096,10 @@ def trashmail(request):
         # att = request.POST.get('filenameupload')
         # sender = "anish@bimaxpress.com"
         # print(len(file))
-        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,domain,password)
+        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,smtpVal,imapVal,password)
     # print(data)
 
-    imap_server = imaplib.IMAP4_SSL(host=domain)
+    imap_server = imaplib.IMAP4_SSL(host=imapVal)
     imap_server.login(emailID, password)
     imap_server.select('INBOX.Trash')  # Default is `INBOX`
     count = 0
@@ -2188,6 +2174,7 @@ def trashmail(request):
 # DRAFTS Folder
 
 
+
 def draftmail(request):
     context = {}
     if request.method == "POST":
@@ -2195,7 +2182,8 @@ def draftmail(request):
         sender = request.session['hospital_email']
         data = db.collection(u'hospitals').document(sender).get()
         user = data.to_dict()['Emailer']
-        domain = user['domain']
+        imapVal = user['imap']
+        smtpVal = user['smtp']
         emailID = user['email']
         password = user['password']
 
@@ -2208,10 +2196,10 @@ def draftmail(request):
         # att = request.POST.get('filenameupload')
         # sender = "anish@bimaxpress.com"
         # print(len(file))
-        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,domain,password)
+        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,smtpVal,imapVal,password)
     # print(data)
 
-    imap_server = imaplib.IMAP4_SSL(host=domain)
+    imap_server = imaplib.IMAP4_SSL(host=imapVal)
     imap_server.login(emailID, password)
     imap_server.select('INBOX.Sent')  # Default is `INBOX`
     count = 0
@@ -2285,7 +2273,6 @@ def draftmail(request):
 
 # Starred Folder
 
-
 def starredemail(request):
     context = {}
     if request.method == "POST":
@@ -2293,7 +2280,8 @@ def starredemail(request):
         sender = request.session['hospital_email']
         data = db.collection(u'hospitals').document(sender).get()
         user = data.to_dict()['Emailer']
-        domain = user['domain']
+        imapVal = user['imap']
+        smtpVal = user['smtp']
         emailID = user['email']
         password = user['password']
         # file = request.FILES['filenameupload']
@@ -2305,10 +2293,10 @@ def starredemail(request):
         # att = request.POST.get('filenameupload')
         # sender = "anish@bimaxpress.com"
         # print(len(file))
-        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,domain,password)
+        sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,file,smtpVal,imapVal,password)
     # print(data)
 
-    imap_server = imaplib.IMAP4_SSL(host=domain)
+    imap_server = imaplib.IMAP4_SSL(host=imapVal)
     imap_server.login(emailID, password)
     imap_server.select('INBOX')  # Default is `INBOX`
     count = 0
@@ -2382,10 +2370,10 @@ def starredemail(request):
 
 
 
-def sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,files,domain,password):
+def sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,files,smtpVal,imapVal,password):
 
     connection = get_connection(
-        host = domain,
+        host = smtpVal,
         port = EMAIL_PORT,
         username = sender,
         password = password ,
@@ -2397,7 +2385,7 @@ def sendemail(sender, reciever, sub, sender_msg, Bcc, Cc,files,domain,password):
                                    Bcc, ], cc=[Cc, ],connection=connection)
     # print(email.message())
     text = str(email.message())
-    imap_server = imaplib.IMAP4_SSL(host=domain, port=993)
+    imap_server = imaplib.IMAP4_SSL(host=imapVal, port=993)
 
     
     imap_server.login(sender, password)
