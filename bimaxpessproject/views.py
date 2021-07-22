@@ -888,14 +888,25 @@ def claimpage1(request):
         context['data'] = databunny
         context['system'] = system
         context['role'] = request.session['role']
-        context['insurance_company'] = request.session['insurance_company']
-
         print("cool dude", system)
+
+        doc_ref = db.collection(u'hospitals').document(email)
+        doc = doc_ref.get()
+        datamy=[]
+        if doc.exists:
+            datamy = doc.to_dict()['Empanelled_companies']
+
+        else:
+            print(u'No such document!')
+        print(datamy)
+        context['company'] = datamy
+        context['email'] = email
         
+        # context['Empanelled_companies'] = doc.to_dict()['Empanelled_companies']
+
         doc = db.collection('hospitals').document(email).collection('cases').document(case).collection('patient_details').stream()	
         for docs in doc:	
             data = docs.to_dict()	
-            print(data)	
             def checkKey(dict, key):	
                 if key in dict:	
                     return True	
@@ -2365,7 +2376,7 @@ def starredemail(request):
     context['data_sub'] = sub_list
     context['data_date'] = date_list
     context['data'] = l
-
+    
     return render(request, "starred.html", context)
 
 

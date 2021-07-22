@@ -222,6 +222,7 @@
       style="padding-left: 5em !important; padding-right: 5em !important; background-color: white !important;">
 
       <div class="main" onmouseover="mainHover()" style="width: 100%;">
+
         <!-- {{data}} -->
         <form accept-charset="UTF-8" action="saveData/" enctype="multipart/form-data" id="msform" method="POST"
           novalidate="">
@@ -243,17 +244,10 @@
                       aria-labelledby="headingOne">
                       <div class="panel-body">
                         <label for="cars">Insurance Company / TPA</label>
-                        <select class="form-control" name="insurance_company" id="cars" required>
-
-                          {% for i in insurance_company.keys %}
-                          {% if i == data.patient_details.Insurance_Company %}
-                          <option class="options" selected value="{{data.patient_details.Insurance_Company}}">
-                            {{data.patient_details.Insurance_Company}}</option>
-                          {% else %}
+                        <select class="form-control" name="insurance_company" id="tpa" onfocusout="getdata()" required>
+                          {% for i in company %}
                           <option value="{{i}}">{{i}}</option>
-                          {% endif %}
                           {% endfor %}
-
                         </select>
                         <button name="save" value="{{system}}"
                           onclick="alert(`form saved successfully`);$(`#msform`).submit(); activeMybtn()"
@@ -887,8 +881,16 @@
         </form>
       </div>
 
-      <div class="container" style="margin-left: 20%; align-self: center;">
+      <div class="container" style="margin-left: 10%; align-self: center;">
         <div style="display: flex; flex-direction: row; margin: 5px;">
+          <div>
+            <button type="button" class="btn btn-warning" data-toggle="modal"
+              onclick="uploadAndViewDocuments();window.location.href='#popup4'"
+              style=" background-color: rgb(255, 166, 0); width: 200px; border-radius: 20px; color: white; margin: 5px; height: 40px;"
+              data-target="#exampleModal" id="viewDocuments">
+              View RateList
+            </button>
+          </div>
           <div>
             <form action="/generateform" method="POST">
               {% csrf_token %}
@@ -918,6 +920,7 @@
 
 
         </div>
+        <input type="text" style="visibility: hidden;" value="{{email}}" id="emaildata">
         <div id="popup2" class="overlay" style="z-index: 100;">
 
           <div class="popup" onload="myShowData()" style="width: 60%; height: 70%; overflow-y: auto;">
@@ -926,16 +929,16 @@
 
               <div class="row">
                 <div class="column">
-                  <img src="{{Aadhar_card_Front}}" onclick="window.location.href='{{UrlotherDocuments}}'"
-                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrlotherDocuments">
+                  <img src="{{Aadhar_card_Front}}" onclick="window.location.href='{{Aadhar_card_Front}}'"
+                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="Aadhar_card_Front">
 
-                  <img src="{{Aadhar_Card_Back}}" onclick="window.location.href='{{UrluploadConsultation}}'"
-                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrluploadConsultation">
+                  <img src="{{Aadhar_Card_Back}}" onclick="window.location.href='{{Aadhar_Card_Back}}'"
+                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="Aadhar_Card_Back">
                 </div>
                 <div class="column">
-                  <img src="{{Health_card}}" onclick="window.location.href='{{UrluploadPatients}}'"
-                    style="cursor: pointer;" class="img-fluid" alt="Responsive image" id="UrluploadPatients">
-                 
+                  <img src="{{Health_card}}" onclick="window.location.href='{{Health_card}}'" style="cursor: pointer;"
+                    class="img-fluid" alt="Responsive image" id="Health_card">
+
                 </div>
                 <div class="column">
                 </div>
@@ -943,14 +946,31 @@
             </div>
           </div>
         </div>
+        <script>
 
+        </script>
+        <div id="popup4" class="overlay" style="z-index: 100;">
+
+          <div class="popup" onload="myShowData()" style="width: 60%; height: 70%; overflow-y: auto;">
+            <a class="close" style="color: red; font-weight: bolder;" href="#">&times;</a>
+            <div style="display: flex;flex-wrap: wrap;">
+
+              <div class="row">
+                <div class="column">
+                  <img id="viewRateList" src="data:image/jpeg;base64,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"
+                    style="cursor: pointer;" width="1000px" class="img-fluid" alt="Responsive image" id="UrlotherDocuments">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id="popup3" class="overlay" style="z-index: 100;">
 
           <div class="popup" style="width: 60%; height: 70%; overflow-y: auto; text-align: left;">
             <h2>Email To Insurance Company</h2>
             <a class="close" href="#">&times;</a>
             <div style="display: flex;flex-wrap: wrap;">
-              <form method="POST" action="/sendmail" enctype="multipart/form-data" >
+              <form method="POST" action="/sendmail" enctype="multipart/form-data">
                 {% csrf_token %}
                 <span style="font-size: smaller;" class="smallText">Email Title</span>
                 <input name="email_title" type="text" style="width: 500px; height: 30px; border-radius: 15px;"
@@ -976,7 +996,7 @@
                       mycase = myArr[1]
                       console.log(myid, "or ", mycase)
                       doc_ref = db.collection("hospitals").doc(email)
-                      
+
                       function uploadSigned() {
                         const ref = firebase.storage().ref()
                         for (let i = 0; i < uploadSinged.files.length; i++) {
@@ -1016,7 +1036,7 @@
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Patients Health
                       Id Card</label>
                     <input type="file" name="uploadPatientsHealth" id="uploadPatientsHealth"
-                    accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+                      accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
 
                     <script>
                       function uploadPatients() {
@@ -1062,8 +1082,8 @@
                   <div class="column">
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Consultation
                       Papers</label>
-                    <input type="file" name="uploadConsultaion" id="uploadConsultaion" 
-                    accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"  multiple>
+                    <input type="file" name="uploadConsultaion" id="uploadConsultaion"
+                      accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
 
                     <script>
                       function uploadConsultation() {
@@ -1109,12 +1129,12 @@
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">ID Proof
                     </label>
                     <input type="file" name="idproofid" id="idproofid"
-                    accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+                      accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
 
                     <script>
                       function idproof() {
                         for (let i = 0; i < idproofid.files.length; i++) {
-                          console.log("loop chala")
+
                           const ref = firebase.storage().ref()
                           const file = document.getElementById('idproofid').files[i]
                           const name = file.name
@@ -1125,7 +1145,7 @@
                           task
                             .then(snapshot => snapshot.ref.getDownloadURL())
                             .then(url => {
-                              console.log(url)
+
                               urlThree = url
                               db.collection('hospitals').doc(myid).collection('cases').doc(mycase).get()
                                 .then((docSnapshot) => {
@@ -1177,17 +1197,17 @@
                                 if (docSnapshot.exists) {
                                   db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
                                     'UrlotherDocuments': {
-                                        [`UrlotherDocuments${i}`]: url
-                                      },
-                                    }, { merge: true })
-                                  }
+                                      [`UrlotherDocuments${i}`]: url
+                                    },
+                                  }, { merge: true })
+                                }
                                 else {
                                   db.collection('hospitals').doc(myid).collection('cases').doc(mycase).collection('patient_details').doc('patient_details').set({
                                     'UrlotherDocuments': {
-                                        [`UrlotherDocuments${i}`]: url
-                                      }
-                                    }, { merge: true })
-                                  }
+                                      [`UrlotherDocuments${i}`]: url
+                                    }
+                                  }, { merge: true })
+                                }
                               });
                             alert('image Uploaded Successfully')
                           })
@@ -1332,6 +1352,50 @@
 
 
     var db = firebase.firestore();
+    var grv = []
+    
+    
+
+    var emaildata = document.getElementById('emaildata').value;
+    console.log("abbi vala", emaildata)
+    const cityRef = db.collection('hospitals').doc(emaildata);
+    var imgurl
+    async function getdata() {
+      var tpa = document.getElementById('tpa').value;
+      const doc = await cityRef.get();
+      if (!doc.exists) {
+        console.log('No such document!');
+      } else {
+        grv = doc.data()['Empanelled_companies'];
+      }
+      imgurl = grv[tpa]['Ratelist'];
+      console.log(imgurl);
+      document.getElementById('viewRateList').src = imgurl;
+    }
+
+
+
+
+
+
+    // getdata()
+    // function getdata() {
+    //   db.settings({ timestampsInSnapshots: true });
+    //   db.collection('hospitals').doc(emaildata).get().then((snapshot) => {
+
+    //     snapshot.docs.forEach(doc => {
+    //       let items = doc.data();
+
+    //       /* Make data suitable for rendering */
+    //       items = JSON.stringify(items);
+    //       console.log(items)
+
+    //       /* Update the components state with query result */
+    //       this.setState({ items: items })
+    //     });
+
+    //   });
+    // }
 
 
   </script>
