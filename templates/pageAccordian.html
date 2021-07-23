@@ -107,7 +107,8 @@
         width: 70%;
       }
     }
-    .hidden{
+
+    .hidden {
       display: none;
       visibility: hidden;
     }
@@ -235,8 +236,7 @@
 
         <div id="wait"
           style="display:none;width:69px;height:89px;position:absolute;top:50%;left:50%;padding:2px; z-index: 999;">
-          <img src='https://home.askvet.app/images/loading-dog.gif' id="loadingImg"
-            width="100" height="100" />
+          <img src='https://home.askvet.app/images/loading-dog.gif' id="loadingImg" width="100" height="100" />
         </div>
 
         <!-- {{data}} -->
@@ -1003,7 +1003,7 @@
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Signed Off Pre
                       Auth Form</label>
                     <div style="display: flex;">
-                      <input type="file" name="uploadSinged" id="uploadSinged" multiple>
+                      <input type="file" name="uploadSigned" id="uploadSigned" multiple>
                     </div>
 
                     <br> <br>
@@ -1027,7 +1027,7 @@
 
                         const ref = firebase.storage().ref()
                         for (let i = 0; i < uploadSinged.files.length; i++) {
-                          const file = document.getElementById('uploadSinged').files[i]
+                          const file = document.getElementById('uploadSigned').files[i]
                           const name = file.name
                           const metadata = {
                             contentType: file.type
@@ -1059,9 +1059,9 @@
                               // loadingImg.setAttribute("style", "disply:none; visiblity:hidden");
                               // temppp.setAttribute("style", "disply:none; visiblity:hidden");
 
-                              document.querySelector('#wait').classList.toggle('hidden');
-
-
+                              // var h = document.getElementById('wait');
+                              // h.classList.toggle('hidden')
+                              $("#wait").css("display", "none");
                             })
 
                         }
@@ -1108,8 +1108,9 @@
                                     }, { merge: true })
                                   }
                                 });
-                                document.querySelector('#wait').classList.toggle('hidden');
-
+                              // var h = document.getElementById('wait');
+                              // h.classList.toggle('hidden')
+                              $("#wait").css("display", "none");
                             })
 
                         }
@@ -1121,15 +1122,15 @@
                   <div class="column">
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Consultation
                       Papers</label>
-                    <input type="file" name="uploadConsultaion" id="uploadConsultaion"
-                      accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
+                      <input type="file" name="uploadConsultation" id="uploadConsultation" 
+                      accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"  multiple>
 
                     <script>
                       function uploadConsultation() {
                         $("#wait").css("display", "block");
                         for (let i = 0; i < uploadConsultaion.files.length; i++) {
                           const ref = firebase.storage().ref()
-                          const file = document.getElementById('uploadConsultaion').files[i]
+                          const file = document.getElementById('uploadConsultation').files[i]
                           const name = file.name
                           const metadata = {
                             contentType: file.type
@@ -1155,8 +1156,9 @@
                                     }, { merge: true })
                                   }
                                 });
-                                document.querySelector('#wait').classList.toggle('hidden');
-
+                              // var h = document.getElementById('wait');
+                              // h.classList.toggle('hidden')
+                              $("#wait").css("display", "none");
                             })
 
                         }
@@ -1174,6 +1176,7 @@
 
                     <script>
                       function idproof() {
+
                         $("#wait").css("display", "block");
 
                         for (let i = 0; i < idproofid.files.length; i++) {
@@ -1207,7 +1210,9 @@
                                     }, { merge: true })
                                   }
                                 });
-                                document.querySelector('#wait').classList.toggle('hidden');
+                              // var h = document.getElementById('wait');
+                              // h.classList.toggle('hidden')
+                              $("#wait").css("display", "none");
 
                             })
 
@@ -1254,7 +1259,9 @@
                                   }, { merge: true })
                                 }
                               });
-                              document.querySelector('#wait').classList.toggle('hidden');
+                            // var h = document.getElementById('wait');
+                            // h.classList.toggle('hidden')
+                            $("#wait").css("display", "none");
 
 
                           })
