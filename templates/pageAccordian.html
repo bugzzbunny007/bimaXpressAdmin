@@ -476,13 +476,16 @@
                               id='nonAllopathic' type="radio"> Non
                             Allopathic Treatment <br>
 
-                            <label for="exampleInputEmail1">If Investigation & /or medical management provide details</label>
+                            <label for="exampleInputEmail1">If Investigation & /or medical management provide
+                              details</label>
                             <input class="form-control" type="text"
-                              value="{{data.addition_details.If_Investigation_Or_Medical_Management_Provide_Details}}" name="If_Investigation_Or_Medical_Management_Provide_Details">
+                              value="{{data.addition_details.If_Investigation_Or_Medical_Management_Provide_Details}}"
+                              name="If_Investigation_Or_Medical_Management_Provide_Details">
 
-                              <label for="exampleInputEmail1">route of drug administration</label>
+                            <label for="exampleInputEmail1">route of drug administration</label>
                             <input class="form-control" type="text"
-                              value="{{data.addition_details.Route_Of_Drug_Administration}}" name="Route_Of_Drug_Administration">
+                              value="{{data.addition_details.Route_Of_Drug_Administration}}"
+                              name="Route_Of_Drug_Administration">
 
 
 
@@ -534,14 +537,15 @@
                             </div>
                           </div>
                           <div class="column">
-                            
+
                             <label for="exampleInputEmail1">If surgical name of surgery </label>
                             <input class="form-control" type="text"
-                              value="{{data.addition_details.If_Surgical_Name_of_Surgery}}" name="If_Surgical_Name_of_Surgery">
+                              value="{{data.addition_details.If_Surgical_Name_of_Surgery}}"
+                              name="If_Surgical_Name_of_Surgery">
 
-                              <label for="exampleInputEmail1">ICD 10 PCS code </label>
-                            <input class="form-control" type="text"
-                              value="{{data.addition_details.ICD_Code_10_PCS}}" name="ICD_Code_10_PCS">
+                            <label for="exampleInputEmail1">ICD 10 PCS code </label>
+                            <input class="form-control" type="text" value="{{data.addition_details.ICD_Code_10_PCS}}"
+                              name="ICD_Code_10_PCS">
 
 
                             <label for="exampleInputEmail1">If Other Tratment Provide Details</label>
@@ -775,46 +779,79 @@
 
                             <label for="exampleInputEmail1">Per Day Room Rent + Nursing & Services Charge + Patient
                               Diet</label>
-                            <input class="form-control" name="admission_perDayRoomRent" type="number"
-                              value="{{data.hospital_charges.Per_Day_Room_Rent}}" placeholder="">
+                            <input class="form-control" id="admission_perDayRoomRent" name="admission_perDayRoomRent"
+                              type="number" onfocusout="c()" placeholder="">
+                            <script>
+
+                            </script>
 
                             <label for="exampleInputEmail1">Expected Cost For Investigation + Diagnostics</label>
-                            <input class="form-control" name="admission_expectedCostForInvestigation" type="number"
-                              value="{{data.hospital_charges.Cost_Of_Investigation}}" placeholder="">
+                            <input class="form-control" id="admission_expectedCostForInvestigation"
+                              name="admission_expectedCostForInvestigation" type="number" placeholder=""
+                              onfocusout="c()">
 
                             <label for="exampleInputEmail1">ICU Charge</label>
-                            <input class="form-control" name="admission_icuCharge" type="number"
-                              value="{{data.hospital_charges.ICU_Charges}}" placeholder="">
+                            <input class="form-control" id="admission_icuCharge" name="admission_icuCharge"
+                              type="number" placeholder="" onfocusout="c()">
 
                             <label for="exampleInputEmail1">OT Charge</label>
-                            <input class="form-control" name="admission_otCharge" type="number"
-                              value="{{data.hospital_charges.OT_Charges}}" placeholder="">
+                            <input class="form-control" id="admission_otCharge" name="admission_otCharge" type="number"
+                              placeholder="" onfocusout="c()">
 
                             <label for="exampleInputEmail1">Professional Fees Surgeon + Anesthetist Fees + Consultation
                               Charge</label>
-                            <input class="form-control" name="admission_professionalFeesSurgeon" type="number"
-                              value="{{data.hospital_charges.ProfessionalFeesSurgeon}}" placeholder="">
+                            <input class="form-control" id="admission_professionalFeesSurgeon"
+                              name="admission_professionalFeesSurgeon" type="number" placeholder="" onfocusout="c()">
 
                             <label for="exampleInputEmail1">Medicine + Consumables + Cost of Implants (If Applicable
                               Please
                               Specify)</label>
-                            <input class="form-control" name="admission_madicineConsumablesCostOfImplats" type="number"
-                              value="{{data.hospital_charges.cost_Of_Implant}}" placeholder="">
+                            <input class="form-control" id="admission_madicineConsumablesCostOfImplats"
+                              name="admission_madicineConsumablesCostOfImplats" type="number" placeholder=""
+                              onfocusout="c()">
 
                             <label for="exampleInputEmail1">Other Hospital If Any</label>
-                            <input class="form-control" name="admission_otherHospitalIfAny" type="text"
-                              value="{{data.hospital_charges.OtherHospitalIfAny}}" placeholder="">
+                            <input class="form-control" id="admission_otherHospitalIfAny"
+                              name="admission_otherHospitalIfAny" type="number" placeholder="" onfocusout="c()">
 
                             <label for="exampleInputEmail1">All Include Package Charges If Any Applicable</label>
-                            <input class="form-control" name="admission_allIncludePackageCharge" type="number"
-                              value="{{data.hospital_charges.All_Including_Package}}" placeholder="">
+                            <input class="form-control" id="admission_allIncludePackageCharge"
+                              name="admission_allIncludePackageCharge" type="number" placeholder="" onfocusout="c()">
 
                             <!-- do calculation -->
+                            <script>
+                              function c() {
+                                var admission_perDayRoomRentl = document.getElementById('admission_perDayRoomRent').value;
+                                var admission_expectedCostForInvestigation = document.getElementById('admission_expectedCostForInvestigation').value;
+                                var admission_icuCharge = document.getElementById('admission_icuCharge').value;
+                                var admission_otCharge = document.getElementById('admission_otCharge').value;
+                                var admission_professionalFeesSurgeon = document.getElementById('admission_professionalFeesSurgeon').value;
+                                var admission_madicineConsumablesCostOfImplats = document.getElementById('admission_madicineConsumablesCostOfImplats').value;
+                                var admission_otherHospitalIfAny = document.getElementById('admission_otherHospitalIfAny').value;
+                                var admission_allIncludePackageCharge = document.getElementById('admission_allIncludePackageCharge').value;
+                                var admission_sumTotalExpected = document.getElementById('admission_sumTotalExpected');
+                                var one = parseInt(admission_perDayRoomRentl);
+                                var two = parseInt(admission_expectedCostForInvestigation)
+                                var three = parseInt(admission_icuCharge)
+                                var four = parseInt(admission_otCharge)
+                                var five = parseInt(admission_professionalFeesSurgeon)
+                                var six = parseInt(admission_madicineConsumablesCostOfImplats)
+                                var seven = parseInt(admission_otherHospitalIfAny)
+                                var eight = parseInt(admission_allIncludePackageCharge)
+
+                                var total = one + two + three + four + five + six + seven + eight;
+
+                                console.log(total);
+                                admission_sumTotalExpected.value = total;
+                              }
+
+                            </script>
 
                             <label for="exampleInputEmail1">Sum Total Expected Cost Of Hospitalization <span
                                 style="color: red;">*</span> </label>
-                            <input class="form-control" name="admission_sumTotalExpected" type="number"
-                              value="{{data.hospital_charges.total}}" placeholder="" required>
+                            <input class="form-control" name="admission_sumTotalExpected"
+                              id="admission_sumTotalExpected" type="number" value="{{data.hospital_charges.total}}"
+                              placeholder="" required>
                           </div>
                           <div class="column">
                             <label for="exampleInputEmail1">Mandatory Past History Of Any Chronic Illness If Yes, Since
@@ -1127,8 +1164,8 @@
                   <div class="column">
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Consultation
                       Papers</label>
-                   
-                    <input type="file" name="uploadConsultation" id="uploadConsultation" 
+
+                    <input type="file" name="uploadConsultation" id="uploadConsultation"
                       accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
 
                     <script>
@@ -1215,7 +1252,7 @@
                                     }, { merge: true })
                                   }
                                 });
-  
+
                               $("#wait").css("display", "none");
 
                             })
