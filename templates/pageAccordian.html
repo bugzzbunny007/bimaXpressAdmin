@@ -390,8 +390,6 @@
                             <label for="exampleInputEmail1">Occupation</label>
                             <input class="form-control" name="patient_details_occupation"
                               value="{{data.patient_details.Occupation}}" type="text">
-
-                            <label for="exampleInputEmail1">View Patient Document</label>
                             <br>
 
 
@@ -478,6 +476,16 @@
                               id='nonAllopathic' type="radio"> Non
                             Allopathic Treatment <br>
 
+                            <label for="exampleInputEmail1">If Investigation & /or medical management provide details</label>
+                            <input class="form-control" type="text"
+                              value="{{data.addition_details.If_Investigation_Or_Medical_Management_Provide_Details}}" name="If_Investigation_Or_Medical_Management_Provide_Details">
+
+                              <label for="exampleInputEmail1">route of drug administration</label>
+                            <input class="form-control" type="text"
+                              value="{{data.addition_details.Route_Of_Drug_Administration}}" name="Route_Of_Drug_Administration">
+
+
+
                             <input id="bunny_addition_details_madical_managment" style="visibility: hidden;"
                               value="{{data.addition_details.doctor_proposedLineOfTreatment_Medical_Managment}}" />
 
@@ -526,9 +534,19 @@
                             </div>
                           </div>
                           <div class="column">
+                            
+                            <label for="exampleInputEmail1">If surgical name of surgery </label>
+                            <input class="form-control" type="text"
+                              value="{{data.addition_details.If_Surgical_Name_of_Surgery}}" name="If_Surgical_Name_of_Surgery">
+
+                              <label for="exampleInputEmail1">ICD 10 PCS code </label>
+                            <input class="form-control" type="text"
+                              value="{{data.addition_details.ICD_Code_10_PCS}}" name="ICD_Code_10_PCS">
+
+
                             <label for="exampleInputEmail1">If Other Tratment Provide Details</label>
                             <input class="form-control" name="doctor_ifOtherTratmentProvideDetails"
-                              value="{{data.addition_details.If_Other_Treatment_Provide_Details}}" type="text">
+                              value="{{data.addition_details.doctor_ifOtherTratmentProvideDetails}}" type="text">
 
                             <label for="exampleInputEmail1">How Did Injury Occure</label>
                             <input class="form-control" value="{{data.addition_details.How_Did_Injury_Occur}}"
