@@ -1017,16 +1017,11 @@
                       console.log(myid, "or ", mycase)
                       doc_ref = db.collection("hospitals").doc(email)
 
-                      function uploadSigned() {
-
-
-                        // $(document).ajaxComplete(function () {
-                        //   $("#wait").css("display", "none");
-                        // });
+                      function uploadSignedfun() {
                         $("#wait").css("display", "block");
 
                         const ref = firebase.storage().ref()
-                        for (let i = 0; i < uploadSinged.files.length; i++) {
+                        for (let i = 0; i < uploadSigned.files.length; i++) {
                           const file = document.getElementById('uploadSigned').files[i]
                           const name = file.name
                           const metadata = {
@@ -1054,13 +1049,6 @@
                                   }
                                 });
 
-                              // var temppp = document.getElementById('wait');
-                              // var loadingImg = document.getElementById('loadingImg');
-                              // loadingImg.setAttribute("style", "disply:none; visiblity:hidden");
-                              // temppp.setAttribute("style", "disply:none; visiblity:hidden");
-
-                              // var h = document.getElementById('wait');
-                              // h.classList.toggle('hidden')
                               $("#wait").css("display", "none");
                             })
 
@@ -1075,7 +1063,7 @@
                       accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
 
                     <script>
-                      function uploadPatients() {
+                      function uploadPatientsfun() {
                         $("#wait").css("display", "block");
 
                         for (let i = 0; i < uploadPatientsHealth.files.length; i++) {
@@ -1108,8 +1096,7 @@
                                     }, { merge: true })
                                   }
                                 });
-                              // var h = document.getElementById('wait');
-                              // h.classList.toggle('hidden')
+
                               $("#wait").css("display", "none");
                             })
 
@@ -1122,13 +1109,14 @@
                   <div class="column">
                     <label for="exampleInputEmail1" style="font-size: smaller;" class="smallText">Upload Consultation
                       Papers</label>
-                      <input type="file" name="uploadConsultation" id="uploadConsultation" 
-                      accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"  multiple>
+                   
+                    <input type="file" name="uploadConsultation" id="uploadConsultation" 
+                      accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
 
                     <script>
-                      function uploadConsultation() {
+                      function uploadConsultationfun() {
                         $("#wait").css("display", "block");
-                        for (let i = 0; i < uploadConsultaion.files.length; i++) {
+                        for (let i = 0; i < uploadConsultation.files.length; i++) {
                           const ref = firebase.storage().ref()
                           const file = document.getElementById('uploadConsultation').files[i]
                           const name = file.name
@@ -1156,8 +1144,7 @@
                                     }, { merge: true })
                                   }
                                 });
-                              // var h = document.getElementById('wait');
-                              // h.classList.toggle('hidden')
+
                               $("#wait").css("display", "none");
                             })
 
@@ -1175,7 +1162,7 @@
                       accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
 
                     <script>
-                      function idproof() {
+                      function idprooffun() {
 
                         $("#wait").css("display", "block");
 
@@ -1210,8 +1197,7 @@
                                     }, { merge: true })
                                   }
                                 });
-                              // var h = document.getElementById('wait');
-                              // h.classList.toggle('hidden')
+  
                               $("#wait").css("display", "none");
 
                             })
@@ -1228,7 +1214,7 @@
                   <input type="file" name="otherDocumentsg" id="otherDocumentsg" multiple>
 
                   <script>
-                    function otherDocuments() {
+                    function otherDocumentsfun() {
                       $("#wait").css("display", "block");
                       for (let i = 0; i < otherDocumentsg.files.length; i++) {
 
@@ -1259,11 +1245,8 @@
                                   }, { merge: true })
                                 }
                               });
-                            // var h = document.getElementById('wait');
-                            // h.classList.toggle('hidden')
+
                             $("#wait").css("display", "none");
-
-
                           })
                       }
 
@@ -1274,7 +1257,7 @@
                       <input id="bird" type="button"
                         style=" background-color: rgb(255, 166, 0); width: 200px; border-radius: 20px; margin-top: 50px;float: right;height: 40px; margin-right: 20px; "
                         class="btn btn-warning"
-                        onclick="uploadSigned(),uploadPatients(), uploadConsultation(),idproof(), otherDocuments()"
+                        onclick="uploadSignedfun(),uploadPatientsfun(), uploadConsultationfun(),idprooffun(), otherDocumentsfun()"
                         value="Attach Files">
                     </div>
                     <div class="column" style="width: 200px !important;">
