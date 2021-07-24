@@ -333,8 +333,21 @@
 
                             <label for="exampleInputEmail1">Employee ID</label>
                             <input class="form-control" name="patient_details_EmployeeId" type="text"
-                              value="{{data.patient_details.EmployeeId}}">
+                              value="{{data.patient_details.Employee_Id}}">
 
+                            {% if data.patient_details.Other_Insurance_Company_Yes == "Yes" %}
+
+                            <div class="onclickYes" id="onclickYes">
+                              <label for="exampleInputEmail1">Other Insurance Company Name</label>
+                              <input class="form-control" name="patient_details_HealthInsurance" type="text"
+                                value="{{data.patient_details.Other_Insurance_Company}}">
+
+                              <label for="exampleInputEmail1">Other Insurance Company Details</label>
+                              <input class="form-control" name="patient_details_Give_details" type="text"
+                                value="{{data.patient_details.Other_Insurance_Details}}">
+                            </div>
+
+                            {% else %}
 
                             <label for="exampleInputEmail1">Curruntly Do You Have Any Health Insurance</label> <br>
 
@@ -342,10 +355,15 @@
                               onclick="handler()">
                             Yes
                             <input type="radio" name="patient_details_HealthInsurance" value="No" id="nanana2"
-                              onclick="yeshandler"> No
+                              onclick="yeshandler()"> No
+
+                            {% endif %}
+
+                            <div class="onclickYes" id="onclickYes">
+                            </div>
                             <!-- hidden -->
                             <input id="bunny_patient_details_HealthInsurance" style="visibility: hidden;"
-                              value="{{data.addition_details.patient_details_HealthInsurance}}" />
+                              value="{{data.addition_details.patient_details_HealthInsurance}}" /> <br>
 
                             <!-- hidden -->
                             <script>
@@ -359,13 +377,27 @@
                               }
                             </script>
 
-                            <div class="onclickYes" id="onclickYes">
+                            {% if data.patient_details.Physician == "Yes" %}
 
-                            </div>
+                            <label for="exampleInputEmail1">Physician Name</label>
+                            <input class="form-control" name="patient_details_familyPhysicianYesPhysicianName"
+                              type="text" value="{{data.patient_details.Physician_Name}}">
+
+                            <label for="exampleInputEmail1">Physician Contact Number</label>
+                            <input class="form-control" name="patient_details_familyPhysicianYesPhysicianContactNum"
+                              type="tel" value="{{data.patient_details.Physician_Number}}">
+
+                            {% else %}
+
                             <label for="exampleInputEmail1">Do You Have a Family Physician</label> <br>
                             <input type="radio" name="patient_details_familyPhysician" value="Yes" id="physicianYes">
                             Yes
                             <input type="radio" name="patient_details_familyPhysician" value="No" id="physicianNo"> No
+
+                            {% endif %}
+
+
+
                             <input id="bunny_patient_details_familyPhysician" style="visibility: hidden;"
                               value="{{data.addition_details.patient_details_familyPhysician}}" />
 
@@ -423,11 +455,11 @@
                             <label for="exampleInputEmail1">Name of The Treating Doctor <span
                                 style="color: red;">*</span> </label>
                             <input class="form-control" name="Treating_Doctor" required type="text"
-                              value="{{data.hospital_details.Treating_Doctor}}">
+                              value="{{data.hospital_details.Treating_Doctor_Name}}">
 
                             <label for="exampleInputEmail1">Contact Number</label>
                             <input class="form-control" name="doctor_contactNumber" type="text"
-                              value="{{data.patient_details.Doctor_ContactNumber}}">
+                              value="{{data.hospital_details.Contact_number}}">
 
                             <label for="exampleInputEmail1">Nature of illness / Disease With Presenting
                               complaints</label>
@@ -436,15 +468,15 @@
 
                             <label for="exampleInputEmail1">Relevant Clinic Findings</label>
                             <input class="form-control" name="doctor_releventClinicFindings" type="text"
-                              value="{{data.addition_details.doctor_releventClinicFindings}}">
+                              value="{{data.addition_details.Relevant_Critical_Findings}}">
 
                             <label for="exampleInputEmail1">Duration of Present Aliment</label>
                             <input class="form-control" name="doctor_durationOfPresentAliment" type="text"
                               value="{{data.addition_details.Duration_Of_Present_Ailments}}">
 
                             <label for="exampleInputEmail1">Date Of First Consultation</label>
-                            <input class="form-control" name="doctor_dateOfFirstConsultation" type="date"
-                              value="{{data.addition_details.NatureOfLiness}}">
+                            <input class="form-control" name="doctor_dateOfFirstConsultation" type="text"
+                              value="{{data.addition_details.Date_Of_First_Consultation}}">
 
                             <label for="exampleInputEmail1">Past History Of Present Aliment , If Any</label>
                             <input class="form-control" name="doctor_PastHistoryOfPresentAlignment" type="text"
@@ -550,7 +582,7 @@
 
                             <label for="exampleInputEmail1">If Other Tratment Provide Details</label>
                             <input class="form-control" name="doctor_ifOtherTratmentProvideDetails"
-                              value="{{data.addition_details.doctor_ifOtherTratmentProvideDetails}}" type="text">
+                              value="{{data.addition_details.If_Other_Treatment_Provide_Details}}" type="text">
 
                             <label for="exampleInputEmail1">How Did Injury Occure</label>
                             <input class="form-control" value="{{data.addition_details.How_Did_Injury_Occur}}"
@@ -654,7 +686,17 @@
                             <input type="radio" name="doctor_inCaseMaternityG" value="Yes" id="G"> G
                             <input type="radio" name="doctor_inCaseMaternityP" value="Yes" id="P"> P
                             <input type="radio" name="doctor_inCaseMaternityL" value="Yes" id="L"> L
-                            <input type="radio" name="doctor_inCaseMaternityA" value="Yes" id="A"> A <br>
+                            <input type="radio" name="doctor_inCaseMaternityA" value="Yes" id="A"> A 
+                            <br>
+                            {% if data.hospital_details.ExpectedDateOfDelivery == "" %}
+                            <label for="exampleInputEmail1">Expected Date Of Delivery</label>
+                            <input class="form-control" name="doctor_expectedDateOfDelivery"
+                              value="{{data.hospital_details.ExpectedDateOfDelivery}}" type="date">
+                            {% else %}
+                            <label for="exampleInputEmail1">Expected Date Of Delivery</label>
+                            <input class="form-control" name="doctor_expectedDateOfDelivery"
+                              value="{{data.hospital_details.ExpectedDateOfDelivery}}" type="text">
+                            {% endif %}
 
                             <input id="bunny_patient_details_G" style="visibility: hidden;"
                               value="{{data.addition_details.G}}" />
@@ -687,31 +729,7 @@
                                 document.getElementById('A').checked = true;
                               }
                             </script>
-                            <script>
-                              // function myCheckboxFunG() {
-                              //   if (document.getElementById("G").checked == true) {
 
-                              //   }
-                              // }
-                              // function myCheckboxFunP() {
-                              //   if (document.getElementById("P").checked == true) {
-                              //     alert("P checked")
-                              //   }
-                              // }
-                              // function myCheckboxFunL() {
-                              //   if (document.getElementById("L").checked == true) {
-                              //     alert("L checked")
-                              //   }
-                              // }
-                              // function myCheckboxFunA() {
-                              //   if (document.getElementById("A").checked == true) {
-                              //     alert("A checked")
-                              //   }
-                              // }
-                            </script>
-                            <label for="exampleInputEmail1">Expected Date Of Delivery</label>
-                            <input class="form-control" name="doctor_expectedDateOfDelivery"
-                              value="{{data.hospital_details.ExpectedDateOfDelivery}}" type="date">
 
                             <button name="save" value="{{system}}"
                               onclick="alert(`form saved successfully`);$(`#msform`).submit();"
@@ -780,7 +798,7 @@
                             <label for="exampleInputEmail1">Per Day Room Rent + Nursing & Services Charge + Patient
                               Diet</label>
                             <input class="form-control" id="admission_perDayRoomRent" name="admission_perDayRoomRent"
-                              type="number" onfocusout="c()" placeholder="">
+                              type="number" onfocusout="c()" placeholder="" value="{{data.hospital_charges.Per_Day_Room_Rent}}">
                             <script>
 
                             </script>
@@ -788,35 +806,38 @@
                             <label for="exampleInputEmail1">Expected Cost For Investigation + Diagnostics</label>
                             <input class="form-control" id="admission_expectedCostForInvestigation"
                               name="admission_expectedCostForInvestigation" type="number" placeholder=""
-                              onfocusout="c()">
+                              onfocusout="c()" value="{{data.hospital_charges.Cost_Of_Investigation}}">
 
                             <label for="exampleInputEmail1">ICU Charge</label>
                             <input class="form-control" id="admission_icuCharge" name="admission_icuCharge"
-                              type="number" placeholder="" onfocusout="c()">
+                              type="number" placeholder="" onfocusout="c()"  value="{{data.hospital_charges.ICU_Charges}}">
 
                             <label for="exampleInputEmail1">OT Charge</label>
                             <input class="form-control" id="admission_otCharge" name="admission_otCharge" type="number"
-                              placeholder="" onfocusout="c()">
+                              placeholder="" onfocusout="c()"  value="{{data.hospital_charges.OT_Charges}}">
 
                             <label for="exampleInputEmail1">Professional Fees Surgeon + Anesthetist Fees + Consultation
                               Charge</label>
                             <input class="form-control" id="admission_professionalFeesSurgeon"
-                              name="admission_professionalFeesSurgeon" type="number" placeholder="" onfocusout="c()">
+                              name="admission_professionalFeesSurgeon" type="number" placeholder="" onfocusout="c()"
+                               value="{{data.hospital_charges.ProfessionalFeesSurgeon}}">
 
                             <label for="exampleInputEmail1">Medicine + Consumables + Cost of Implants (If Applicable
                               Please
                               Specify)</label>
                             <input class="form-control" id="admission_madicineConsumablesCostOfImplats"
                               name="admission_madicineConsumablesCostOfImplats" type="number" placeholder=""
-                              onfocusout="c()">
+                              onfocusout="c()"  value="{{data.hospital_charges.cost_Of_Implant}}">
 
                             <label for="exampleInputEmail1">Other Hospital If Any</label>
                             <input class="form-control" id="admission_otherHospitalIfAny"
-                              name="admission_otherHospitalIfAny" type="number" placeholder="" onfocusout="c()">
+                              name="admission_otherHospitalIfAny" type="number" placeholder="" onfocusout="c()"
+                               value="{{data.hospital_charges.OtherHospitalIfAny}}">
 
                             <label for="exampleInputEmail1">All Include Package Charges If Any Applicable</label>
                             <input class="form-control" id="admission_allIncludePackageCharge"
-                              name="admission_allIncludePackageCharge" type="number" placeholder="" onfocusout="c()">
+                              name="admission_allIncludePackageCharge" type="number" placeholder="" onfocusout="c()"
+                               value="{{data.hospital_charges.All_Including_Package}}">
 
                             <!-- do calculation -->
                             <script>

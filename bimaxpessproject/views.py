@@ -168,14 +168,12 @@ def postsignIn(request):
                     continue
 
             print(values)
-            request.session['backendcase'] = "case"+str(counter+1)
-            context["backcase"] = "case"+str(counter+1)
             context["cases_data"] = cases_data
             context['list_status'] = list_status
             context['values'] = values
             context['hospital_email'] = request.session['hospital_email']
             context['role'] = request.session.get('role')
-            context['insurance_company'] = request.session['insurance_company']
+            
 
             return render(request, "index.html", context)
 
@@ -183,6 +181,30 @@ def postsignIn(request):
             request.session['hospital_email'] = user['email']
             print("this is session",request.session['hospital_email'])
             return redirect("hospital")
+        
+def newcase(request):
+    context={}
+    docs = db.collection(u'hospitals').document(request.session['hospital_email']).collection('cases').get()
+    casenumber = len(docs)+1
+    doc_ref = db.collection(u'hospitals').document(request.session['hospital_email'])
+    doc = doc_ref.get()
+    datamy=[]
+    if doc.exists:
+        datamy = doc.to_dict()['Empanelled_companies']
+
+    else:
+        print(u'No such document!')
+    print(datamy)
+    
+    context['company'] = datamy
+    context['akey'] = "case"+str(casenumber)
+    context['email'] = request.session['hospital_email']
+    system = request.session['hospital_email']+"+"+"case"+str(casenumber)
+    
+    print(system)
+    context['system'] = system
+    return render(request, "pageAccordian.html", context)
+        
 
 def mainpage(request):
     print("got it")
@@ -272,13 +294,12 @@ def mainpage(request):
 
             print(values)
 
-            context["backcase"] = "case"+str(counter+1)
+            
             context["cases_data"] = cases_data
             context['list_status'] = list_status
             context['values'] = values
             context['hospital_email'] = request.session['hospital_email']
             context['role'] = request.session.get('role')
-            context['insurance_company'] = request.session['insurance_company']
             return render(request, "index.html", context)
         else:
             print("this is session",request.session['hospital_email'])
@@ -351,13 +372,13 @@ def mainpage(request):
 
             print(values)
 
-            context["backcase"] = "case"+str(counter+1)
+           
             context["cases_data"] = cases_data
             context['list_status'] = list_status
             context['values'] = values
             context['hospital_email'] = request.session['hospital_email']
             context['role'] = request.session.get('role')
-            context['insurance_company'] = request.session['insurance_company']
+            
             return render(request, "index.html", context)
         
         
@@ -398,11 +419,10 @@ def hospitalEdit(request):
 
 def plandetails(request):
     context = {}
-    doc_ref = db.collection(u'hospitals').document("noureen@gmail.com")
+    doc_ref = db.collection(u'hospitals').document(request.session['hospital_email'])
     doc = doc_ref.get()
     if doc.exists:
         print(f'Document data: {doc.to_dict()}')
-        print("got document",doc.to_dict())
         context["hospitals"] = doc.to_dict()
     else:
         print(u'No such document!')
@@ -880,17 +900,7 @@ def claimpage1(request):
                 for doc in collection.stream():
                     databunny[doc.id] = doc.to_dict()
                     bunny.append(doc.to_dict())
-
-        print(databunny)
-        context['akey'] = case
-        context['email'] = email
-        context['bunny'] = bunny
-        context['data'] = databunny
-        context['system'] = system
-        context['role'] = request.session['role']
-        print("cool dude", system)
-
-        doc_ref = db.collection(u'hospitals').document(email)
+        doc_ref = db.collection(u'hospitals').document(request.session['hospital_email'])
         doc = doc_ref.get()
         datamy=[]
         if doc.exists:
@@ -899,14 +909,24 @@ def claimpage1(request):
         else:
             print(u'No such document!')
         print(datamy)
+    
         context['company'] = datamy
-        context['email'] = email
-        
-        # context['Empanelled_companies'] = doc.to_dict()['Empanelled_companies']
 
+        print(databunny)
+        context['akey'] = case
+        context['email'] = email
+        context['bunny'] = bunny
+        context['data'] = databunny
+        context['system'] = system
+        context['role'] = request.session['role']
+        context['insurance_company'] = request.session['insurance_company']
+
+        print("cool dude", system)
+        
         doc = db.collection('hospitals').document(email).collection('cases').document(case).collection('patient_details').stream()	
         for docs in doc:	
             data = docs.to_dict()	
+            print(data)	
             def checkKey(dict, key):	
                 if key in dict:	
                     return True	
@@ -931,7 +951,6 @@ def claimpage1(request):
         return render(request, 'pageAccordian.html', context)
     else:
         return redirect('login')
-
 
 def claims(request):
     context = {}
@@ -1265,7 +1284,7 @@ def generateform(request):
                 bunny.append(doc.to_dict())
                 
         try:
-            if(databunny["patient_details"]["Insurance_Company"]) == "Aditya_Birla_Health_Insurance":
+            if(databunny["patient_details"]["Insurance_Company"]) == "Cholamandalam_MS_General_Insurance":
                 context['hospitaldata'] = hospitaldata
                 context['data'] = databunny
                 return render(request, "hdfc.html", context)
@@ -1355,10 +1374,13 @@ def saveData(request):
                     "InsuredIdCardNumber": data["patient_details_insuredMemberIdCardNo"],
                     "Policy_Id": data["patient_details_policyNumberorCorporateName"],
                     "EmployeeId": data["patient_details_EmployeeId"],
+                    "Other_Insurance_Details": data["patient_details_Give_details"],
                     "Address": data["patient_details_currentAddress"],
                     "Occupation": data["patient_details_occupation"],
                     "Nature_Of_Illness": data["doctor_natureOfLiness"],
                     "Doctor_ContactNumber": data["doctor_contactNumber"],
+
+                    "Physician": data.get("patient_details_familyPhysician", ""),
                 }
                 
                 addition_details = {
@@ -1375,7 +1397,7 @@ def saveData(request):
                     "If_Other_Treatment_Provide_Details": data["doctor_ifOtherTratmentProvideDetails"],
                     "How_Did_Injury_Occur": data["doctor_howDidInjuryOccure"],
                     "Date_Of_Injury":data.get("doctor_dateOfInjury",""),
-                    "doctor_releventClinicFindings":data.get("doctor_releventClinicFindings",""),
+                    "Relevant_Critical_Findings":data.get("doctor_releventClinicFindings",""),
                     "MandatoryPastHistoryMonth": data["admission_mandatoryPastHistoryMonth"],
                     "MandatoryPastHistoryYear": data["admission_mandatoryPastHistoryYear"],
                     "HeartDiseaseMonth": data["admission_heartDiseaseMonth"],
@@ -1397,7 +1419,7 @@ def saveData(request):
                     "OtherAliments": data["admission_anyOtherAliments"],
                     "Reported_To_Police": data.get("doctor_reportedToPolice", ""),
                     "patient_details_HealthInsurance": data.get("patient_details_HealthInsurance", ""),
-                    "familyPhysician": data.get("patient_details_familyPhysician", ""),
+                    
                     "doctor_proposedLineOfTreatment_Medical_Managment": data.get("doctor_proposedLineOfTreatment_Medical_Managment", ""),
                     "doctor_proposedLineOfTreatment_Surgical_Managment": data.get("doctor_proposedLineOfTreatment_Surgical_Managment", ""),
                     "doctor_proposedLineOfTreatment_Intensive_Care": data.get("doctor_proposedLineOfTreatment_Intensive_Care", ""),

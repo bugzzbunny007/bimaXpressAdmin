@@ -304,10 +304,8 @@
                 {% endif %}
 
                 <li class="nav-item">
-                  <a class="nav-link active">
-
-                    <form action="/claimpage1" method="get" id="systemform">
-                      {% csrf_token %}
+                  <a href="/newcase" class="nav-link active">
+                     
                       <i style="color:black;" class="fas fa-plus"></i>
                       <p><button style="color: black; border: none; background-color:transparent;" type="submit"
                           name="system" value="{{hospital_email}}+{{backcase}}" form="systemform">New
@@ -431,7 +429,7 @@
               <hr style="border:  2px solid rgb(167, 47, 67); background-color: rgb(167, 47, 67);">
               <p ><b>Form Status -</b>{{i.formstatus}}</p>
               <p style="margin-top: -18px;"><b>Admission Date -</b>{{i.Date}}</p>
-              {% comment %} <p style="margin-top: -18px;"><b>Claim Amount -</b>22</p> {% endcomment %}
+              <p style="margin-top: -18px;"><b>Claim Amount -</b>22</p>
               <p style="margin-top: -18px;" class="overflowText"><b>Insurance TPA -</b>{{i.company}}</p>
 
 
@@ -535,7 +533,7 @@
                                     <td>{{i.patient_name}}</td>
                                     <td>{{i.formstatus}}</td>
                                     <td>{{i.Date}}</td>
-                               
+                                    <td>5</td>
                                     <td>{{i.company}}</td>
                                 </tr>
                                 {% endif %}
@@ -558,7 +556,7 @@
               <hr>
               <p style="margin-top: -18px;"><b>Form Status -</b>{{i.formstatus}}</p>
               <p style="margin-top: -18px;"><b>Admission Date -</b>{{i.Date}}</p>
-
+              <p style="margin-top: -18px;"><b>Claim Amount -</b>22</p>
               <p style="margin-top: -18px;"><b>Insurance TPA -</b>{{i.company}}</p>
 
             </div>
@@ -622,10 +620,3 @@
 </body>
 
 </html>
-
-
-
-
-{% comment %} 
-var temppp = document.getElementById('wait');
-                        temppp.setAttribute("style", "disply:none;"); {% endcomment %}

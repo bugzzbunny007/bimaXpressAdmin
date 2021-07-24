@@ -41,7 +41,7 @@ urlpatterns = [
     path('addQuery/<que>', views.addQuery, name='addQuery'),
     path('sendcompany/<p>', views.sendcompany ,name="sendcompany"),
     path('resendemail', views.resendemail ,name="resendemail"),
-    
+    path('newcase', views.newcase ,name="newcase"),
 
     #<-----Anis_code------>
     path('bunny',views.bunny , name="bunny"),

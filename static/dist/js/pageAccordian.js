@@ -38,11 +38,11 @@ function handler() {
     onclickYes.innerHTML = `
   <label for="exampleInputEmail1">Company Name</label>
                           <input class="form-control" name="patient_details_HealthInsuranceYesCompanyName" type="text"
-                            value="">
+                          value="{{data.patient_details.Other_Insurance_Company}}">
 
                             <label for="exampleInputEmail1">Give Details</label>
                           <input class="form-control" name="Give_details" type="text"
-                            value="">
+                          value="{{data.patient_details.Other_Insurance_Details}}">
   `;
 }
 function yeshandler() {
